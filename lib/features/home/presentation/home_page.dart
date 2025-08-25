@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -63,16 +62,16 @@ class HomePage extends StatelessWidget {
                             255,
                             255,
                           ),
-                          minimumSize: Size(11.w, 11.h), // Minimum width & height
-                          fixedSize: Size(160.w, 40.h), // Exact width & height
+                          minimumSize: Size(11.w, 11.h), 
+                          fixedSize: Size(160.w, 40.h), 
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
                               20.r,
-                            ), // Rounded corners
+                            ), 
                             side: const BorderSide(
                               color: Color.fromARGB(255, 4, 4, 4),
                               width: 2,
-                            ), // Border
+                            ), 
                           ),
                         ),
                         child: Text(
@@ -94,8 +93,8 @@ class HomePage extends StatelessWidget {
                             92,
                             81,
                           ),
-                          minimumSize: Size(11.w, 11.h), // Minimum width & height
-                          fixedSize: Size(160.w, 40.h), // Exact width & height
+                          minimumSize: Size(11.w, 11.h), 
+                          fixedSize: Size(160.w, 40.h), 
                         ),
                         child: Text(
                           "Contact Info",
