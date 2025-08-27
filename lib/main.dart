@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:protofolio/features/Page%20View/presentation/page_view.dart';
-
 void main() {
   runApp(const MyApp());
 }
