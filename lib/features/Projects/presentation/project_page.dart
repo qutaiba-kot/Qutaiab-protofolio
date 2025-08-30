@@ -22,7 +22,7 @@ class ProjectPage extends StatelessWidget {
                 Text(
                   "Projects",
                   style: TextStyle(
-                    fontSize: 66.sp,
+                    fontSize: 50.sp,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

@@ -19,7 +19,7 @@ class ContactMePage extends StatelessWidget {
             ),
             Text(
               "Contact Me",
-              style: TextStyle(fontSize: 66.sp, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 50.sp, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 50.h),
             Container(

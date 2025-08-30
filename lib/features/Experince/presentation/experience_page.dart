@@ -19,12 +19,12 @@ class ExperiencePage extends StatelessWidget {
                 SizedBox(height: 20.h),
                 Text(
                   "Explore my",
-                  style: TextStyle(fontSize: 18.sp, color: Colors.grey),
+                  style: TextStyle(fontSize: 20.sp, color: Colors.grey),
                 ),
                 SizedBox(height: 10.h),
                 Text(
                   "Experience",
-                  style: TextStyle(fontSize: 30.sp, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 50.sp, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 20),
                 Row(
