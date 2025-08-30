@@ -29,7 +29,11 @@ class HomePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CircleAvatar(radius: 250.r, backgroundColor: Colors.black),
+                CircleAvatar(
+                  radius: 250.r,
+                  backgroundColor: Colors.black,
+                  backgroundImage:AssetImage("assets/files/2nedPic.jpg"),                       
+                ),
                 SizedBox(width: 100.w),
                 Column(
                   children: [
@@ -54,8 +58,8 @@ class HomePage extends StatelessWidget {
                         BlocBuilder<HomeCubit, HomeState>(
                           builder: (context, state) {
                             return ElevatedButton(
-                              onPressed: ()async {
-                                 context.read<HomeCubit>().downloadCv();
+                              onPressed: () async {
+                                context.read<HomeCubit>().downloadCv();
                               },
                               style: ElevatedButton.styleFrom(
                                 shadowColor: Colors.black,
@@ -89,7 +93,9 @@ class HomePage extends StatelessWidget {
                         SizedBox(width: 20.w),
                         ElevatedButton(
                           onPressed: () {
-                             context.read<PageViewNavigationCubit>().changePage(4);
+                            context.read<PageViewNavigationCubit>().changePage(
+                              4,
+                            );
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color.fromARGB(
@@ -112,22 +118,11 @@ class HomePage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 10.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Icon(
-                          FontAwesomeIcons.linkedin,
-                          size: 40.r,
-                          color: Colors.black,
-                        ),
-                        SizedBox(width: 11.w),
-                        Icon(
-                          FontAwesomeIcons.github,
-                          size: 40.r,
-                          color: Colors.black,
-                        ),
-                      ],
+                    SizedBox(height: 20.h),
+                    Icon(
+                      FontAwesomeIcons.flutter,
+                      size: 40.r,
+                      color: const Color.fromARGB(255, 60, 135, 197),
                     ),
                   ],
                 ),

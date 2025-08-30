@@ -47,9 +47,12 @@ class AboutMePage extends StatelessWidget {
                       color: Colors.grey,
                       borderRadius: BorderRadius.all(Radius.circular(30.r)),
                     ),
-                    child: const Text(
-                      "data",
-                      style: TextStyle(color: Colors.white),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(30.r)),
+                      child: Image.asset(
+                        "assets/files/1nedPic.jpg",
+                        fit: BoxFit.cover, 
+                      ),
                     ),
                   ),
                   SizedBox(width: 60.w),
@@ -164,7 +167,7 @@ class AboutMePage extends StatelessWidget {
               ),
             ],
           ),
-          Positioned(child: NextPageButton() , bottom: 145.h, right: 100.w,),
+          Positioned(child: NextPageButton(), bottom: 145.h, right: 100.w),
         ],
       ),
     );
