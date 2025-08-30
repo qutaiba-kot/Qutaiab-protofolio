@@ -16,18 +16,39 @@ class RowSelectionPage extends StatelessWidget {
           currentIndex = state.pageIndex;
         }
         Widget navItem(String title, int index) {
-          bool isSelected = currentIndex == index;
-          return InkWell(
-            onTap: () => context.read<PageViewNavigationCubit>().changePage(index),
+  bool isSelected = currentIndex == index;
+  ValueNotifier<bool> isHovering = ValueNotifier(false);
+
+  return MouseRegion(
+    onEnter: (_) => isHovering.value = true,
+    onExit: (_) => isHovering.value = false,
+    child: GestureDetector(
+      onTap: () => context.read<PageViewNavigationCubit>().changePage(index),
+      child: ValueListenableBuilder<bool>(
+        valueListenable: isHovering,
+        builder: (context, hovering, child) {
+          return AnimatedScale(
+            scale: hovering ? 1.2 : 1.0, // التكبير بدون تحريك layout
+            duration: Duration(milliseconds: 50),
             child: Text(
               title,
               style: TextStyle(
-                fontSize: 30.sp,
+                fontSize: 30.sp, // حجم ثابت
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                color: hovering ? Colors.grey : Colors.black,
+                decoration: hovering ? TextDecoration.underline : TextDecoration.none,
+                decorationColor: Colors.grey,
+                decorationThickness: 2,
               ),
             ),
           );
-        }
+        },
+      ),
+    ),
+  );
+}
+
+
         return Row(
           children: [
             navItem("About", 1),
