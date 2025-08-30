@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:protofolio/Core/Widgets/row_selection_page.dart';
+import 'package:protofolio/features/Page%20View/logic/cubit/page_view_navigation_state.dart';
 import 'package:protofolio/features/home/logic/cubit/home_cubit.dart';
 
 class HomePage extends StatelessWidget {
@@ -87,7 +88,9 @@ class HomePage extends StatelessWidget {
                         ),
                         SizedBox(width: 20.w),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                             context.read<PageViewNavigationCubit>().changePage(4);
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color.fromARGB(
                               255,
