@@ -9,19 +9,19 @@ class ExperinceConatinerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 600.h,
+      height: 400.h,
       width: 700.w,
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border.all(color: Colors.black, width: 3),
-        borderRadius: BorderRadius.all(Radius.circular(40)),
+        border: Border.all(color: Colors.black, width: 1.w),
+        borderRadius: BorderRadius.all(Radius.circular(40.r)),
       ),
       child: Column(
         children: [
-          SizedBox(height: 25),
+          SizedBox(height: 25.h),
           Text(
             "FrontEnd Development",
-            style: TextStyle(fontSize: 30, color: Colors.grey),
+            style: TextStyle(fontSize: 20.sp, color: Colors.grey),
           ),
           Expanded(
             child: Row(
