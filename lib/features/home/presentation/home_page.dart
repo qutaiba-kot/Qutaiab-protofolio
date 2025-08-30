@@ -54,7 +54,7 @@ class HomePage extends StatelessWidget {
                         BlocBuilder<HomeCubit, HomeState>(
                           builder: (context, state) {
                             return ElevatedButton(
-                              onPressed: () {
+                              onPressed: ()async {
                                  context.read<HomeCubit>().downloadCv();
                               },
                               style: ElevatedButton.styleFrom(
