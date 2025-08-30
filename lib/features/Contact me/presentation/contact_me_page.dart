@@ -54,7 +54,7 @@ class ContactMePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                PageNavigationRow()
+                RowSelectionPage()
               ],
             ),
             SizedBox(height: 50.h),

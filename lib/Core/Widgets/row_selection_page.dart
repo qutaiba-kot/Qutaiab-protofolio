@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:protofolio/features/Page%20View/logic/cubit/page_view_navigation_cubit.dart';
 import 'package:protofolio/features/Page%20View/logic/cubit/page_view_navigation_state.dart';
 
-class PageNavigationRow extends StatelessWidget {
-  const PageNavigationRow({super.key});
+class RowSelectionPage extends StatelessWidget {
+  const RowSelectionPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class PageNavigationRow extends StatelessWidget {
         }
         return Row(
           children: [
-            navItem("About", 1 ),
+            navItem("About", 1),
             SizedBox(width: 40.w),
             navItem("Experince", 2),
             SizedBox(width: 40.w),

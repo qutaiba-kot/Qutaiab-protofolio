@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
               SizedBox(width: 200.w),
               Text("Qutaiba Hassan", style: TextStyle(fontSize: 50.sp)),
               SizedBox(width: 500.w),
-              PageNavigationRow()
+              RowSelectionPage()
             ],
           ),
           SizedBox(height: 209.h),
