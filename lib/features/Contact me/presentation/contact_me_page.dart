@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:protofolio/Core/Widgets/row_selection_page.dart';
 
 class ContactMePage extends StatelessWidget {
   const ContactMePage({super.key});
@@ -53,14 +54,7 @@ class ContactMePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("About", style: TextStyle(fontSize: 30.sp)),
-                SizedBox(width: 40.w),
-                Text("Experince", style: TextStyle(fontSize: 30.sp)),
-                SizedBox(width: 40.w),
-                Text("Projects", style: TextStyle(fontSize: 30.sp)),
-                SizedBox(width: 40.w),
-                Text("Contacts", style: TextStyle(fontSize: 30.sp)),
-                SizedBox(width: 40.w),
+                PageNavigationRow()
               ],
             ),
             SizedBox(height: 50.h),

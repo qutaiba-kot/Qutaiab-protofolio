@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:protofolio/Core/Widgets/row_selection_page.dart';
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -15,18 +16,7 @@ class HomePage extends StatelessWidget {
               SizedBox(width: 200.w),
               Text("Qutaiba Hassan", style: TextStyle(fontSize: 50.sp)),
               SizedBox(width: 500.w),
-              Row(
-                children: [
-                  Text("About", style: TextStyle(fontSize: 30.sp)),
-                  SizedBox(width: 40.w),
-                  Text("Experince", style: TextStyle(fontSize: 30.sp)),
-                  SizedBox(width: 40.w),
-                  Text("Projects", style: TextStyle(fontSize: 30.sp)),
-                  SizedBox(width: 40.w),
-                  Text("Contacts", style: TextStyle(fontSize: 30.sp)),
-                  SizedBox(width: 40.w),
-                ],
-              ),
+              PageNavigationRow()
             ],
           ),
           SizedBox(height: 209.h),
