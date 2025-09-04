@@ -4,18 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:protofolio/features/Page%20View/logic/cubit/page_view_navigation_state.dart';
 import 'package:protofolio/features/Page%20View/logic/cubit/page_view_navigation_cubit.dart';
 
-class RowSelectionPage extends StatelessWidget {
-  final bool isTablet;
-  final bool isMobile;
-  const RowSelectionPage({super.key , required this.isTablet, required this.isMobile});
+class BurgerMenuDrawer extends StatelessWidget {
+  const BurgerMenuDrawer({super.key });
 
   @override
   Widget build(BuildContext context) {
-    double textSize = isMobile
-        ? 70.sp
-        : isTablet
-            ? 35.sp
-            : 30.sp;
     return BlocBuilder<PageViewNavigationCubit, PageViewNavigationState>(
       builder: (context, state) {
         int currentIndex = 0;
@@ -41,7 +34,7 @@ class RowSelectionPage extends StatelessWidget {
                     child: Text(
                       title,
                       style: TextStyle(
-                        fontSize: textSize,
+                        fontSize: 20.sp,
                         fontWeight: isSelected
                             ? FontWeight.bold
                             : FontWeight.normal,
@@ -59,7 +52,7 @@ class RowSelectionPage extends StatelessWidget {
             ),
           );
         }
-        return Row(
+        return Column(
           children: [
             navItem("About", 1),
             SizedBox(width: 40.w),

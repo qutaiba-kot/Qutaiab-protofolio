@@ -1,134 +1,130 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:protofolio/Core/Screen%20Cubit/cubit/screen_cubit.dart';
+import 'package:protofolio/Core/Screen%20Cubit/cubit/screen_state.dart';
+import 'package:protofolio/Core/Widgets/burger_manu_drawer.dart';
+import 'package:protofolio/Core/Widgets/intro_persona_info_widget.dart';
+import 'package:protofolio/Core/Widgets/next_page_button.dart';
 import 'package:protofolio/Core/Widgets/row_selection_page.dart';
-import 'package:protofolio/features/Page%20View/logic/cubit/page_view_navigation_cubit.dart';
 import 'package:protofolio/features/home/logic/cubit/home_cubit.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => HomeCubit(),
       child: Scaffold(
-        body: Column(
-          children: [
-            SizedBox(height: 40.h),
-            Row(
+        drawer: BurgerManuDrawer(),
+        body: BlocBuilder<ScreenCubit, ScreenState>(
+          builder: (context, state) {
+            final isMobile = state.deviceType == DeviceTypes.mobile;
+            final isTablet = state.deviceType == DeviceTypes.tablet;
+            return Stack(
               children: [
-                SizedBox(width: 200.w),
-                Text("Qutaiba Hassan", style: TextStyle(fontSize: 50.sp)),
-                SizedBox(width: 500.w),
-                RowSelectionPage(),
-              ],
-            ),
-            SizedBox(height: 209.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CircleAvatar(
-                  radius: 250.r,
-                  backgroundColor: Colors.black,
-                  backgroundImage:AssetImage("assets/files/2nedPic.jpg"),                       
-                ),
-                SizedBox(width: 100.w),
-                Column(
-                  children: [
-                    Text("Hello, I'm", style: TextStyle(fontSize: 30.sp)),
-                    Text(
-                      "Qutaiba Hassan",
-                      style: TextStyle(
-                        fontSize: 44.sp,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      "Flutter Developer",
-                      style: TextStyle(
-                        fontSize: 50.sp,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.grey,
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        BlocBuilder<HomeCubit, HomeState>(
-                          builder: (context, state) {
-                            return ElevatedButton(
-                              onPressed: () async {
-                                context.read<HomeCubit>().downloadCv();
-                              },
-                              style: ElevatedButton.styleFrom(
-                                shadowColor: Colors.black,
-                                backgroundColor: const Color.fromARGB(
-                                  255,
-                                  255,
-                                  255,
-                                  255,
+                SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      SizedBox(height: 40.h),
+                      Row(
+                        children: [
+                          SizedBox(width: 200.w),
+                          Text(
+                            "Qutaiba Hassan",
+                            style: TextStyle(
+                              fontSize: isMobile
+                                  ? 100.sp
+                                  : isTablet
+                                  ? 100.sp
+                                  : 50.sp,
+                            ),
+                          ),
+                          SizedBox(
+                            width: isMobile
+                                ? 700.w
+                                : isTablet
+                                ? 300.sp
+                                : 500.w,
+                          ),
+                          isMobile
+                              ? IconButton(onPressed: (){Scaffold.of(context).openDrawer();}, icon: Icon(Icons.menu))
+                              : RowSelectionPage(
+                                  isTablet: isTablet,
+                                  isMobile: isMobile,
                                 ),
-                                minimumSize: Size(11.w, 11.h),
-                                fixedSize: Size(160.w, 40.h),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.r),
-                                  side: const BorderSide(
-                                    color: Color.fromARGB(255, 4, 4, 4),
-                                    width: 2,
+                        ],
+                      ),
+                      SizedBox(
+                        height: isMobile
+                            ? 150.h
+                            : isTablet
+                            ? 120.h
+                            : 209.h,
+                      ),
+                      isMobile
+                          ? Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CircleAvatar(
+                                  radius: 650.r,
+                                  backgroundColor: Colors.black,
+                                  backgroundImage: AssetImage(
+                                    "assets/files/2nedPic.jpg",
                                   ),
                                 ),
-                              ),
-                              child: Text(
-                                "Download CV",
-                                style: TextStyle(
-                                  fontSize: 15.sp,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
+                                SizedBox(
+                                  width: isMobile ? 0.w : 100.w,
+                                  height: isMobile ? 60.h : 0.h,
                                 ),
-                              ),
-                            );
-                          },
-                        ),
-                        SizedBox(width: 20.w),
-                        ElevatedButton(
-                          onPressed: () {
-                            context.read<PageViewNavigationCubit>().changePage(
-                              4,
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color.fromARGB(
-                              255,
-                              95,
-                              92,
-                              81,
+                                IntroPersonaInfoWidget(
+                                  isMobile: true,
+                                  isTablet: false,
+                                ),
+                              ],
+                            )
+                          : isTablet
+                          ? Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CircleAvatar(
+                                  radius: 520.r,
+                                  backgroundColor: Colors.black,
+                                  backgroundImage: AssetImage(
+                                    "assets/files/2nedPic.jpg",
+                                  ),
+                                ),
+                                SizedBox(height: 20.h),
+                                IntroPersonaInfoWidget(
+                                  isTablet: true,
+                                  isMobile: false,
+                                ),
+                              ],
+                            )
+                          : Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CircleAvatar(
+                                  radius: 250.r,
+                                  backgroundColor: Colors.black,
+                                  backgroundImage: AssetImage(
+                                    "assets/files/2nedPic.jpg",
+                                  ),
+                                ),
+                                SizedBox(width: 100.w),
+                                IntroPersonaInfoWidget(
+                                  isMobile: false,
+                                  isTablet: false,
+                                ),
+                              ],
                             ),
-                            minimumSize: Size(11.w, 11.h),
-                            fixedSize: Size(160.w, 40.h),
-                          ),
-                          child: Text(
-                            "Contact Info",
-                            style: TextStyle(
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 20.h),
-                    Icon(
-                      FontAwesomeIcons.flutter,
-                      size: 40.r,
-                      color: const Color.fromARGB(255, 60, 135, 197),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
+                Positioned(child: NextPageButton(), bottom: 0.h, right: 100.w),
               ],
-            ),
-          ],
+            );
+          },
         ),
       ),
     );

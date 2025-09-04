@@ -12,33 +12,35 @@ class ProjectPage extends StatelessWidget {
       body: Stack(
         children: [
           Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Brows My recent",
-                  style: TextStyle(color: Colors.grey, fontSize: 20.sp),
-                ),
-                Text(
-                  "Projects",
-                  style: TextStyle(
-                    fontSize: 50.sp,
-                    fontWeight: FontWeight.bold,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Brows My recent",
+                    style: TextStyle(color: Colors.grey, fontSize: 20.sp),
                   ),
-                ),
-                SizedBox(height: 33.h),
-                SizedBox(
-                  width: 1300.w,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ProjectConatinerWidjets(),
-                      ProjectConatinerWidjets(),
-                      ProjectConatinerWidjets(),
-                    ],
+                  Text(
+                    "Projects",
+                    style: TextStyle(
+                      fontSize: 50.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-              ],
+                  SizedBox(height: 33.h),
+                  SizedBox(
+                    width: 1300.w,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        ProjectConatinerWidjets(),
+                        ProjectConatinerWidjets(),
+                        ProjectConatinerWidjets(),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           Positioned(child: NextPageButton(), bottom: 145.h, right: 100.w),

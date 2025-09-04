@@ -52,8 +52,7 @@ class BurgerManuDrawer extends StatelessWidget {
             );
           }
           return Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               navItem("About", 1),
               navItem("Experience", 2),
