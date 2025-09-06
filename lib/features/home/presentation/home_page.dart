@@ -44,11 +44,17 @@ class HomePage extends StatelessWidget {
                             width: isMobile
                                 ? 700.w
                                 : isTablet
-                                ? 300.sp
+                                ? 700.sp
                                 : 500.w,
                           ),
                           isMobile
                               ? IconButton(
+                                  onPressed: () {
+                                    Scaffold.of(context).openDrawer();
+                                  },
+                                  icon: Icon(Icons.menu),
+                                )
+                              : isTablet ? IconButton(
                                   onPressed: () {
                                     Scaffold.of(context).openDrawer();
                                   },

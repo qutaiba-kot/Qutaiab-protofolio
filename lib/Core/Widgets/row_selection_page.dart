@@ -12,9 +12,9 @@ class RowSelectionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double textSize = isMobile
-        ? 70.sp
+        ? 90.sp
         : isTablet
-            ? 35.sp
+            ? 55.sp
             : 30.sp;
     return BlocBuilder<PageViewNavigationCubit, PageViewNavigationState>(
       builder: (context, state) {
