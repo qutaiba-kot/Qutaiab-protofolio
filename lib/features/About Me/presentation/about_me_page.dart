@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:protofolio/Core/Screen%20Cubit/cubit/screen_cubit.dart';
+import 'package:protofolio/Core/Screen%20Cubit/cubit/screen_state.dart';
+import 'package:protofolio/Core/Widgets/about_me_container_widget.dart';
+import 'package:protofolio/Core/Widgets/about_me_paragraph_container_widget.dart';
+import 'package:protofolio/Core/Widgets/about_me_pic_conatiner_widget.dart';
 import 'package:protofolio/Core/Widgets/next_page_button.dart';
 
 class AboutMePage extends StatelessWidget {
@@ -9,168 +15,201 @@ class AboutMePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+      body: BlocBuilder<ScreenCubit, ScreenState>(
+        builder: (context, state) {
+          final isMobile = state.deviceType == DeviceTypes.mobile;
+          final isTablet = state.deviceType == DeviceTypes.tablet;
+          return Stack(
+            children: [
+              SingleChildScrollView(
+                child: Column(
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SizedBox(height: 70.h),
-                        Text(
-                          "Get To Know More",
-                          style: TextStyle(color: Colors.grey, fontSize: 20.sp),
-                        ),
-                        SizedBox(height: 10.h),
-                        Text(
-                          "About Me",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 50.sp,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(height: 120.h),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      height: 500.h,
-                      width: 400.w,
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.all(Radius.circular(30.r)),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(30.r)),
-                        child: Image.asset(
-                          "assets/files/1nedPic.jpg",
-                          fit: BoxFit.cover, 
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 60.w),
-                    Column(
-                      children: [
-                        Row(
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Container(
-                              height: 200.h,
-                              width: 400.w,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                border: Border.all(color: Colors.black, width: 3),
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(40),
-                                ),
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    FontAwesomeIcons.award,
-                                    size: 30.r,
-                                    color: Colors.black,
-                                  ),
-                                  Text(
-                                    "Experience",
-                                    style: TextStyle(
-                                      fontSize: 20.sp,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Text(
-                                    "1+ years",
-                                    style: TextStyle(
-                                      fontSize: 20.sp,
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-                                  Text(
-                                    "Flutter Development",
-                                    style: TextStyle(
-                                      fontSize: 20.sp,
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-                                ],
+                            SizedBox(height: 70.h),
+                            Text(
+                              "Get To Know More",
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: isMobile
+                                    ? 100.sp
+                                    : isTablet
+                                    ? 80.sp
+                                    : 20.sp,
                               ),
                             ),
-                            SizedBox(width: 20.w),
-                            Container(
-                              height: 200.h,
-                              width: 400.w,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                border: Border.all(color: Colors.black, width: 3),
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(40),
-                                ),
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    FontAwesomeIcons.university,
-                                    size: 30.r,
-                                    color: Colors.black,
-                                  ),
-                                  Text(
-                                    "Education",
-                                    style: TextStyle(
-                                      fontSize: 20.sp,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Text(
-                                    "The Hashemite University",
-                                    style: TextStyle(
-                                      fontSize: 20.sp,
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-                                  Text(
-                                    "Copmuter Science",
-                                    style: TextStyle(
-                                      fontSize: 20.sp,
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-                                ],
+                            SizedBox(height: 10.h),
+                            Text(
+                              "About Me",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: isMobile
+                                    ? 100.sp
+                                    : isTablet
+                                    ? 80.sp
+                                    : 50.sp,
                               ),
                             ),
                           ],
                         ),
-                        SizedBox(height: 30.h),
-                        Text(
-                          style: TextStyle(fontSize: 19.sp),
-                          """Motivated and detail-oriented Accounting and Commercial Law graduate with a strong 
-                    foundation in financial reporting, auditing, and legal compliance. Passionate about applying 
-                    theoretical knowledge in real world financial environments while ensuring accuracy and 
-                    ethical financial practices. Adept at problem-solving, budgeting, and tax computation, with 
-                    excellent communication and teamwork skills. Seeking an opportunity to contribute to a 
-                    dynamic accounting or finance team. """,
-                        ),
                       ],
                     ),
+                    SizedBox(
+                      height: isMobile
+                          ? 50.h
+                          : isTablet
+                          ? 80.h
+                          : 120.h,
+                    ),
+                    isMobile
+                        ? Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              AboutMePicConatinerWidget(
+                                isMobile: true,
+                                isTablet: false,
+                              ),
+                              SizedBox(
+                                width: 60.w,
+                                height: isMobile ? 50.h : 0.h,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  AboutMeContainerWidget(
+                                    icon: FontAwesomeIcons.award,
+                                    title: "Experince",
+                                    subTitle: "1+ Year",
+                                    body: "Flutter Developer",
+                                    isMobile: true,
+                                    isTablet: false,
+                                  ),
+                                  SizedBox(width: 20.w),
+                                  AboutMeContainerWidget(
+                                    icon: FontAwesomeIcons.university,
+                                    title: "Education",
+                                    subTitle: "The Hashemite University",
+                                    body: "Copmuter Science",
+                                    isMobile: true,
+                                    isTablet: false,
+                                  ),
+                                ],
+                              ),
+                              AboutMeParagraphContainerWidget(
+                                isMobile: true,
+                                isTablet: false,
+                              ),
+                            ],
+                          )
+                        : isTablet
+                        ? Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              AboutMePicConatinerWidget(
+                                isMobile: false,
+                                isTablet: true,
+                              ),
+                              SizedBox(
+                                width: 60.w,
+                                height: isMobile
+                                    ? 50.h
+                                    : isTablet
+                                    ? 30.h
+                                    : 0.h,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  AboutMeContainerWidget(
+                                    icon: FontAwesomeIcons.award,
+                                    title: "Experince",
+                                    subTitle: "1+ Year",
+                                    body: "Flutter Developer",
+                                    isMobile: false,
+                                    isTablet: true,
+                                  ),
+                                  SizedBox(width: 20.w),
+                                  AboutMeContainerWidget(
+                                    icon: FontAwesomeIcons.university,
+                                    title: "Education",
+                                    subTitle: "The Hashemite University",
+                                    body: "Copmuter Science",
+                                    isMobile: false,
+                                    isTablet: true,
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: isTablet
+                                    ? 0.h
+                                    : isMobile
+                                    ? 0.h
+                                    : 30.h,
+                              ),
+                              AboutMeParagraphContainerWidget(
+                                isMobile: false,
+                                isTablet: true,
+                              ),
+                            ],
+                          )
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              AboutMePicConatinerWidget(
+                                isMobile: false,
+                                isTablet: false,
+                              ),
+                              SizedBox(
+                                width: 60.w,
+                                height: isMobile
+                                    ? 50.h
+                                    : isTablet
+                                    ? 30.h
+                                    : 0.h,
+                              ),
+                              Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      AboutMeContainerWidget(
+                                        icon: FontAwesomeIcons.award,
+                                        title: "Experince",
+                                        subTitle: "1+ Year",
+                                        body: "Flutter Developer",
+                                        isMobile: false,
+                                        isTablet: false,
+                                      ),
+                                      SizedBox(width: 20.w),
+                                      AboutMeContainerWidget(
+                                        icon: FontAwesomeIcons.university,
+                                        title: "Education",
+                                        subTitle: "The Hashemite University",
+                                        body: "Copmuter Science",
+                                        isMobile: false,
+                                        isTablet: false,
+                                      ),
+                                    ],
+                                  ),
+                                  AboutMeParagraphContainerWidget(
+                                    isMobile: false,
+                                    isTablet: false,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                   ],
                 ),
-              ],
-            ),
-          ),
-          Positioned(child: NextPageButton(), bottom: 145.h, right: 100.w),
-        ],
+              ),
+              Positioned(child: NextPageButton(), bottom:isMobile ? 30.h : isTablet ? 0.h : 0.h, right: 100.w),
+            ],
+          );
+        },
       ),
     );
   }

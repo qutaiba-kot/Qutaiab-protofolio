@@ -48,7 +48,12 @@ class HomePage extends StatelessWidget {
                                 : 500.w,
                           ),
                           isMobile
-                              ? IconButton(onPressed: (){Scaffold.of(context).openDrawer();}, icon: Icon(Icons.menu))
+                              ? IconButton(
+                                  onPressed: () {
+                                    Scaffold.of(context).openDrawer();
+                                  },
+                                  icon: Icon(Icons.menu),
+                                )
                               : RowSelectionPage(
                                   isTablet: isTablet,
                                   isMobile: isMobile,
