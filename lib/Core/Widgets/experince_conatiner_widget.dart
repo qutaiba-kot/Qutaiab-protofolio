@@ -4,24 +4,30 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:protofolio/Core/Widgets/experince_widget.dart';
 
 class ExperinceConatinerWidget extends StatelessWidget {
-  const ExperinceConatinerWidget({super.key});
+  final bool isMobile;
+  final bool isTablet;
+  const ExperinceConatinerWidget({
+    super.key,
+    required this.isMobile,
+    required this.isTablet,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 400.h,
-      width: 700.w,
+      height: isMobile ? 300.h : isTablet? 300.h: 600.h,
+      width: isMobile ? 1400.w : isTablet? 1400.w: 700.w,
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(color: Colors.black, width: 1.w),
-        borderRadius: BorderRadius.all(Radius.circular(40.r)),
+        borderRadius: BorderRadius.all(Radius.circular(isMobile ? 150.r :isTablet? 90.r:40.r)),
       ),
       child: Column(
         children: [
           SizedBox(height: 25.h),
           Text(
             "FrontEnd Development",
-            style: TextStyle(fontSize: 20.sp, color: Colors.grey),
+            style: TextStyle(fontSize: isMobile ? 90.sp  : isTablet? 50.sp:20.sp, color: Colors.grey),
           ),
           Expanded(
             child: Row(
@@ -29,6 +35,8 @@ class ExperinceConatinerWidget extends StatelessWidget {
                 Expanded(
                   child: Center(
                     child: ExperinceWidget(
+                      isMobile: isMobile,
+                      isTablet: isTablet,
                       skill: "Flutter",
                       level: "Perfect",
                       icon: FontAwesomeIcons.flutter,
@@ -38,6 +46,8 @@ class ExperinceConatinerWidget extends StatelessWidget {
                 Expanded(
                   child: Center(
                     child: ExperinceWidget(
+                      isMobile: isMobile,
+                      isTablet: isTablet,
                       skill: "Figma",
                       level: "Mid",
                       icon: FontAwesomeIcons.figma,
@@ -53,6 +63,8 @@ class ExperinceConatinerWidget extends StatelessWidget {
                 Expanded(
                   child: Center(
                     child: ExperinceWidget(
+                      isMobile: isMobile,
+                      isTablet: isTablet,
                       skill: "Java",
                       level: "Perfect",
                       icon: FontAwesomeIcons.java,
@@ -62,6 +74,8 @@ class ExperinceConatinerWidget extends StatelessWidget {
                 Expanded(
                   child: Center(
                     child: ExperinceWidget(
+                      isMobile: isMobile,
+                      isTablet: isTablet,
                       skill: "C++",
                       level: "Perfect",
                       icon: FontAwesomeIcons.c,
@@ -77,7 +91,9 @@ class ExperinceConatinerWidget extends StatelessWidget {
                 Expanded(
                   child: Center(
                     child: ExperinceWidget(
-                      skill: "Visual Basic",
+                      isMobile: isMobile,
+                      isTablet: isTablet,
+                      skill: "VB",
                       level: "Perfect",
                       icon: FontAwesomeIcons.certificate,
                     ),
@@ -86,6 +102,8 @@ class ExperinceConatinerWidget extends StatelessWidget {
                 Expanded(
                   child: Center(
                     child: ExperinceWidget(
+                      isMobile: isMobile,
+                      isTablet: isTablet,
                       skill: "UI/UX",
                       level: "Perfect",
                       icon: FontAwesomeIcons.uikit,
