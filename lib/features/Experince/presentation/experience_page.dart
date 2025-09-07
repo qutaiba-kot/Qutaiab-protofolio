@@ -46,8 +46,8 @@ class ExperiencePage extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 ExperinceConatinerWidget(
-                                  isMobile: true,
-                                  isTablet: false,
+                                  isMobile: isMobile,
+                                  isTablet: isTablet,
                                 ),
                                 SizedBox(
                                   width: isMobile
@@ -58,8 +58,8 @@ class ExperiencePage extends StatelessWidget {
                                   height: isMobile ? 50.h : 0,
                                 ),
                                 ExperinceConatinerWidget(
-                                  isMobile: true,
-                                  isTablet: false,
+                                  isMobile: isMobile,
+                                  isTablet: isTablet,
                                 ),
                               ],
                             )
@@ -67,8 +67,8 @@ class ExperiencePage extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 ExperinceConatinerWidget(
-                                  isMobile: false,
-                                  isTablet: true,
+                                  isMobile: isMobile,
+                                  isTablet: isTablet,
                                 ),
                                 SizedBox(
                                   width: isMobile
@@ -79,21 +79,21 @@ class ExperiencePage extends StatelessWidget {
                                   height: isMobile ? 50.h : isTablet? 50.h : 0,
                                 ),
                                 ExperinceConatinerWidget(
-                                  isMobile: false,
-                                  isTablet: true,
+                                  isMobile: isMobile,
+                                  isTablet: isTablet,
                                 ),
                               ],
                             ): Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 ExperinceConatinerWidget(
-                                  isMobile: false,
-                                  isTablet: false,
+                                  isMobile: isMobile,
+                                  isTablet: isTablet,
                                 ),
                                 SizedBox(width: 20.w),
                                 ExperinceConatinerWidget(
-                                  isMobile: false,
-                                  isTablet: false,
+                                  isMobile: isMobile,
+                                  isTablet: isTablet,
                                 ),
                               ],
                             ),

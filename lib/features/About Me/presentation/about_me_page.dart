@@ -70,8 +70,8 @@ class AboutMePage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               AboutMePicConatinerWidget(
-                                isMobile: true,
-                                isTablet: false,
+                                isMobile: isMobile,
+                                isTablet: isTablet,
                               ),
                               SizedBox(
                                 width: 60.w,
@@ -85,8 +85,8 @@ class AboutMePage extends StatelessWidget {
                                     title: "Experince",
                                     subTitle: "1+ Year",
                                     body: "Flutter Developer",
-                                    isMobile: true,
-                                    isTablet: false,
+                                    isMobile: isMobile,
+                                    isTablet: isTablet,
                                   ),
                                   SizedBox(width: 20.w),
                                   AboutMeContainerWidget(
@@ -94,14 +94,14 @@ class AboutMePage extends StatelessWidget {
                                     title: "Education",
                                     subTitle: "The Hashemite University",
                                     body: "Copmuter Science",
-                                    isMobile: true,
-                                    isTablet: false,
+                                    isMobile: isMobile,
+                                    isTablet: isTablet,
                                   ),
                                 ],
                               ),
                               AboutMeParagraphContainerWidget(
-                                isMobile: true,
-                                isTablet: false,
+                                isMobile: isMobile,
+                                isTablet: isTablet,
                               ),
                             ],
                           )
@@ -110,8 +110,8 @@ class AboutMePage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               AboutMePicConatinerWidget(
-                                isMobile: false,
-                                isTablet: true,
+                                isMobile: isMobile,
+                                isTablet: isTablet,
                               ),
                               SizedBox(
                                 width: 60.w,
@@ -129,8 +129,8 @@ class AboutMePage extends StatelessWidget {
                                     title: "Experince",
                                     subTitle: "1+ Year",
                                     body: "Flutter Developer",
-                                    isMobile: false,
-                                    isTablet: true,
+                                    isMobile: isMobile,
+                                    isTablet: isMobile,
                                   ),
                                   SizedBox(width: 20.w),
                                   AboutMeContainerWidget(
@@ -138,8 +138,8 @@ class AboutMePage extends StatelessWidget {
                                     title: "Education",
                                     subTitle: "The Hashemite University",
                                     body: "Copmuter Science",
-                                    isMobile: false,
-                                    isTablet: true,
+                                    isMobile: isMobile,
+                                    isTablet: isTablet,
                                   ),
                                 ],
                               ),
@@ -151,8 +151,8 @@ class AboutMePage extends StatelessWidget {
                                     : 30.h,
                               ),
                               AboutMeParagraphContainerWidget(
-                                isMobile: false,
-                                isTablet: true,
+                                isMobile: isMobile,
+                                isTablet: isTablet,
                               ),
                             ],
                           )
@@ -160,8 +160,8 @@ class AboutMePage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               AboutMePicConatinerWidget(
-                                isMobile: false,
-                                isTablet: false,
+                                isMobile: isMobile,
+                                isTablet: isTablet,
                               ),
                               SizedBox(
                                 width: 60.w,
@@ -181,8 +181,8 @@ class AboutMePage extends StatelessWidget {
                                         title: "Experince",
                                         subTitle: "1+ Year",
                                         body: "Flutter Developer",
-                                        isMobile: false,
-                                        isTablet: false,
+                                        isMobile: isMobile,
+                                        isTablet: isTablet,
                                       ),
                                       SizedBox(width: 20.w),
                                       AboutMeContainerWidget(
@@ -190,14 +190,14 @@ class AboutMePage extends StatelessWidget {
                                         title: "Education",
                                         subTitle: "The Hashemite University",
                                         body: "Copmuter Science",
-                                        isMobile: false,
-                                        isTablet: false,
+                                        isMobile: isMobile,
+                                        isTablet: isTablet,
                                       ),
                                     ],
                                   ),
                                   AboutMeParagraphContainerWidget(
-                                    isMobile: false,
-                                    isTablet: false,
+                                    isMobile: isMobile,
+                                    isTablet: isTablet,
                                   ),
                                 ],
                               ),
@@ -206,7 +206,15 @@ class AboutMePage extends StatelessWidget {
                   ],
                 ),
               ),
-              Positioned(child: NextPageButton(), bottom:isMobile ? 30.h : isTablet ? 0.h : 0.h, right: 100.w),
+              Positioned(
+                child: NextPageButton(),
+                bottom: isMobile
+                    ? 30.h
+                    : isTablet
+                    ? 0.h
+                    : 0.h,
+                right: 100.w,
+              ),
             ],
           );
         },

@@ -54,7 +54,8 @@ class HomePage extends StatelessWidget {
                                   },
                                   icon: Icon(Icons.menu),
                                 )
-                              : isTablet ? IconButton(
+                              : isTablet
+                              ? IconButton(
                                   onPressed: () {
                                     Scaffold.of(context).openDrawer();
                                   },
@@ -89,8 +90,8 @@ class HomePage extends StatelessWidget {
                                   height: isMobile ? 60.h : 0.h,
                                 ),
                                 IntroPersonaInfoWidget(
-                                  isMobile: true,
-                                  isTablet: false,
+                                  isMobile: isMobile,
+                                  isTablet: isTablet,
                                 ),
                               ],
                             )
@@ -107,8 +108,8 @@ class HomePage extends StatelessWidget {
                                 ),
                                 SizedBox(height: 20.h),
                                 IntroPersonaInfoWidget(
-                                  isTablet: true,
-                                  isMobile: false,
+                                  isMobile: isMobile,
+                                  isTablet: isTablet,
                                 ),
                               ],
                             )
@@ -124,8 +125,8 @@ class HomePage extends StatelessWidget {
                                 ),
                                 SizedBox(width: 100.w),
                                 IntroPersonaInfoWidget(
-                                  isMobile: false,
-                                  isTablet: false,
+                                  isMobile: isMobile,
+                                  isTablet: isTablet,
                                 ),
                               ],
                             ),

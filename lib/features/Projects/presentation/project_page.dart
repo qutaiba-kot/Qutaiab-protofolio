@@ -56,20 +56,20 @@ class ProjectPage extends StatelessWidget {
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
                                       ProjectConatinerWidjets(
-                                        isMobile: true,
-                                        isTablet: false,
+                                        isMobile: isMobile,
+                                        isTablet: isTablet,
                                       ),
                                       SizedBox(width: 10.w),
                                       ProjectConatinerWidjets(
-                                        isMobile: true,
-                                        isTablet: false,
+                                        isMobile: isMobile,
+                                        isTablet: isTablet,
                                       ),
                                     ],
                                   ),
                                   SizedBox(height: 20.h),
                                   ProjectConatinerWidjets(
-                                    isMobile: true,
-                                    isTablet: false,
+                                    isMobile: isMobile,
+                                    isTablet: isTablet,
                                   ),
                                 ],
                               )
@@ -81,20 +81,20 @@ class ProjectPage extends StatelessWidget {
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
                                       ProjectConatinerWidjets(
-                                        isMobile: false,
-                                        isTablet: true,
+                                        isMobile: isMobile,
+                                        isTablet: isTablet,
                                       ),
                                       SizedBox(width: 10.w),
                                       ProjectConatinerWidjets(
-                                        isMobile: false,
-                                        isTablet: true,
+                                        isMobile: isMobile,
+                                        isTablet: isTablet,
                                       ),
                                     ],
                                   ),
                                   SizedBox(height: 20.h),
                                   ProjectConatinerWidjets(
-                                    isMobile: false,
-                                    isTablet: true,
+                                    isMobile: isMobile,
+                                    isTablet: isTablet,
                                   ),
                                 ],
                               )
@@ -103,16 +103,16 @@ class ProjectPage extends StatelessWidget {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   ProjectConatinerWidjets(
-                                    isMobile: false,
-                                    isTablet: false,
+                                    isMobile: isMobile,
+                                    isTablet: isTablet,
                                   ),
                                   ProjectConatinerWidjets(
-                                    isMobile: false,
-                                    isTablet: false,
+                                    isMobile: isMobile,
+                                    isTablet: isTablet,
                                   ),
                                   ProjectConatinerWidjets(
-                                    isMobile: false,
-                                    isTablet: false,
+                                    isMobile: isMobile,
+                                    isTablet: isTablet,
                                   ),
                                 ],
                               ),

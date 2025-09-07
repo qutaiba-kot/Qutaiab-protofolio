@@ -5,23 +5,45 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:protofolio/features/Contact%20me/logic/cubit/conatct_cubit.dart';
 
 class LinksConatinerWidget extends StatelessWidget {
-  final bool isMobile ;
-  final bool isTablet ;
-  
-  const LinksConatinerWidget({super.key, required this.isMobile, required this.isTablet});
+  final bool isMobile;
+  final bool isTablet;
+
+  const LinksConatinerWidget({
+    super.key,
+    required this.isMobile,
+    required this.isTablet,
+  });
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ConatctCubit, ConatctState>(
       builder: (context, state) {
+        final containerHeight = isMobile
+            ? 70.h
+            : isTablet
+            ? 90.h
+            : 80.h;
+
+        final containerWidth = isMobile
+            ? 1500.w
+            : isTablet
+            ? 1300.w
+            : 490.w;
+
+        final textSize = isMobile
+            ? 70.sp
+            : isTablet
+            ? 60.sp
+            : 20.sp;
+
         return Container(
           decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(color: Colors.black, width: 1),
             borderRadius: BorderRadius.all(Radius.circular(40)),
           ),
-          height: isMobile ? 70.h: isTablet ? 90.h: 80.h,
-          width: isMobile ? 1500.w:isTablet ? 1300.w:490.w,
+          height: containerHeight,
+          width: containerWidth,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -33,9 +55,9 @@ class LinksConatinerWidget extends StatelessWidget {
                 },
                 child: Row(
                   children: [
-                    Icon(FontAwesomeIcons.github),
+                    Icon(FontAwesomeIcons.github, size: textSize),
                     SizedBox(width: 10.w),
-                    Text("GitHub",style: TextStyle(fontSize: isMobile ? 60.sp : 20)),
+                    Text("GitHub", style: TextStyle(fontSize: textSize)),
                   ],
                 ),
               ),
@@ -47,15 +69,15 @@ class LinksConatinerWidget extends StatelessWidget {
                 },
                 child: Row(
                   children: [
-                    Icon(Icons.email),
+                    Icon(Icons.email, size: textSize),
                     SizedBox(width: 10.w),
-                    Text("Email",style: TextStyle(fontSize: isMobile ? 60.sp : 20)),
+                    Text("Email", style: TextStyle(fontSize: textSize)),
                   ],
                 ),
               ),
               Row(
                 children: [
-                  Icon(FontAwesomeIcons.linkedin),
+                  Icon(FontAwesomeIcons.linkedin, size: textSize),
                   SizedBox(width: 10.w),
                   InkWell(
                     onTap: () {
@@ -63,7 +85,10 @@ class LinksConatinerWidget extends StatelessWidget {
                         "https://www.linkedin.com/in/qutaiba-albarahmeh-706686263/",
                       );
                     },
-                    child: Text("Linkedin" ,style: TextStyle(fontSize: isMobile ? 60.sp : 20),),
+                    child: Text(
+                      "Linkedin",
+                      style: TextStyle(fontSize: textSize),
+                    ),
                   ),
                 ],
               ),
