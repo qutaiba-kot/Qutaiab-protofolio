@@ -2,9 +2,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'screen_state.dart'; 
 
 class ScreenCubit extends Cubit<ScreenState> {
-  ScreenCubit() : super(ScreenState(width: 0, deviceType: DeviceTypes.desktop));
+  ScreenCubit() : super(ScreenState(width: 0, deviceType: DeviceTypes.desktop, height: 0));
 
-  void updateWidth(double width) {
+  void updateWidth(double width , double height) {
     DeviceTypes type;
     if (width < 600) {
       type = DeviceTypes.mobile;
@@ -13,6 +13,6 @@ class ScreenCubit extends Cubit<ScreenState> {
     } else {
       type = DeviceTypes.desktop;
     }
-    emit(ScreenState(width: width, deviceType: type));
+    emit(ScreenState(width: width, deviceType: type , height: height));
   }
 }

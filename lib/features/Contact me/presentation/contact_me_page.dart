@@ -18,7 +18,7 @@ class ContactMePage extends StatelessWidget {
           builder: (context, state) {
             final isMobile = state.deviceType == DeviceTypes.mobile;
             final isTablet = state.deviceType == DeviceTypes.tablet;
-            final screenHeight = MediaQuery.of(context).size.height;
+            final screenHeight =state.height;
             final topSpacing = screenHeight * 0.35;
             final linksSpacing = screenHeight * (isMobile? 0.03: isTablet? 0.04 : 0.05);
             final bottomSpacing = screenHeight * (isMobile? 0.33: isTablet? 0.30 : 0.22);
