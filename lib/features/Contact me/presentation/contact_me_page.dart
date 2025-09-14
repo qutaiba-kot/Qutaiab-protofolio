@@ -18,11 +18,10 @@ class ContactMePage extends StatelessWidget {
           builder: (context, state) {
             final isMobile = state.deviceType == DeviceTypes.mobile;
             final isTablet = state.deviceType == DeviceTypes.tablet;
-            final screenHeight =state.height;
-            final topSpacing = screenHeight * 0.35;
-            final linksSpacing = screenHeight * (isMobile? 0.03: isTablet? 0.04 : 0.05);
-            final bottomSpacing = screenHeight * (isMobile? 0.33: isTablet? 0.30 : 0.22);
-            final copyrightsSpacing = screenHeight * (isMobile? 0.05: isTablet? 0.03 : 0.05);
+            final topSpacing = state.height * 0.35;
+            final linksSpacing = state.height * (isMobile? 0.03: isTablet? 0.04 : 0.05);
+            final bottomSpacing = state.height * (isMobile? 0.33: isTablet? 0.30 : 0.22);
+            final copyrightsSpacing = state.height * (isMobile? 0.05: isTablet? 0.03 : 0.05);
             return SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -60,8 +59,7 @@ class ContactMePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       RowSelectionPage(
-                        isTablet: isTablet,
-                        isMobile: isMobile,
+                       width: state.width,
                       ),
                     ],
                   ),

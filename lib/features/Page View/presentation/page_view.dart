@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:protofolio/features/About%20Me/presentation/about_me_page.dart';
+import 'package:protofolio/features/About%20Me/presentation/Screens/about_me_page.dart';
 import 'package:protofolio/features/Contact%20me/presentation/contact_me_page.dart';
 import 'package:protofolio/features/Experince/presentation/experience_page.dart';
 import 'package:protofolio/features/Page%20View/logic/cubit/page_view_navigation_state.dart';
 import 'package:protofolio/features/Page%20View/logic/cubit/page_view_navigation_cubit.dart';
 import 'package:protofolio/features/Projects/presentation/project_page.dart';
-import 'package:protofolio/features/home/presentation/home_page.dart';
+import 'package:protofolio/features/home/presentation/Screens/home_page.dart';
 
 class PageViewNavigation extends StatelessWidget {
   PageViewNavigation({super.key});

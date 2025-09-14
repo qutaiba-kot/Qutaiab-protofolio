@@ -1,20 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../Responsive Helper/about_me_responsive.dart';
 
 class AboutMeContainerWidget extends StatelessWidget {
-  final IconData icon ;
-  final String title ; 
+  final IconData icon;
+  final String title;
   final String subTitle;
   final String body;
+  final double height;
+  final double width;
   final bool isMobile;
   final bool isTablet;
-  const AboutMeContainerWidget({super.key, required this.icon, required this.title, required this.subTitle, required this.body, required this.isMobile, required this.isTablet});
+  const AboutMeContainerWidget({
+    super.key,
+    required this.icon,
+    required this.title,
+    required this.subTitle,
+    required this.body,
+    required this.height,
+    required this.width,
+    required this.isMobile,
+    required this.isTablet,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final sizes = AboutMeResponsive(isMobile: isMobile, isTablet: isTablet, height: height, width: width);
     return Container(
-      height: isMobile?  150.h :isTablet? 150.h:200.h,
-      width:  isMobile?  700.w :isTablet? 700.w:400.w,
+      height: sizes.containerHeight,
+      width: sizes.containerWidth,
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(color: Colors.black, width: 1),
@@ -24,22 +37,22 @@ class AboutMeContainerWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, size:isMobile?  90.r : isTablet? 100.r:30.r, color: Colors.black),
+          Icon(icon, size: sizes.iconSize, color: Colors.black),
           Text(
             title,
             style: TextStyle(
-              fontSize: isMobile?  60.sp :isTablet? 20.sp:20.sp,
+              fontSize: sizes.titleSize,
               color: Colors.black,
               fontWeight: FontWeight.bold,
             ),
           ),
           Text(
             subTitle,
-            style:  TextStyle( fontSize: isMobile?  50.sp :isTablet? 50.sp:20.sp, color: Colors.grey),
+            style: TextStyle(fontSize: sizes.subTitleSize, color: Colors.grey),
           ),
           Text(
             body,
-            style: TextStyle(fontSize: isMobile?  60.sp :isTablet? 50.sp:20.sp, color: Colors.grey),
+            style: TextStyle(fontSize: sizes.bodySize, color: Colors.grey),
           ),
         ],
       ),

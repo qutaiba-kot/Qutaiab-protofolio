@@ -5,6 +5,7 @@ import 'package:protofolio/Core/Screen%20Cubit/cubit/screen_cubit.dart';
 import 'package:protofolio/Core/Screen%20Cubit/cubit/screen_state.dart';
 import 'package:protofolio/Core/Widgets/experince_conatiner_widget.dart';
 import 'package:protofolio/Core/Widgets/next_page_button.dart';
+import 'package:protofolio/Core/Widgets/title_and_sub.dart';
 
 class ExperiencePage extends StatelessWidget {
   ExperiencePage({super.key});
@@ -24,22 +25,14 @@ class ExperiencePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SizedBox(height: isMobile ? 130.h :isTablet? 90.h: 80.h),
-                      Text(
-                        "Explore my",
-                        style: TextStyle(
-                          fontSize:isMobile ? 100.sp :isTablet? 25.h: 30.sp,
-                          color: Colors.grey,
-                        ),
-                      ),
-                      SizedBox(height: isTablet? 5.h: 10.h ),
-                      Text(
-                        "Experience",
-                        style: TextStyle(
-                          fontSize: isMobile ? 125.sp :isTablet? 40.h: 50.sp,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      TitleAndSub(
+                            isMobile: isMobile,
+                            isTablet: isTablet,
+                            height: state.height,
+                            width: state.width,
+                            title: "Explore My",
+                            subTitle: "Experience",
+                          ),
                       SizedBox(height: isMobile ? 80.h : isTablet? 90.h: 100.h),
                       isMobile
                           ? Column(

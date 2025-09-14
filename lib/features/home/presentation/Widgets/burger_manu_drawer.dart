@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:protofolio/features/Page%20View/logic/cubit/page_view_navigation_state.dart';
 import 'package:protofolio/features/Page%20View/logic/cubit/page_view_navigation_cubit.dart';
 
 class BurgerManuDrawer extends StatelessWidget {
-  const BurgerManuDrawer({super.key});
+  final double width;
+  const BurgerManuDrawer({super.key, required this.width});
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -33,7 +33,7 @@ class BurgerManuDrawer extends StatelessWidget {
                       child: Text(
                         title,
                         style: TextStyle(
-                          fontSize: 30.sp,
+                          fontSize: width*0.03,
                           fontWeight: isSelected
                               ? FontWeight.bold
                               : FontWeight.normal,

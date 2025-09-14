@@ -5,17 +5,12 @@ import 'package:protofolio/features/Page%20View/logic/cubit/page_view_navigation
 import 'package:protofolio/features/Page%20View/logic/cubit/page_view_navigation_cubit.dart';
 
 class RowSelectionPage extends StatelessWidget {
-  final bool isTablet;
-  final bool isMobile;
-  const RowSelectionPage({super.key , required this.isTablet, required this.isMobile});
+
+  final double width;
+  const RowSelectionPage({super.key,required this.width});
 
   @override
   Widget build(BuildContext context) {
-    double textSize = isMobile
-        ? 90.sp
-        : isTablet
-            ? 55.sp
-            : 30.sp;
     return BlocBuilder<PageViewNavigationCubit, PageViewNavigationState>(
       builder: (context, state) {
         int currentIndex = 0;
@@ -41,7 +36,7 @@ class RowSelectionPage extends StatelessWidget {
                     child: Text(
                       title,
                       style: TextStyle(
-                        fontSize: textSize,
+                        fontSize: 30.sp,
                         fontWeight: isSelected
                             ? FontWeight.bold
                             : FontWeight.normal,
@@ -62,13 +57,13 @@ class RowSelectionPage extends StatelessWidget {
         return Row(
           children: [
             navItem("About", 1),
-            SizedBox(width: 40.w),
+            SizedBox(width: width*0.03),
             navItem("Experince", 2),
-            SizedBox(width: 40.w),
+            SizedBox(width: width*0.02),
             navItem("Projects", 3),
-            SizedBox(width: 40.w),
+            SizedBox(width: width*0.03),
             navItem("Contacts", 4),
-            SizedBox(width: 40.w),
+            SizedBox(width: width*0.03),
           ],
         );
       },

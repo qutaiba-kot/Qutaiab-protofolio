@@ -8,7 +8,7 @@ class ScreenCubit extends Cubit<ScreenState> {
     DeviceTypes type;
     if (width < 600) {
       type = DeviceTypes.mobile;
-    } else if (width < 1200) {
+    } else if (width < 1200 && width >=600) {
       type = DeviceTypes.tablet;
     } else {
       type = DeviceTypes.desktop;

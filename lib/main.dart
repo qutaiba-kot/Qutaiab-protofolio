@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:protofolio/Core/Screen%20Cubit/cubit/screen_cubit.dart';
 import 'package:protofolio/features/Page%20View/logic/cubit/page_view_navigation_cubit.dart';
 import 'package:protofolio/features/Page%20View/presentation/page_view.dart';
-import 'package:protofolio/features/home/presentation/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,7 +27,7 @@ class MyApp extends StatelessWidget {
         builder: (context, child) {
           final width = MediaQuery.of(context).size.width;
           final height = MediaQuery.of(context).size.height;
-          context.read<ScreenCubit>().updateWidth(width , height);
+          context.read<ScreenCubit>().updateWidth(width, height);
           return MaterialApp(debugShowCheckedModeBanner: false, home: child);
         },
         child: PageViewNavigation(),
