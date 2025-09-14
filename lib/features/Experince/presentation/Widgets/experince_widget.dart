@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:protofolio/features/Experince/Responsive%20Helper/about_me_responsive.dart';
 
 class ExperinceWidget extends StatelessWidget {
   final IconData icon;
   final String skill;
   final String level;
   final Color iconColor;
+  final double height;
+  final double width;
   final bool isMobile;
   final bool isTablet;
 
@@ -15,24 +17,22 @@ class ExperinceWidget extends StatelessWidget {
     required this.skill,
     required this.level,
     this.iconColor = Colors.black,
-    required this.isMobile,
-    required this.isTablet,
+    required this.height,
+    required this.width, required this.isMobile, required this.isTablet,
   });
 
   @override
   Widget build(BuildContext context) {
+    final sizes = ExperienceSizes(
+      isMobile: isMobile,
+      height: height,
+      width: width,
+    );
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Icon(
-          icon,
-          size: isMobile
-              ? 100.r
-              : isTablet
-              ? 60.r
-              : 40.r,
-          color: iconColor,
-        ),
+        Icon(icon, size: sizes.iconSize, color: iconColor),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,22 +41,12 @@ class ExperinceWidget extends StatelessWidget {
               skill,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: isMobile
-                    ? 50.sp
-                    : isTablet
-                    ? 40.sp
-                    : 20.sp,
+                fontSize: sizes.title,
               ),
             ),
             Text(
               level,
-              style: TextStyle(
-                fontSize: isMobile
-                    ? 40.sp
-                    : isTablet
-                    ? 30.sp
-                    : 16.sp,
-              ),
+              style: TextStyle(fontSize: sizes.subTitle),
             ),
           ],
         ),
