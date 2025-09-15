@@ -10,9 +10,9 @@ class ConatctCubit extends Cubit<ConatctState> {
     final Uri url = Uri.parse("$urlLink");
     if (!await launchUrl(
       url,
-      webOnlyWindowName: '_blank', // يفتح بتبويبة جديدة
+      webOnlyWindowName: '_blank',
     )) {
-      throw Exception('لم يتم فتح الرابط $url');
+      throw Exception('Errror while lunching $url');
     }
   }
 }

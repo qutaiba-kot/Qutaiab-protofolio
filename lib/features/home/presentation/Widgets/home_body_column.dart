@@ -17,6 +17,7 @@ class HomeBodyColumn extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        SizedBox(height: height*0.15,),
         HomePic(radius: radius),
         IntroPersonaInfoWidget(
           containerWidth: containerWidth,

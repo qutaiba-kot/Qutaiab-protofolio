@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'screen_state.dart'; 
 
-class ScreenCubit extends Cubit<ScreenState> {
+ class ScreenCubit extends Cubit<ScreenState> {
   ScreenCubit() : super(ScreenState(width: 0, deviceType: DeviceTypes.desktop, height: 0));
 
   void updateWidth(double width , double height) {
