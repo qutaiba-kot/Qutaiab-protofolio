@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:protofolio/Core/Responsive%20helper/responsive_helper.dart';
 import 'package:protofolio/features/Page%20View/logic/cubit/page_view_navigation_state.dart';
 import 'package:protofolio/features/Page%20View/logic/cubit/page_view_navigation_cubit.dart';
 
 class RowSelectionPage extends StatelessWidget {
-
   final double width;
-  const RowSelectionPage({super.key,required this.width});
+  final double height;
+  final bool isMobile ;
+ final bool isTablet ;
+  const RowSelectionPage({super.key, required this.width, required this.height, required this.isMobile, required this.isTablet});
 
   @override
   Widget build(BuildContext context) {
+    final sizes = RowSelectionPageResponsive(width: width , height: height , isMobile: isMobile , isTablet: isTablet);
     return BlocBuilder<PageViewNavigationCubit, PageViewNavigationState>(
       builder: (context, state) {
         int currentIndex = 0;
@@ -36,7 +39,7 @@ class RowSelectionPage extends StatelessWidget {
                     child: Text(
                       title,
                       style: TextStyle(
-                        fontSize: 30.sp,
+                        fontSize: sizes.fontSize,
                         fontWeight: isSelected
                             ? FontWeight.bold
                             : FontWeight.normal,
@@ -54,16 +57,17 @@ class RowSelectionPage extends StatelessWidget {
             ),
           );
         }
+
         return Row(
           children: [
             navItem("About", 1),
-            SizedBox(width: width*0.03),
+            SizedBox(width: width * 0.03),
             navItem("Experince", 2),
-            SizedBox(width: width*0.02),
+            SizedBox(width: width * 0.02),
             navItem("Projects", 3),
-            SizedBox(width: width*0.03),
+            SizedBox(width: width * 0.03),
             navItem("Contacts", 4),
-            SizedBox(width: width*0.03),
+            SizedBox(width: width * 0.03),
           ],
         );
       },

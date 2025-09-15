@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:protofolio/Core/Widgets/row_selection_page.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
+  final bool isMobile ;
+ final bool isTablet ;
   final double width;
-  const HomeAppBar({super.key, required this.width});
+  final double height;
+  const HomeAppBar({super.key, required this.width, required this.height, required this.isMobile, required this.isTablet});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             icon: const Icon(Icons.menu),
           )
         else
-          RowSelectionPage(width: width),
+          RowSelectionPage(width: width , height: height,isMobile: isMobile , isTablet: isTablet),
       ],
     );
   }

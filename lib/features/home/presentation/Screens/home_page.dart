@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
           return SizedBox(
             height: state.height,
             child: Scaffold(
-              appBar: HomeAppBar(width: state.width),
+              appBar: HomeAppBar(width: state.width , height: state.height, isMobile: isMobile , isTablet: isTablet),
               endDrawer: BurgerManuDrawer(width: state.width),
               body: Stack(
                 children: [

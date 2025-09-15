@@ -1,40 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:protofolio/features/Contact%20me/Responsive%20Helper/contact_me_responsive.dart';
 import 'package:protofolio/features/Contact%20me/logic/cubit/conatct_cubit.dart';
 
 class LinksConatinerWidget extends StatelessWidget {
   final bool isMobile;
   final bool isTablet;
+  final double height;
+  final double width;
 
   const LinksConatinerWidget({
     super.key,
     required this.isMobile,
     required this.isTablet,
+    required this.height,
+    required this.width,
   });
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ConatctCubit, ConatctState>(
       builder: (context, state) {
-        final containerHeight = isMobile
-            ? 70.h
-            : isTablet
-            ? 90.h
-            : 80.h;
-
-        final containerWidth = isMobile
-            ? 1500.w
-            : isTablet
-            ? 1300.w
-            : 490.w;
-
-        final textSize = isMobile
-            ? 70.sp
-            : isTablet
-            ? 60.sp
-            : 20.sp;
+        final sizes = ContactMeResponsive(
+          isMobile: isMobile,
+          isTablet: isTablet,
+          height: height,
+          width: width,
+        );
 
         return Container(
           decoration: BoxDecoration(
@@ -42,8 +35,8 @@ class LinksConatinerWidget extends StatelessWidget {
             border: Border.all(color: Colors.black, width: 1),
             borderRadius: BorderRadius.all(Radius.circular(40)),
           ),
-          height: containerHeight,
-          width: containerWidth,
+          height: sizes.containerHeight,
+          width: sizes.containerWidth,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -55,9 +48,12 @@ class LinksConatinerWidget extends StatelessWidget {
                 },
                 child: Row(
                   children: [
-                    Icon(FontAwesomeIcons.github, size: textSize),
-                    SizedBox(width: 10.w),
-                    Text("GitHub", style: TextStyle(fontSize: textSize)),
+                    Icon(FontAwesomeIcons.github, size: sizes.linksTextSize),
+                    SizedBox(width: width * 0.005),
+                    Text(
+                      "GitHub",
+                      style: TextStyle(fontSize: sizes.linksTextSize),
+                    ),
                   ],
                 ),
               ),
@@ -69,16 +65,19 @@ class LinksConatinerWidget extends StatelessWidget {
                 },
                 child: Row(
                   children: [
-                    Icon(Icons.email, size: textSize),
-                    SizedBox(width: 10.w),
-                    Text("Email", style: TextStyle(fontSize: textSize)),
+                    Icon(Icons.email, size: sizes.linksTextSize),
+                    SizedBox(width: width * 0.01),
+                    Text(
+                      "Email",
+                      style: TextStyle(fontSize: sizes.linksTextSize),
+                    ),
                   ],
                 ),
               ),
               Row(
                 children: [
-                  Icon(FontAwesomeIcons.linkedin, size: textSize),
-                  SizedBox(width: 10.w),
+                  Icon(FontAwesomeIcons.linkedin, size: sizes.linksTextSize),
+                  SizedBox(width: width * 0.01),
                   InkWell(
                     onTap: () {
                       context.read<ConatctCubit>().launchURL(
@@ -87,7 +86,7 @@ class LinksConatinerWidget extends StatelessWidget {
                     },
                     child: Text(
                       "Linkedin",
-                      style: TextStyle(fontSize: textSize),
+                      style: TextStyle(fontSize: sizes.linksTextSize),
                     ),
                   ),
                 ],
