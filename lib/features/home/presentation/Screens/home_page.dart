@@ -21,14 +21,14 @@ class HomePage extends StatelessWidget {
         builder: (context, state) {
           final isTablet = state.deviceType == DeviceTypes.tablet;
           final isMobile = state.deviceType == DeviceTypes.mobile;
-          return Scaffold(
-            appBar: HomeAppBar(width: state.width),
-            endDrawer: BurgerManuDrawer(width: state.width),
-            body: Stack(
-              children: [
-                SingleChildScrollView(
-                  child: SizedBox(
-                    height: state.height,
+          return SizedBox(
+            height: state.height,
+            child: Scaffold(
+              appBar: HomeAppBar(width: state.width),
+              endDrawer: BurgerManuDrawer(width: state.width),
+              body: Stack(
+                children: [
+                  SingleChildScrollView(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -52,17 +52,17 @@ class HomePage extends StatelessWidget {
                       ],
                     ),
                   ),
-                ),
-                Positioned(
-                  bottom: state.height * 0.1,
-                  right: positionedWidth(
-                    width: state.width,
-                    isTablet: isTablet,
-                    isMobile: isMobile,
+                  Positioned(
+                    bottom: state.height * 0.1,
+                    right: positionedWidth(
+                      width: state.width,
+                      isTablet: isTablet,
+                      isMobile: isMobile,
+                    ),
+                    child: const NextPageButton(),
                   ),
-                  child: const NextPageButton(),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         },
