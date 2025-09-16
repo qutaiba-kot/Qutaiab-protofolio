@@ -71,6 +71,7 @@ flutter:
    - assets/files/My_CV.pdf
    - assets/files/2nedPic.jpg
    - assets/files/1nedPic.jpg
+   - assets/files/flutter_pic.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

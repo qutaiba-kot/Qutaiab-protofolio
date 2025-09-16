@@ -2,17 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:protofolio/Core/Widgets/row_selection_page.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final bool isMobile ;
- final bool isTablet ;
+  final bool isMobile;
+  final bool isTablet;
   final double width;
   final double height;
-  const HomeAppBar({super.key, required this.width, required this.height, required this.isMobile, required this.isTablet});
+  const HomeAppBar({
+    super.key,
+    required this.width,
+    required this.height,
+    required this.isMobile,
+    required this.isTablet,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final double fontSize = width < 600 ? 25 :width < 1200 ? 40 : 50; 
+    final double fontSize = width < 600
+        ? 25
+        : width < 1200
+        ? 40
+        : 50;
     return AppBar(
-      title:  Text("Qutaiba Hassan", style: TextStyle(fontSize:fontSize)),
+      backgroundColor: Colors.transparent, 
+      elevation: 0,
+      title: Text("", style: TextStyle(fontSize: fontSize , color: Colors.white)),
       leading: Text(""),
       actions: [
         if (width < 1200)
@@ -20,10 +32,15 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             onPressed: () {
               Scaffold.of(context).openEndDrawer();
             },
-            icon: const Icon(Icons.menu),
+            icon: const Icon(Icons.menu , color: Colors.white,),
           )
         else
-          RowSelectionPage(width: width , height: height,isMobile: isMobile , isTablet: isTablet),
+          RowSelectionPage(
+            width: width,
+            height: height,
+            isMobile: isMobile,
+            isTablet: isTablet,
+          ),
       ],
     );
   }

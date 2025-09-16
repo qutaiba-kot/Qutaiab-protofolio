@@ -27,12 +27,12 @@ class IntroPersonaInfoWidget extends StatelessWidget {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Hello, I'm", style: TextStyle(fontSize: helloFontSize)),
+              Text("Hello, I'm", style: TextStyle(fontSize: helloFontSize, color: Colors.white)),
               Text(
                 "Qutaiba Hassan",
                 style: TextStyle(
                   fontSize: nameFontSize,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.bold, color: Colors.white
                 ),
               ),
               Text(

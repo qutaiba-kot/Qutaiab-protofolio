@@ -14,7 +14,6 @@ class NextPageButton extends StatelessWidget {
         if (state is PageViewNavigationChanged) {
           currentIndex = state.pageIndex;
         }
-
         return IconButton(
           onPressed: () {
             int nextIndex = currentIndex + 1;
@@ -22,7 +21,7 @@ class NextPageButton extends StatelessWidget {
               context.read<PageViewNavigationCubit>().changePage(nextIndex);
             }
           },
-          icon: Icon(Icons.arrow_downward),
+          icon: Icon(Icons.arrow_downward_rounded, color: Colors.white),
         );
       },
     );

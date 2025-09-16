@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:protofolio/Core/Animations/home_animation.dart';
 import 'package:protofolio/features/home/presentation/Widgets/intro_persona_info_widget.dart';
-import 'package:protofolio/features/home/presentation/Widgets/home_pic.dart';
 
 class HomeBodyColumn extends StatelessWidget {
   final double height;
@@ -10,20 +10,23 @@ class HomeBodyColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double radius = isMobile ? (width)*0.3 : (width)*0.15;
     final double containerHeight = height * 0.40;
     final double containerWidth = isMobile ?width * 0.80 : width * 0.60;
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        SizedBox(height: height*0.15,),
-        HomePic(radius: radius),
-        IntroPersonaInfoWidget(
-          containerWidth: containerWidth,
-          containerHeight: containerHeight,
-        ),
-      ],
+    return HomeAnimation(
+      child: Row(
+        children: [
+          SizedBox(width: isMobile ?width*0.1 : width*0.2,),
+          Column(
+            children: [
+              SizedBox(height: height*0.3,),
+              IntroPersonaInfoWidget(
+                containerWidth: containerWidth,
+                containerHeight: containerHeight,
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

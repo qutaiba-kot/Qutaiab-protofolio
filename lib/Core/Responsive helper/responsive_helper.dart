@@ -23,5 +23,5 @@ class RowSelectionPageResponsive {
         ? (height * width) / 2 * 0.00009
         : isTablet
         ? (height * width) / 2 * 0.00005
-        : (height * width) / 2 * 0.00003;
+        : (height * width) / 2 * 0.00004;
 }

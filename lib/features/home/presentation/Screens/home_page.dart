@@ -22,24 +22,28 @@ class HomePage extends StatelessWidget {
           final isTablet = state.deviceType == DeviceTypes.tablet;
           final isMobile = state.deviceType == DeviceTypes.mobile;
           return Scaffold(
-            appBar: HomeAppBar(width: state.width , height: state.height, isMobile: isMobile , isTablet: isTablet),
+            extendBodyBehindAppBar: true,
+            appBar: HomeAppBar(
+              width: state.width,
+              height: state.height,
+              isMobile: isMobile,
+              isTablet: isTablet,
+            ),
             endDrawer: BurgerManuDrawer(width: state.width),
             body: Stack(
               children: [
+                Positioned.fill(
+                  child: Image.asset(
+                    "assets/files/flutter_pic.png",
+                    fit: BoxFit.fill,
+                  ),
+                ),
                 SizedBox(
                   height: state.height,
                   child: SingleChildScrollView(
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        isMobile
-                            ? HomeBodyColumn(
-                                isMobile: isMobile,
-                                height: state.height,
-                                width: state.width,
-                              )
-                            : isTablet
+                        isMobile || isTablet
                             ? HomeBodyColumn(
                                 isMobile: isMobile,
                                 height: state.height,
