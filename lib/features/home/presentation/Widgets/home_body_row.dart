@@ -10,7 +10,7 @@ class HomeBodyRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double containerHeight = height * 0.5;
-    final double containerWidth = width * 0.35;
+    final double containerWidth = width * 0.30;
     return HomeAnimation(
       child: Column(
         children: [

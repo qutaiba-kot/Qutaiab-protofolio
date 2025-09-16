@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:protofolio/Core/Widgets/title_and_sub.dart';
 import 'package:protofolio/features/Projects/presentation/Widgets/project_conatiner_widjets.dart';
@@ -17,44 +18,48 @@ class ProjectColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Center(
-        child: SizedBox(
-          child: Column(
-            children: [
-              TitleAndSub(
-                isMobile: isMobile,
-                isTablet: isTablet,
-                height: height,
-                width: width,
-                title: "Brows My recent",
-                subTitle: "Projects",
-              ),
-              SizedBox(height: height * 0.07),
-              ProjectConatinerWidjets(
-                isMobile: isMobile,
-                isTablet: isTablet,
-                height: height,
-                width: width,
-              ),
-              SizedBox(height: height * 0.04),
-              ProjectConatinerWidjets(
-                isMobile: isMobile,
-                isTablet: isTablet,
-                height: height,
-                width: width,
-              ),
-              SizedBox(height: height * 0.04),
-              ProjectConatinerWidjets(
-                isMobile: isMobile,
-                isTablet: isTablet,
-                height: height,
-                width: width,
-              ),
-              SizedBox(height: height*0.1,)
-            ],
+    final projects = List.generate(
+      3,
+      (index) => ProjectConatinerWidjets(
+        isMobile: isMobile,
+        isTablet: isTablet,
+        height: height,
+        width: width,
+      ),
+    );
+
+    return Center(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          TitleAndSub(
+            isMobile: isMobile,
+            isTablet: isTablet,
+            height: height,
+            width: width,
+            title: "Browse My recent",
+            subTitle: "Projects",
           ),
-        ),
+          SizedBox(height: height * 0.03),
+          CarouselSlider(
+            items: projects,
+            options: CarouselOptions(
+              height: height * 0.6,
+              viewportFraction: 0.8,
+              initialPage: 0,
+              enableInfiniteScroll: true,
+              reverse: false,
+              autoPlay: true,
+              autoPlayInterval: Duration(seconds: 3),
+              autoPlayAnimationDuration: Duration(milliseconds: 800),
+              autoPlayCurve: Curves.fastOutSlowIn,
+              enlargeCenterPage: true,
+              enlargeFactor: 0.3,
+              scrollDirection: Axis.horizontal,
+              disableCenter: true,             
+            ),
+          ),
+        ],
       ),
     );
   }

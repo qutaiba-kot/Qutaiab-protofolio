@@ -29,7 +29,7 @@ class ProjectsSizes {
         ? (height * width) / 2 * 0.003
         : isTablet
         ? (height * width) / 2 * 0.0015
-        : (height * width) / 2 * 0.00075;
+        : (height * width) / 2 * 0.0006;
 
     final outerWidth = isMobile
         ? (height * width) / 2 * 0.0015
@@ -49,8 +49,8 @@ class ProjectsSizes {
         ? (height * width) / 2 * 0.00004
         : (height * width) / 2 * 0.00002;
 
-    final innerHeight = outerHeight * 0.65;
-    final innerWidth = outerWidth * 0.7;
+    final innerHeight = isTablet ? outerHeight * 0.5:  outerHeight * 0.65;
+    final innerWidth = isTablet ? outerWidth * 0.5: outerWidth * 0.7;
 
     final buttonHeight = innerHeight * 0.1;
     final buttonWidth = innerWidth * 0.5;

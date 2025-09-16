@@ -16,17 +16,16 @@ class ProjectPage extends StatelessWidget {
         builder: (context, state) {
           var isMobile = state.deviceType == DeviceTypes.mobile;
           var isTablet = state.deviceType == DeviceTypes.tablet;
-          return isMobile || isTablet
-              ? ProjectColumn(
-                  isMobile: isMobile,
-                  isTablet: isTablet,
-                  height: state.height,
-                  width: state.width,
-                )
-              : ProjectRow(
-                  height: state.height,
-                  width: state.width,
-                );
+          return SingleChildScrollView(
+            child: isMobile || isTablet
+                ? ProjectColumn(
+                    isMobile: isMobile,
+                    isTablet: isTablet,
+                    height: state.height,
+                    width: state.width,
+                  )
+                : ProjectRow(height: state.height, width: state.width),
+          );
         },
       ),
     );
