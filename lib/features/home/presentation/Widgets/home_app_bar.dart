@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:protofolio/Core/Animations/home_animation.dart';
 import 'package:protofolio/Core/Widgets/row_selection_page.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -21,27 +22,30 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         : width < 1200
         ? 40
         : 50;
-    return AppBar(
-      backgroundColor: Colors.transparent, 
-      elevation: 0,
-      title: Text("", style: TextStyle(fontSize: fontSize , color: Colors.white)),
-      leading: Text(""),
-      actions: [
-        if (width < 1200)
-          IconButton(
-            onPressed: () {
-              Scaffold.of(context).openEndDrawer();
-            },
-            icon: const Icon(Icons.menu , color: Colors.white,),
-          )
-        else
-          RowSelectionPage(
-            width: width,
-            height: height,
-            isMobile: isMobile,
-            isTablet: isTablet,
-          ),
-      ],
+    return HomeAnimation(
+      beginOffset: Offset(1, 0),
+      child: AppBar(
+        backgroundColor: Colors.transparent, 
+        elevation: 0,
+        title: Text("", style: TextStyle(fontSize: fontSize , color: Colors.white)),
+        leading: Text(""),
+        actions: [
+          if (width < 1200)
+            IconButton(
+              onPressed: () {
+                Scaffold.of(context).openEndDrawer();
+              },
+              icon: const Icon(Icons.menu , color: Colors.white,),
+            )
+          else
+            RowSelectionPage(
+              width: width,
+              height: height,
+              isMobile: isMobile,
+              isTablet: isTablet,
+            ),
+        ],
+      ),
     );
   }
 

@@ -18,8 +18,8 @@ class ProjectConatinerWidjets extends StatelessWidget {
     final sizes = ProjectsSizes(isMobile: isMobile, isTablet: isTablet, height: height, width: width);
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color: Colors.black, width: 1),
+        color: Colors.white.withOpacity(0),
+        border: Border.all(color: Colors.white, width: 1),
         borderRadius: BorderRadius.all(Radius.circular(40)),
       ),
       height: sizes.outerContainerHeight,
@@ -38,7 +38,7 @@ class ProjectConatinerWidjets extends StatelessWidget {
           ),
           Text(
             "Project Name",
-            style: TextStyle(fontSize: sizes.projectName),
+            style: TextStyle(fontSize: sizes.projectName , color: Colors.white),
           ),  
           ProjectGitHubLinkButton(isMobile: isMobile, isTablet: isTablet, height: height, width: width)        
         ],

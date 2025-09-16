@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:protofolio/Core/Animations/home_animation.dart';
 import 'package:protofolio/features/Experince/presentation/Widgets/experince_conatiner_widget.dart';
 
 class ExperinceRow extends StatelessWidget {
@@ -11,10 +12,25 @@ class ExperinceRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        ExperinceConatinerWidget(isMobile: false , isTablet: false , height:  height , width:  width),
+        HomeAnimation(
+            beginOffset: Offset(-1, 0),
+            child: ExperinceConatinerWidget(
+              isMobile: false,
+              isTablet: false,
+              height: height,
+              width: width,
+            ),
+          ),
         SizedBox(width: width * 0.020),
-        ExperinceConatinerWidget(isMobile: false , isTablet: false , height:  height , width:  width),
-      ],
+HomeAnimation(
+            beginOffset: Offset(1, 0),
+            child: ExperinceConatinerWidget(
+              isMobile: false,
+              isTablet: false,
+              height: height,
+              width: width,
+            ),
+          ),      ],
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:protofolio/Core/Animations/home_animation.dart';
 
 class TitleAndSub extends StatelessWidget {
  final bool isMobile ;
@@ -21,23 +22,27 @@ class TitleAndSub extends StatelessWidget {
               : isTablet
               ? (width*height) * 0.00004
               : (width*height) * 0.000019;
-    return Container(
-      child: Column(
-        children: [
-          SizedBox(height: height * 0.07),
-          Text(
-            title,
-            style: TextStyle(color: Colors.grey, fontSize: titleFontSize),
-          ),
-          SizedBox(height: height * 0.01),
-          Text(
-            subTitle,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: subTitleFontSize,
+    return HomeAnimation(
+      beginOffset: Offset(0, -1),
+      child: Container(
+        child: Column(
+          children: [
+            SizedBox(height: height * 0.07),
+            Text(
+              title,
+              style: TextStyle(color: Colors.grey, fontSize: titleFontSize),
             ),
-          ),
-        ],
+            SizedBox(height: height * 0.01),
+            Text(
+              subTitle,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: subTitleFontSize,
+                color: Colors.white
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

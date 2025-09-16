@@ -20,6 +20,12 @@ class ExperiencePage extends StatelessWidget {
           final isTablet = state.deviceType == DeviceTypes.tablet;
           return Stack(
             children: [
+               Positioned.fill(
+                  child: Image.asset(
+                    "assets/files/flutter_pic.png",
+                    fit: BoxFit.fill,
+                  ),
+                ),
               SingleChildScrollView(
                 child: SizedBox(
                   height: state.height,

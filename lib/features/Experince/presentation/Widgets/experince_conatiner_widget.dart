@@ -22,8 +22,8 @@ class ExperinceConatinerWidget extends StatelessWidget {
       height: containerHeight,
       width: containerWidth,
       decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color: Colors.black, width: 1.5),
+        color: Colors.white.withOpacity(0),
+        border: Border.all(color: Colors.white, width: 1.5),
         borderRadius: BorderRadius.all(Radius.circular(isMobile || isTablet? 90:40)),
       ),
       child: Column(

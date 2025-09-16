@@ -16,7 +16,7 @@ class ExperinceWidget extends StatelessWidget {
     required this.icon,
     required this.skill,
     required this.level,
-    this.iconColor = Colors.black,
+    this.iconColor = Colors.white,
     required this.height,
     required this.width, required this.isMobile, required this.isTablet,
   });
@@ -42,11 +42,12 @@ class ExperinceWidget extends StatelessWidget {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: sizes.title,
+                color: Colors.white
               ),
             ),
             Text(
               level,
-              style: TextStyle(fontSize: sizes.subTitle),
+              style: TextStyle(fontSize: sizes.subTitle , color: Colors.white),
             ),
           ],
         ),

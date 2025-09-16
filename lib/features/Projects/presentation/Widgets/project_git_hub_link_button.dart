@@ -26,7 +26,13 @@ class ProjectGitHubLinkButton extends StatelessWidget {
     return SizedBox(
       height: sizes.buttonHeight,
       width: sizes.buttonWidth,
-      child: ElevatedButton(onPressed: () {}, child: Text("GitHub" , style: TextStyle(fontSize: sizes.buttonText),)),
+      child: ElevatedButton(
+        onPressed: () {},
+        child: Text(
+          "GitHub",
+          style: TextStyle(fontSize: sizes.buttonText, color: Colors.black),
+        ),
+      ),
     );
   }
 }

@@ -29,20 +29,20 @@ class AboutMeContainerWidget extends StatelessWidget {
       height: sizes.containerHeight,
       width: sizes.containerWidth,
       decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color: Colors.black, width: 1),
+        color:Colors.blue.withOpacity(0.0),
+        border: Border.all(color: Colors.white, width: 1),
         borderRadius: BorderRadius.all(Radius.circular(40)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, size: sizes.iconSize, color: Colors.black),
+          Icon(icon, size: sizes.iconSize, color: Colors.white),
           Text(
             title,
             style: TextStyle(
               fontSize: sizes.titleSize,
-              color: Colors.black,
+              color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),

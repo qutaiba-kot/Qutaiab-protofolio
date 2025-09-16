@@ -19,6 +19,12 @@ class ProjectPage extends StatelessWidget {
           var isTablet = state.deviceType == DeviceTypes.tablet;
           return Stack(
             children: [
+              Positioned.fill(
+                  child: Image.asset(
+                    "assets/files/flutter_pic.png",
+                    fit: BoxFit.fill,
+                  ),
+                ),
               isMobile || isTablet
                   ? ProjectColumn(
                       isMobile: isMobile,
