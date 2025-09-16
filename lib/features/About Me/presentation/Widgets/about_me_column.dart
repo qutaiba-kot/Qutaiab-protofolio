@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:protofolio/Core/Animations/home_animation.dart';
 import 'package:protofolio/features/About%20Me/presentation/Widgets/about_me_container_widget.dart';
 import 'package:protofolio/features/About%20Me/presentation/Widgets/about_me_paragraph_container_widget.dart';
 import 'package:protofolio/features/About%20Me/presentation/Widgets/about_me_pic_conatiner_widget.dart';
@@ -32,26 +33,32 @@ class AboutMeColumn extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            AboutMeContainerWidget(
-              icon: FontAwesomeIcons.award,
-              title: "Experince",
-              subTitle: "1+ Year",
-              body: "Flutter Developer",
-              height: height,
-              width: width,
-              isMobile: isMobile,
-              isTablet: isTablet,
+            HomeAnimation(
+              beginOffset: Offset(-1, 0),
+              child: AboutMeContainerWidget(
+                icon: FontAwesomeIcons.award,
+                title: "Experince",
+                subTitle: "1+ Year",
+                body: "Flutter Developer",
+                height: height,
+                width: width,
+                isMobile: isMobile,
+                isTablet: isTablet,
+              ),
             ),
             SizedBox(width: width * 0.01),
-            AboutMeContainerWidget(
-              icon: FontAwesomeIcons.university,
-              title: "Education",
-              subTitle: "The Hashemite University",
-              body: "Copmuter Science",
-              height: height,
-              width: width,
-              isMobile: isMobile,
-              isTablet: isTablet,
+            HomeAnimation(
+              beginOffset: Offset(1, 0),
+              child: AboutMeContainerWidget(
+                icon: FontAwesomeIcons.university,
+                title: "Education",
+                subTitle: "The Hashemite University",
+                body: "Copmuter Science",
+                height: height,
+                width: width,
+                isMobile: isMobile,
+                isTablet: isTablet,
+              ),
             ),
           ],
         ),

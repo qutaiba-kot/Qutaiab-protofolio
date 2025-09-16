@@ -17,6 +17,7 @@ class ContactMePage extends StatelessWidget {
     return BlocProvider(
       create: (context) => ConatctCubit(),
       child: Scaffold(
+        backgroundColor: Colors.transparent,
         body: BlocBuilder<ScreenCubit, ScreenState>(
           builder: (context, state) {
             final isMobile = state.deviceType == DeviceTypes.mobile;
@@ -27,66 +28,56 @@ class ContactMePage extends StatelessWidget {
               height: state.height,
               width: state.width,
             );
-            return Stack(
-              children: [
-                Positioned.fill(
-                  child: Image.asset(
-                    "assets/files/flutter_pic.png",
-                    fit: BoxFit.fill,
-                  ),
-                ),
-                SingleChildScrollView(
-                  child: SizedBox(
-                    height: state.height,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        TitleAndSub(
-                          isMobile: isMobile,
-                          isTablet: isTablet,
-                          height: state.height,
-                          width: state.width,
-                          title: "Get In Touch",
-                          subTitle: "Contact Me",
-                        ),
-                        SizedBox(height: sizes.linksSpacing),
-                        LinksConatinerWidget(
-                          isMobile: isMobile,
-                          isTablet: isTablet,
-                          height: state.height,
-                          width: state.width,
-                        ),
-                        SizedBox(height: sizes.bottomSpacing),
-                        HomeAnimation(
-                          beginOffset: Offset(1, 0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              RowSelectionPage(
-                                width: state.width,
-                                height: state.height,
-                                isMobile: isMobile,
-                                isTablet: isTablet,
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: sizes.copyrightsSpacing),
-                        HomeAnimation(
-                          beginOffset: Offset(0, 1),
-                          child: Text(
-                            "Copyright 2025 Qutaiba Hassan. All Rights Reserved",
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: sizes.CopyrightTextSize,
-                            ),
-                          ),
-                        ),
-                      ],
+            return SingleChildScrollView(
+              child: SizedBox(
+                height: state.height,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TitleAndSub(
+                      isMobile: isMobile,
+                      isTablet: isTablet,
+                      height: state.height,
+                      width: state.width,
+                      title: "Get In Touch",
+                      subTitle: "Contact Me",
                     ),
-                  ),
+                    SizedBox(height: sizes.linksSpacing),
+                    LinksConatinerWidget(
+                      isMobile: isMobile,
+                      isTablet: isTablet,
+                      height: state.height,
+                      width: state.width,
+                    ),
+                    SizedBox(height: sizes.bottomSpacing),
+                    HomeAnimation(
+                      beginOffset: Offset(1, 0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          RowSelectionPage(
+                            width: state.width,
+                            height: state.height,
+                            isMobile: isMobile,
+                            isTablet: isTablet,
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: sizes.copyrightsSpacing),
+                    HomeAnimation(
+                      beginOffset: Offset(0, 1),
+                      child: Text(
+                        "Copyright 2025 Qutaiba Hassan. All Rights Reserved",
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: sizes.CopyrightTextSize,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             );
           },
         ),

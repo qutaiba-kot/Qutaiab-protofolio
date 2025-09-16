@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:protofolio/Core/Responsive%20helper/responsive_helper.dart';
 import 'package:protofolio/Core/Screen%20Cubit/cubit/screen_cubit.dart';
 import 'package:protofolio/Core/Screen%20Cubit/cubit/screen_state.dart';
 import 'package:protofolio/features/home/presentation/Widgets/burger_manu_drawer.dart';
-import 'package:protofolio/Core/Widgets/next_page_button.dart';
 import 'package:protofolio/features/home/logic/cubit/home_cubit.dart';
 import 'package:protofolio/features/home/presentation/Widgets/home_app_bar.dart';
 import 'package:protofolio/features/home/presentation/Widgets/home_body_row.dart';
@@ -22,6 +20,7 @@ class HomePage extends StatelessWidget {
           final isTablet = state.deviceType == DeviceTypes.tablet;
           final isMobile = state.deviceType == DeviceTypes.mobile;
           return Scaffold(
+            backgroundColor: Colors.transparent,
             extendBodyBehindAppBar: true,
             appBar: HomeAppBar(
               width: state.width,
@@ -30,43 +29,24 @@ class HomePage extends StatelessWidget {
               isTablet: isTablet,
             ),
             endDrawer: BurgerManuDrawer(width: state.width),
-            body: Stack(
-              children: [
-                Positioned.fill(
-                  child: Image.asset(
-                    "assets/files/flutter_pic.png",
-                    fit: BoxFit.fill,
-                  ),
+            body: SizedBox(
+              height: state.height,
+              child: SingleChildScrollView(
+                child: Row(
+                  children: [
+                    isMobile || isTablet
+                        ? HomeBodyColumn(
+                            isMobile: isMobile,
+                            height: state.height,
+                            width: state.width,
+                          )
+                        : HomeBodyRow(
+                            height: state.height,
+                            width: state.width,
+                          ),
+                  ],
                 ),
-                SizedBox(
-                  height: state.height,
-                  child: SingleChildScrollView(
-                    child: Row(
-                      children: [
-                        isMobile || isTablet
-                            ? HomeBodyColumn(
-                                isMobile: isMobile,
-                                height: state.height,
-                                width: state.width,
-                              )
-                            : HomeBodyRow(
-                                height: state.height,
-                                width: state.width,
-                              ),
-                      ],
-                    ),
-                  ),
-                ),
-                Positioned(
-                  bottom: state.height * 0.1,
-                  right: positionedWidth(
-                    width: state.width,
-                    isTablet: isTablet,
-                    isMobile: isMobile,
-                  ),
-                  child: const NextPageButton(),
-                ),
-              ],
+              ),
             ),
           );
         },

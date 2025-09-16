@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:protofolio/Core/Responsive%20helper/responsive_helper.dart';
+import 'package:protofolio/Core/Screen%20Cubit/cubit/screen_cubit.dart';
+import 'package:protofolio/Core/Screen%20Cubit/cubit/screen_state.dart';
+import 'package:protofolio/Core/Widgets/next_page_button.dart';
 import 'package:protofolio/features/About%20Me/presentation/Screens/about_me_page.dart';
 import 'package:protofolio/features/Contact%20me/presentation/Screens/contact_me_page.dart';
 import 'package:protofolio/features/Experince/presentation/Screens/experience_page.dart';
@@ -21,25 +25,50 @@ class PageViewNavigation extends StatelessWidget {
           if (_pageController.page?.round() != state.pageIndex) {
             _pageController.animateToPage(
               state.pageIndex,
-              duration: const Duration(milliseconds: 1700),
+              duration: const Duration(milliseconds: 800),
               curve: Curves.fastOutSlowIn,
             );
           }
         }
       },
       child: Scaffold(
-        body: PageView(
-          controller: _pageController,
-          scrollDirection: Axis.vertical,
-          onPageChanged: (index) {
-            context.read<PageViewNavigationCubit>().changePage(index);
-          },
+        body: Stack(
           children: [
-            HomePage(),
-            AboutMePage(),
-            ExperiencePage(),
-            ProjectPage(),
-            ContactMePage(),
+            Positioned.fill(
+              child: Image.asset(
+                "assets/files/flutter_pic.png",
+                fit: BoxFit.fill,
+              ),
+            ),
+            PageView(
+              controller: _pageController,
+              scrollDirection: Axis.vertical,
+              onPageChanged: (index) {
+                context.read<PageViewNavigationCubit>().changePage(index);
+              },
+              children: [
+                HomePage(),
+                AboutMePage(),
+                ExperiencePage(),
+                ProjectPage(),
+                ContactMePage(),
+              ],
+            ),
+            BlocBuilder<ScreenCubit, ScreenState>(
+              builder: (context, state) {
+                final isMobile = state.deviceType == DeviceTypes.mobile;
+                final isTablet = state.deviceType == DeviceTypes.tablet;
+                return Positioned(
+                  child: NextPageButton(),
+                  bottom: state.height * 0.1,
+                  right: positionedWidth(
+                    width: state.width,
+                    isTablet: isTablet,
+                    isMobile: isMobile,
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),
