@@ -10,9 +10,7 @@ class ProjectPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: BlocBuilder<ScreenCubit, ScreenState>(
+    return BlocBuilder<ScreenCubit, ScreenState>(
         builder: (context, state) {
           var isMobile = state.deviceType == DeviceTypes.mobile;
           var isTablet = state.deviceType == DeviceTypes.tablet;
@@ -27,7 +25,6 @@ class ProjectPage extends StatelessWidget {
                 : ProjectRow(height: state.height, width: state.width),
           );
         },
-      ),
-    );
+      );
   }
 }

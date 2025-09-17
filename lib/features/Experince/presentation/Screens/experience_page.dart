@@ -11,9 +11,7 @@ class ExperiencePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: BlocBuilder<ScreenCubit, ScreenState>(
+    return BlocBuilder<ScreenCubit, ScreenState>(
         builder: (context, state) {
           final isMobile = state.deviceType == DeviceTypes.mobile;
           final isTablet = state.deviceType == DeviceTypes.tablet;
@@ -39,7 +37,6 @@ class ExperiencePage extends StatelessWidget {
             ),
           );
         },
-      ),
-    );
+      );
   }
 }

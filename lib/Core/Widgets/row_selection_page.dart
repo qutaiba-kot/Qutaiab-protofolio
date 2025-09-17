@@ -47,7 +47,7 @@ class RowSelectionPage extends StatelessWidget {
                         decoration: hovering
                             ? TextDecoration.underline
                             : TextDecoration.none,
-                        decorationColor: Colors.grey,
+                        //decorationColor: Colors.grey,
                         decorationThickness: 2,
                       ),
                     ),

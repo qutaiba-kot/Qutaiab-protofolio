@@ -5,12 +5,12 @@ class ContactMeResponsive {
   final double width;
 
   final double linksSpacing;
-  final double bottomSpacing;
   final double copyrightsSpacing;
   final double CopyrightTextSize;
   final double containerHeight;
   final double containerWidth;
   final double linksTextSize;
+  final double topSpacing;
 
   ContactMeResponsive({
     required this.isMobile,
@@ -34,20 +34,14 @@ class ContactMeResponsive {
                : isTablet
                ? 0.04
                : 0.05),
-       bottomSpacing =
-           height *
-           (isMobile
-               ? 0.33
-               : isTablet
-               ? 0.30
-               : 0.22),
        copyrightsSpacing =
-           height *
+           height *0.35,
+           topSpacing = height *
            (isMobile
-               ? 0.05
+               ? 0.3
                : isTablet
-               ? 0.03
-               : 0.05),
+               ? 0.2
+               : 0.25),
 
        containerHeight = isMobile
            ? height * 0.070

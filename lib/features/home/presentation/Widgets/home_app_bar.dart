@@ -26,7 +26,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       beginOffset: Offset(1, 0),
       child: AppBar(
         backgroundColor: Colors.transparent, 
-        elevation: 0,
+        forceMaterialTransparency: true,
         title: Text("", style: TextStyle(fontSize: fontSize , color: Colors.white)),
         leading: Text(""),
         actions: [

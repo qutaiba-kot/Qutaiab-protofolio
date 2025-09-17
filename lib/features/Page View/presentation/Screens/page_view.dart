@@ -13,6 +13,8 @@ import 'package:protofolio/features/Page%20View/presentation/Widgets/previous_pa
 import 'package:protofolio/features/Page%20View/presentation/Widgets/scrollbar_custome.dart';
 import 'package:protofolio/features/Projects/presentation/Screens/project_page.dart';
 import 'package:protofolio/features/home/presentation/Screens/home_page.dart';
+import 'package:protofolio/features/home/presentation/Widgets/burger_manu_drawer.dart';
+import 'package:protofolio/features/home/presentation/Widgets/home_app_bar.dart';
 
 class PageViewNavigation extends StatelessWidget {
   const PageViewNavigation({super.key});
@@ -28,6 +30,15 @@ class PageViewNavigation extends StatelessWidget {
         final isDesktop = state.deviceType == DeviceTypes.desktop;
         final pageCubit = context.read<PageViewNavigationCubit>();
         return Scaffold(
+          backgroundColor: Colors.transparent,
+          extendBodyBehindAppBar: true,
+          appBar: HomeAppBar(
+              width: state.width,
+              height: state.height,
+              isMobile: isMobile,
+              isTablet: isTablet,
+            ),
+            endDrawer: BurgerManuDrawer(width: state.width),
           body: Stack(
             children: [
               Positioned.fill(

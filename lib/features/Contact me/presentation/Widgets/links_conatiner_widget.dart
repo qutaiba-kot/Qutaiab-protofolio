@@ -33,8 +33,8 @@ class LinksConatinerWidget extends StatelessWidget {
         return HomeAnimation(
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0),
-              border: Border.all(color: Colors.white, width: 1),
+              color: Colors.blue,
+              border: Border.all(color: Colors.blueGrey, width: 1),
               borderRadius: BorderRadius.all(Radius.circular(40)),
             ),
             height: sizes.containerHeight,
