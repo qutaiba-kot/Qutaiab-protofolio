@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:protofolio/Core/Animations/home_animation.dart';
+import 'package:protofolio/Core/Theme/app_colors.dart';
 import 'package:protofolio/features/Page%20View/presentation/Widgets/row_selection_page.dart';
 
 class AppBarCustomized extends StatelessWidget implements PreferredSizeWidget {
@@ -35,7 +36,7 @@ class AppBarCustomized extends StatelessWidget implements PreferredSizeWidget {
               onPressed: () {
                 Scaffold.of(context).openEndDrawer();
               },
-              icon: const Icon(Icons.menu , color: Colors.blue,),
+              icon: const Icon(Icons.menu , color: AppColors.primary),
             )
           else
             RowSelectionPage(

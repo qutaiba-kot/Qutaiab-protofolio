@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:protofolio/Core/Theme/app_theme.dart';
 import 'package:protofolio/features/Page%20View/presentation/Screens/page_view.dart';
 
 void main() {
@@ -11,6 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: AppTheme.theme,
       debugShowCheckedModeBanner: false,
       home: PageViewNavigation(),
     );

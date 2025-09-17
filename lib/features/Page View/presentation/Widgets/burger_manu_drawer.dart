@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:protofolio/Core/Theme/app_colors.dart';
 import 'package:protofolio/features/Page%20View/logic/cubit/page_view_navigation_state.dart';
 import 'package:protofolio/features/Page%20View/logic/cubit/page_view_navigation_cubit.dart';
 class BurgerMenuDrawer extends StatelessWidget {
@@ -16,7 +17,7 @@ class BurgerMenuDrawer extends StatelessWidget {
     ];
 
     return Drawer(
-      backgroundColor: Colors.blue,
+      backgroundColor:AppColors.primary,
       child: BlocSelector<PageViewNavigationCubit, PageViewNavigationState, int>(
         selector: (state) =>
             (state is PageViewNavigationChanged) ? state.pageIndex : 0,

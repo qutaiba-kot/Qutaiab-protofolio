@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:protofolio/Core/Theme/app_colors.dart';
 import '../../Responsive Helper/about_me_responsive.dart';
 
 class AboutMeContainerWidget extends StatelessWidget {
@@ -29,8 +30,8 @@ class AboutMeContainerWidget extends StatelessWidget {
       height: sizes.containerHeight,
       width: sizes.containerWidth,
       decoration: BoxDecoration(
-        color:Colors.blue.withOpacity(0.0),
-        border: Border.all(color: Colors.white, width: 1),
+        color:  AppColors.secondary,
+        border: Border.all(color: Colors.transparent, width: 1),
         borderRadius: BorderRadius.all(Radius.circular(40)),
       ),
       child: Column(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:protofolio/Core/Theme/app_colors.dart';
 import 'package:protofolio/features/Page%20View/Responsive%20helper/responsive_helper.dart';
 import 'package:protofolio/features/Page%20View/logic/cubit/page_view_navigation_state.dart';
 import 'package:protofolio/features/Page%20View/logic/cubit/page_view_navigation_cubit.dart';
@@ -100,7 +101,7 @@ class _NavItemState extends State<_NavItem> {
                   fontWeight:
                       widget.isSelected ? FontWeight.bold : FontWeight.normal,
                   color: widget.isSelected
-                      ? Colors.blue
+                      ?AppColors.primary
                       : hovering
                           ? Colors.grey
                           : Colors.white,

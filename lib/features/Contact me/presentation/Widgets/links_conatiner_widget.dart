@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:protofolio/Core/Animations/home_animation.dart';
+import 'package:protofolio/Core/Theme/app_colors.dart';
 import 'package:protofolio/features/Contact%20me/Responsive%20Helper/contact_me_responsive.dart';
 import 'package:protofolio/features/Contact%20me/logic/cubit/conatct_cubit.dart';
 
@@ -31,8 +32,8 @@ class LinksConatinerWidget extends StatelessWidget {
         return HomeAnimation(
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.blue,
-              border: Border.all(color: Colors.blueGrey, width: 1),
+              color: AppColors.primary,
+              border: Border.all(color: Colors.transparent, width: 1),
               borderRadius: BorderRadius.all(Radius.circular(40)),
             ),
             height: sizes.containerHeight,

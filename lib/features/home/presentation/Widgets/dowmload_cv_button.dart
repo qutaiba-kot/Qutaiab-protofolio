@@ -26,7 +26,7 @@ class DowmloadCvButton extends StatelessWidget {
           backgroundColor: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(width * 0.08),
-            side: const BorderSide(color: Colors.black, width: 2),
+            side: const BorderSide(color: Colors.transparent, width: 2),
           ),
         ),
         child: Text(

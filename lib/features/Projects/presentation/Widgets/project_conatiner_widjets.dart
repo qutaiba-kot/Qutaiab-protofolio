@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:protofolio/Core/Theme/app_colors.dart';
 import 'package:protofolio/features/Projects/Responsive%20Helper/projects_responsive.dart';
 import 'package:protofolio/features/Projects/presentation/Widgets/project_git_hub_link_button.dart';
 
@@ -18,8 +19,8 @@ class ProjectConatinerWidjets extends StatelessWidget {
     final sizes = ProjectsSizes(isMobile: isMobile, isTablet: isTablet, height: height, width: width);
     return Container(
       decoration: BoxDecoration(
-        color: Colors.transparent,
-        border: Border.all(color: Colors.white, width: 1),
+        color:AppColors.secondary,
+        border: Border.all(color:Colors.transparent, width: 1),
         borderRadius: BorderRadius.all(Radius.circular(40)),
       ),
       height: sizes.outerContainerHeight,

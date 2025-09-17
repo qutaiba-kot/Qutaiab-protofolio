@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:protofolio/Core/Animations/home_animation.dart';
+import 'package:protofolio/Core/Theme/app_colors.dart';
 
 class ScrollbarCustome extends StatelessWidget {
   final int currentScreen;
@@ -38,7 +39,7 @@ class ScrollbarCustome extends StatelessWidget {
             height: statusBar,
             width: width * 0.005,
             decoration: BoxDecoration(
-              color: Colors.blue,
+              color: AppColors.primary,
               borderRadius: BorderRadius.circular(5),
             ),
           ),

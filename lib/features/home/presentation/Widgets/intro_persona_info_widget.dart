@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:protofolio/Core/Theme/app_colors.dart';
 import 'package:protofolio/features/home/presentation/Widgets/contact_me_button.dart';
 import 'package:protofolio/features/home/presentation/Widgets/dowmload_cv_button.dart';
 
@@ -40,7 +41,7 @@ class IntroPersonaInfoWidget extends StatelessWidget {
                 style: TextStyle(
                   fontSize: titleFontSize,
                   fontWeight: FontWeight.bold,
-                  color: Colors.grey,
+                  color: AppColors.primary
                 ),
               ),
               SizedBox(height: constraints.maxHeight * 0.055),
@@ -63,7 +64,7 @@ class IntroPersonaInfoWidget extends StatelessWidget {
               Icon(
                 FontAwesomeIcons.flutter,
                 size: iconSize,
-                color: const Color.fromARGB(255, 60, 135, 197),
+                color: AppColors.primary,
               ),
             ],
           );

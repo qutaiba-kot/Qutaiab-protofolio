@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:protofolio/Core/Theme/app_colors.dart';
 import 'package:protofolio/features/Experince/Responsive%20Helper/about_me_responsive.dart';
 import 'package:protofolio/features/Experince/presentation/Widgets/experince_widget.dart';
 
@@ -22,8 +23,8 @@ class ExperinceConatinerWidget extends StatelessWidget {
       height: containerHeight,
       width: containerWidth,
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0),
-        border: Border.all(color: Colors.white, width: 1.5),
+        color: AppColors.secondary,
+        border: Border.all(color: Colors.transparent, width: 1.5),
         borderRadius: BorderRadius.all(Radius.circular(isMobile || isTablet? 90:40)),
       ),
       child: Column(
