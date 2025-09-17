@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:protofolio/Core/Screen%20Cubit/cubit/screen_cubit.dart';
 import 'package:protofolio/features/Page%20View/logic/cubit/page_view_navigation_cubit.dart';
-import 'package:protofolio/features/Page%20View/presentation/page_view.dart';
+import 'package:protofolio/features/Page%20View/presentation/Screens/page_view.dart';
 
 void main() {
   runApp(const MyApp());

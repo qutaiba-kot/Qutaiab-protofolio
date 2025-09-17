@@ -43,7 +43,7 @@ class RowSelectionPage extends StatelessWidget {
                         fontWeight: isSelected
                             ? FontWeight.bold
                             : FontWeight.normal,
-                        color: hovering ? Colors.grey :  Colors.white,
+                        color: isSelected ?   Colors.blue : hovering ? Colors.grey :  Colors.white,
                         decoration: hovering
                             ? TextDecoration.underline
                             : TextDecoration.none,

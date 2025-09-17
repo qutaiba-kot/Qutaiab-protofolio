@@ -40,7 +40,7 @@ class ProjectColumn extends StatelessWidget {
             title: "Browse My recent",
             subTitle: "Projects",
           ),
-          SizedBox(height: height * 0.03),
+          SizedBox(height: height * 0.08),
           CarouselSlider(
             items: projects,
             options: CarouselOptions(
