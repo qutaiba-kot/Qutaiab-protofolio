@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:protofolio/Core/Screen%20Cubit/cubit/screen_cubit.dart';
-import 'package:protofolio/Core/Screen%20Cubit/cubit/screen_state.dart';
 import 'package:protofolio/Core/Widgets/title_and_sub.dart';
 import 'package:protofolio/features/About%20Me/presentation/Widgets/about_me_column.dart';
 import 'package:protofolio/features/About%20Me/presentation/Widgets/about_me_row.dart';
 class AboutMePage extends StatelessWidget {
-  const AboutMePage({super.key});
+  final double height;
+  final double width;
+  final bool isMobile;
+  final bool isTablet;
+  const AboutMePage({super.key, required this.height, required this.width, required this.isMobile, required this.isTablet});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ScreenCubit, ScreenState>(
-      builder: (context, state) {
-        final isMobile = state.deviceType == DeviceTypes.mobile;
-        final isTablet = state.deviceType == DeviceTypes.tablet;
-        return SingleChildScrollView(
+    return SingleChildScrollView(
           child: SizedBox(
-            height: state.height,
+            height: height,
             child: Column(
               children: [
                 Row(
@@ -25,8 +22,8 @@ class AboutMePage extends StatelessWidget {
                     TitleAndSub(
                       isMobile: isMobile,
                       isTablet: isTablet,
-                      height: state.height,
-                      width: state.width,
+                      height: height,
+                      width: width,
                       title: "Get To Know More",
                       subTitle: "About Me",
                     ),
@@ -34,25 +31,23 @@ class AboutMePage extends StatelessWidget {
                 ),
                 SizedBox(
                   height: isMobile || isTablet
-                      ? state.height * 0.04
-                      : state.height * 0.15,
+                      ? height * 0.04
+                      : height * 0.15,
                 ),
                 isMobile || isTablet
                     ? AboutMeColumn(
-                        height: state.height,
-                        width: state.width,
+                        height: height,
+                        width: width,
                         isMobile: isMobile,
                         isTablet: isTablet,
                       )
                     : AboutMeRow(
-                        height: state.height,
-                        width: state.width,
+                        height: height,
+                        width: width,
                       ),
               ],
             ),
           ),
         );
-      },
-    );
   }
 }

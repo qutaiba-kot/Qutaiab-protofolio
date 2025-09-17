@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:protofolio/Core/Animations/home_animation.dart';
-import 'package:protofolio/Core/Widgets/row_selection_page.dart';
+import 'package:protofolio/features/Page%20View/presentation/Widgets/row_selection_page.dart';
 
-class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
+class AppBarCustomized extends StatelessWidget implements PreferredSizeWidget {
   final bool isMobile;
   final bool isTablet;
   final double width;
   final double height;
-  const HomeAppBar({
+  const AppBarCustomized({
     super.key,
     required this.width,
     required this.height,
@@ -35,7 +35,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
               onPressed: () {
                 Scaffold.of(context).openEndDrawer();
               },
-              icon: const Icon(Icons.menu , color: Colors.white,),
+              icon: const Icon(Icons.menu , color: Colors.blue,),
             )
           else
             RowSelectionPage(

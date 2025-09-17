@@ -1,68 +1,70 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:protofolio/Core/Animations/home_animation.dart';
-import 'package:protofolio/Core/Screen%20Cubit/cubit/screen_cubit.dart';
-import 'package:protofolio/Core/Screen%20Cubit/cubit/screen_state.dart';
 import 'package:protofolio/Core/Widgets/title_and_sub.dart';
 import 'package:protofolio/features/Contact%20me/Responsive%20Helper/contact_me_responsive.dart';
 import 'package:protofolio/features/Contact%20me/logic/cubit/conatct_cubit.dart';
 import 'package:protofolio/features/Contact%20me/presentation/Widgets/links_conatiner_widget.dart';
 
 class ContactMePage extends StatelessWidget {
-  const ContactMePage({super.key});
+  final double height;
+  final double width;
+  final bool isMobile;
+  final bool isTablet;
+  const ContactMePage({
+    super.key,
+    required this.height,
+    required this.width,
+    required this.isMobile,
+    required this.isTablet,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final sizes = ContactMeResponsive(
+      isMobile: isMobile,
+      isTablet: isTablet,
+      height: height,
+      width: width,
+    );
     return BlocProvider(
       create: (context) => ConatctCubit(),
-      child: BlocBuilder<ScreenCubit, ScreenState>(
-        builder: (context, state) {
-          final isMobile = state.deviceType == DeviceTypes.mobile;
-          final isTablet = state.deviceType == DeviceTypes.tablet;
-          final sizes = ContactMeResponsive(
-            isMobile: isMobile,
-            isTablet: isTablet,
-            height: state.height,
-            width: state.width,
-          );
-          return SingleChildScrollView(
-            child: SizedBox(
-              height: state.height,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(height: sizes.topSpacing,),
-                  TitleAndSub(
-                    isMobile: isMobile,
-                    isTablet: isTablet,
-                    height: state.height,
-                    width: state.width,
-                    title: "Get In Touch",
-                    subTitle: "Contact Me",
-                  ),
-                  SizedBox(height: sizes.linksSpacing),
-                  LinksConatinerWidget(
-                    isMobile: isMobile,
-                    isTablet: isTablet,
-                    height: state.height,
-                    width: state.width,
-                  ),
-                  SizedBox(height: sizes.copyrightsSpacing),
-                  HomeAnimation(
-                    beginOffset: Offset(0, 1),
-                    child: Text(
-                      "Copyright 2025 Qutaiba Hassan. All Rights Reserved",
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: sizes.CopyrightTextSize,
-                      ),
-                    ),
-                  ),
-                ],
+      child: SingleChildScrollView(
+        child: SizedBox(
+          height: height,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: sizes.topSpacing),
+              TitleAndSub(
+                isMobile: isMobile,
+                isTablet: isTablet,
+                height: height,
+                width: width,
+                title: "Get In Touch",
+                subTitle: "Contact Me",
               ),
-            ),
-          );
-        },
+              SizedBox(height: sizes.linksSpacing),
+              LinksConatinerWidget(
+                isMobile: isMobile,
+                isTablet: isTablet,
+                height: height,
+                width: width,
+              ),
+              SizedBox(height: sizes.copyrightsSpacing),
+              HomeAnimation(
+                beginOffset: Offset(0, 1),
+                child: Text(
+                  "Copyright 2025 Qutaiba Hassan. All Rights Reserved",
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: sizes.CopyrightTextSize,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

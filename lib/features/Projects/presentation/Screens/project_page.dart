@@ -1,30 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:protofolio/Core/Screen%20Cubit/cubit/screen_cubit.dart';
-import 'package:protofolio/Core/Screen%20Cubit/cubit/screen_state.dart';
 import 'package:protofolio/features/Projects/presentation/Widgets/project_column.dart';
 import 'package:protofolio/features/Projects/presentation/Widgets/project_row.dart';
 
 class ProjectPage extends StatelessWidget {
-  const ProjectPage({super.key});
+  final double height;
+  final double width;
+  final bool isMobile;
+  final bool isTablet;
+  const ProjectPage({
+    super.key,
+    required this.height,
+    required this.width,
+    required this.isMobile,
+    required this.isTablet,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ScreenCubit, ScreenState>(
-        builder: (context, state) {
-          var isMobile = state.deviceType == DeviceTypes.mobile;
-          var isTablet = state.deviceType == DeviceTypes.tablet;
-          return SingleChildScrollView(
-            child: isMobile || isTablet
-                ? ProjectColumn(
-                    isMobile: isMobile,
-                    isTablet: isTablet,
-                    height: state.height,
-                    width: state.width,
-                  )
-                : ProjectRow(height: state.height, width: state.width),
-          );
-        },
-      );
+    return SingleChildScrollView(
+      child: isMobile || isTablet
+          ? ProjectColumn(
+              isMobile: isMobile,
+              isTablet: isTablet,
+              height: height,
+              width: width,
+            )
+          : ProjectRow(height: height, width: width),
+    );
   }
 }

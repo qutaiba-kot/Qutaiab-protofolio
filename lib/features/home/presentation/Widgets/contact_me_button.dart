@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:protofolio/features/Page%20View/logic/cubit/page_view_navigation_cubit.dart';
-import 'package:protofolio/features/home/logic/cubit/home_cubit.dart';
 
 class ContactMeButton extends StatelessWidget {
   final double height;
@@ -17,9 +16,7 @@ class ContactMeButton extends StatelessWidget {
     final double buttonHeight = (height * 0.10);
     final double buttonWidth =  (width * 0.35);
     final double buttonText = (buttonWidth*buttonHeight)/450;
-    return BlocBuilder<HomeCubit, HomeState>(
-      builder: (context, state) {
-        return SizedBox(
+    return SizedBox(
           width: buttonWidth,
           height: buttonHeight,
           child: ElevatedButton(
@@ -42,7 +39,5 @@ class ContactMeButton extends StatelessWidget {
             ),
           ),
         );
-      },
-    );
   }
 }

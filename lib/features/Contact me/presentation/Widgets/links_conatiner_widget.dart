@@ -21,9 +21,7 @@ class LinksConatinerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ConatctCubit, ConatctState>(
-      builder: (context, state) {
-        final sizes = ContactMeResponsive(
+    final sizes = ContactMeResponsive(
           isMobile: isMobile,
           isTablet: isTablet,
           height: height,
@@ -97,7 +95,5 @@ class LinksConatinerWidget extends StatelessWidget {
             ),
           ),
         );
-      },
-    );
   }
 }

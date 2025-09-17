@@ -5,8 +5,9 @@ import 'page_view_navigation_state.dart';
 // ================= Cubit ===================
 class PageViewNavigationCubit extends Cubit<PageViewNavigationState> {
   final PageController pageController = PageController();
-
-  PageViewNavigationCubit() : super(PageViewNavigationChanged(0));
+final double width;
+  final double height;
+  PageViewNavigationCubit(this.width, this.height) : super(PageViewNavigationChanged(0));
 
   void changePage(int index) {
     if (pageController.hasClients &&

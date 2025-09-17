@@ -9,28 +9,26 @@ class PreviousPageButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<PageViewNavigationCubit, PageViewNavigationState>(
-      builder: (context, state) {
-        int currentIndex = 0;
-        if (state is PageViewNavigationChanged) {
-          currentIndex = state.pageIndex;
-        }
+    return BlocSelector<PageViewNavigationCubit, PageViewNavigationState, int>(
+      selector: (state) =>
+          (state is PageViewNavigationChanged) ? state.pageIndex : 0,
+      builder: (context, currentIndex) {
         if (currentIndex == 0) {
           return const SizedBox.shrink();
-        } else {
-          return HomeAnimation(
-            beginOffset: Offset(1, 0),
-            child: IconButton(
-              onPressed: () {
-                int nextIndex = currentIndex - 1;
-                if (nextIndex <= 4) {
-                  context.read<PageViewNavigationCubit>().changePage(nextIndex);
-                }
-              },
-              icon: Icon(Icons.arrow_upward_rounded, color: Colors.white),
-            ),
-          );
         }
+
+        return HomeAnimation(
+          beginOffset: const Offset(1, 0),
+          child: IconButton(
+            onPressed: () {
+              final nextIndex = currentIndex - 1;
+              if (nextIndex >= 0) {
+                context.read<PageViewNavigationCubit>().changePage(nextIndex);
+              }
+            },
+            icon: const Icon(Icons.arrow_upward_rounded, color: Colors.blue),
+          ),
+        );
       },
     );
   }

@@ -18,7 +18,7 @@ class ProjectConatinerWidjets extends StatelessWidget {
     final sizes = ProjectsSizes(isMobile: isMobile, isTablet: isTablet, height: height, width: width);
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0),
+        color: Colors.transparent,
         border: Border.all(color: Colors.white, width: 1),
         borderRadius: BorderRadius.all(Radius.circular(40)),
       ),
