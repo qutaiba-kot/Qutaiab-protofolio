@@ -1,27 +1,20 @@
 import 'package:equatable/equatable.dart';
 
+// الحالة الأساسية (abstract فقط)
 sealed class PageViewNavigationState extends Equatable {
   const PageViewNavigationState();
-
-  // Getter للوصول لقيمة pageIndex مباشرة
-  int get pageIndex => 0;
-
-  @override
-  List<Object?> get props => [];
 }
 
+// الحالة عند تغيير الصفحة
 final class PageViewNavigationChanged extends PageViewNavigationState {
-  final int _pageIndex;
+  final int pageIndex;
 
-  PageViewNavigationChanged(this._pageIndex);
-
-  @override
-  int get pageIndex => _pageIndex;
+  const PageViewNavigationChanged(this.pageIndex);
 
   PageViewNavigationChanged copyWith({int? pageIndex}) {
-    return PageViewNavigationChanged(pageIndex ?? _pageIndex);
+    return PageViewNavigationChanged(pageIndex ?? this.pageIndex);
   }
 
   @override
-  List<Object?> get props => [_pageIndex];
+  List<Object?> get props => [pageIndex];
 }

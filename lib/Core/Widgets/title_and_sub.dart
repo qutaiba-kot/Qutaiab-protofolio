@@ -25,7 +25,7 @@ class TitleAndSub extends StatelessWidget {
     return HomeAnimation(
       beginOffset: Offset(0, -1),
       child: Container(
-        child: Column(
+        child:  Column(
           children: [
             SizedBox(height: height * 0.07),
             Text(

@@ -51,7 +51,7 @@ class AboutMeColumn extends StatelessWidget {
               beginOffset: Offset(1, 0),
               child: AboutMeContainerWidget(
                 icon: FontAwesomeIcons.university,
-                title: "Education",
+                title:  "Education",
                 subTitle: "The Hashemite University",
                 body: "Copmuter Science",
                 height: height,
