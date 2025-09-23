@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:protofolio/Core/Animations/home_animation.dart';
+import 'package:protofolio/Core/SupaBase/init_supabase.dart';
 import 'package:protofolio/Core/Theme/app_colors.dart';
 import 'package:protofolio/features/Contact%20me/Responsive%20Helper/contact_me_responsive.dart';
 import 'package:protofolio/features/Contact%20me/logic/cubit/conatct_cubit.dart';
@@ -44,7 +45,7 @@ class LinksConatinerWidget extends StatelessWidget {
                 InkWell(
                   onTap: () {
                     context.read<ConatctCubit>().launchURL(
-                      "https://github.com/qutaiba-kot",
+                     profile!.gitHubLink,
                     );
                   },
                   child: Row(
@@ -61,7 +62,7 @@ class LinksConatinerWidget extends StatelessWidget {
                 InkWell(
                   onTap: () {
                     context.read<ConatctCubit>().launchURL(
-                      "https://mail.google.com/mail/u/0/#inbox?compose=CllgCJvnqtWwvFJtsgBcwMstxpDNWxRcQLXMxtpgvHljStVFbzqgKrfvjRdjsHFgBHxhvFKDKbq",
+                      profile!.emailLink,
                     );
                   },
                   child: Row(
@@ -82,7 +83,7 @@ class LinksConatinerWidget extends StatelessWidget {
                     InkWell(
                       onTap: () {
                         context.read<ConatctCubit>().launchURL(
-                          "https://www.linkedin.com/in/qutaiba-albarahmeh-706686263/",
+                          profile!.linkedinLink,
                         );
                       },
                       child: Text(

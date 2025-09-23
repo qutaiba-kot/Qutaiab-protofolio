@@ -23,7 +23,7 @@ class HomeBodyColumn extends StatelessWidget {
         SizedBox(width: isMobile ? width * 0.1 : width * 0.2),
         Column(
           children: [
-            SizedBox(height: height * 0.1),
+            SizedBox(height: height * 0.2),
             HomeAnimation(
               beginOffset: Offset(0, -1),
               child: HomePic(radius: (height*width)*0.0003),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:protofolio/features/Projects/logic/cubit/projects_cubit.dart';
 import 'package:protofolio/features/Projects/presentation/Widgets/project_column.dart';
 import 'package:protofolio/features/Projects/presentation/Widgets/project_row.dart';
 
@@ -17,15 +19,18 @@ class ProjectPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: isMobile || isTablet
-          ? ProjectColumn(
-              isMobile: isMobile,
-              isTablet: isTablet,
-              height: height,
-              width: width,
-            )
-          : ProjectRow(height: height, width: width),
+    return BlocProvider(
+      create: (context) => ProjectsCubit(),
+      child: SingleChildScrollView(
+        child: isMobile || isTablet
+            ? ProjectColumn(
+                isMobile: isMobile,
+                isTablet: isTablet,
+                height: height,
+                width: width,
+              )
+            : ProjectRow(height: height, width: width),
+      ),
     );
   }
 }

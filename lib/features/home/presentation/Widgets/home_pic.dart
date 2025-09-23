@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:protofolio/Core/SupaBase/init_supabase.dart';
 class HomePic extends StatelessWidget {
   const HomePic({super.key, required this.radius});
  final double radius ;
@@ -7,7 +8,7 @@ class HomePic extends StatelessWidget {
     return  CircleAvatar(
       radius: radius,
       backgroundColor: Colors.black,
-      backgroundImage: const AssetImage("assets/files/2nedPic.jpg"),
+      backgroundImage: NetworkImage(profile!.firstPic),
     );
   }
 }

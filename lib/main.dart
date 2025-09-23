@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:protofolio/Core/SupaBase/init_supabase.dart';
 import 'package:protofolio/Core/Theme/app_theme.dart';
 import 'package:protofolio/features/Page%20View/presentation/Screens/page_view_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initSupabase();
+  await fetchProfile();
   runApp(const MyApp());
 }
 

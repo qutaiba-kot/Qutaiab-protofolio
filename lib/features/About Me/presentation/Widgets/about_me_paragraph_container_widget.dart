@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:protofolio/Core/Animations/home_animation.dart';
+import 'package:protofolio/Core/SupaBase/init_supabase.dart';
 import 'package:protofolio/Core/Theme/app_colors.dart';
 import 'package:protofolio/features/About%20Me/Responsive%20Helper/about_me_responsive.dart';
 
@@ -40,7 +41,7 @@ class AboutMeParagraphContainerWidget extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(12),
             child: AutoSizeText(
-              "Motivated and detail-oriented Accounting and Commercial Law graduate with a strong foundation in financial reporting, auditing, and legal compliance. Passionate about applying theoretical knowledge in real world financial environments while ensuring accuracy and ethical financial practices. Adept at problem-solving, budgeting, and tax computation, with excellent communication and teamwork skills. Seeking an opportunity to contribute to a dynamic accounting or finance team.",
+               profile!.aboutMeParagraph,
               style: const TextStyle(fontSize: 90 , color: Colors.white),
               maxLines: 10,
               minFontSize: 0,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:protofolio/Core/SupaBase/init_supabase.dart';
 import 'package:protofolio/Core/Theme/app_colors.dart';
 import 'package:protofolio/features/Projects/Responsive%20Helper/projects_responsive.dart';
 import 'package:protofolio/features/Projects/presentation/Widgets/project_git_hub_link_button.dart';
@@ -6,21 +7,30 @@ import 'package:protofolio/features/Projects/presentation/Widgets/project_git_hu
 class ProjectConatinerWidjets extends StatelessWidget {
   final bool isMobile;
   final bool isTablet;
-  final double height ; 
-  final double width ;
+  final double height;
+  final double width;
+  final int projectNumber;
   const ProjectConatinerWidjets({
     super.key,
     required this.isMobile,
-    required this.isTablet, required this.height, required this.width,
+    required this.isTablet,
+    required this.height,
+    required this.width,
+    required this.projectNumber,
   });
 
   @override
   Widget build(BuildContext context) {
-    final sizes = ProjectsSizes(isMobile: isMobile, isTablet: isTablet, height: height, width: width);
+    final sizes = ProjectsSizes(
+      isMobile: isMobile,
+      isTablet: isTablet,
+      height: height,
+      width: width,
+    );
     return Container(
       decoration: BoxDecoration(
-        color:AppColors.secondary,
-        border: Border.all(color:Colors.transparent, width: 1),
+        color: AppColors.secondary,
+        border: Border.all(color: Colors.transparent, width: 1),
         borderRadius: BorderRadius.all(Radius.circular(40)),
       ),
       height: sizes.outerContainerHeight,
@@ -30,18 +40,30 @@ class ProjectConatinerWidjets extends StatelessWidget {
         children: [
           Container(
             decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(color: Colors.black, width: 3),
-              borderRadius: BorderRadius.all(Radius.circular(40)),
+              border: Border.all( width: 3),
+              borderRadius: BorderRadius.all(Radius.circular(20)),
             ),
             height: sizes.innerContainerHeight,
             width: sizes.innerContainerWidth,
+            child: ClipRRect(
+              borderRadius: BorderRadius.all(Radius.circular(20)),
+              child: Image.network(
+                profile!.projectPics[projectNumber],
+                fit: BoxFit.fill,
+              ),
+            ),
           ),
           Text(
-            "Project Name",
-            style: TextStyle(fontSize: sizes.projectName , color: Colors.white),
-          ),  
-          ProjectGitHubLinkButton(isMobile: isMobile, isTablet: isTablet, height: height, width: width)        
+            profile!.projectNames[projectNumber],
+            style: TextStyle(fontSize: sizes.projectName, color: Colors.white),
+          ),
+          ProjectGitHubLinkButton(
+            projectNumber: projectNumber,
+            isMobile: isMobile,
+            isTablet: isTablet,
+            height: height,
+            width: width,
+          ),
         ],
       ),
     );

@@ -21,6 +21,7 @@ class ProjectColumn extends StatelessWidget {
     final projects = List.generate(
       3,
       (index) => ProjectConatinerWidjets(
+        projectNumber: index,
         isMobile: isMobile,
         isTablet: isTablet,
         height: height,
@@ -44,7 +45,7 @@ class ProjectColumn extends StatelessWidget {
           CarouselSlider(
             items: projects,
             options: CarouselOptions(
-              height: height * 0.6,
+              height: height * 0.65,
               viewportFraction: 0.8,
               initialPage: 0,
               enableInfiniteScroll: true,

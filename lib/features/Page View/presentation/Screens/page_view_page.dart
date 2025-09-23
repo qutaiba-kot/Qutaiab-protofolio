@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:protofolio/Core/SupaBase/init_supabase.dart';
 import 'package:protofolio/features/Page%20View/Responsive%20helper/responsive_helper.dart';
 import 'package:protofolio/Core/cubit/screen_cubit.dart';
 import 'package:protofolio/Core/cubit/screen_state.dart';
@@ -46,14 +47,11 @@ class PageViewNavigation extends StatelessWidget {
                 endDrawer: BurgerMenuDrawer(width: width),
                 body: Stack(
                   children: [
-                    isTablet || isMobile ?
-                    const SizedBox.shrink():
-                    Positioned.fill(
-                      child: const Image(
-                        image: AssetImage("assets/files/flutter_pic.png"),
-                        fit: BoxFit.fitWidth,
-                      ),
-                    ),
+                    isTablet || isMobile
+                        ? const SizedBox.shrink()
+                        : Positioned.fill(
+                            child:Image.network(profile!.backgroundPic),
+                          ),
                     PageViewWidget(
                       height: height,
                       width: width,

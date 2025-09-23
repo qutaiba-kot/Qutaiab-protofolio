@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:protofolio/Core/Animations/home_animation.dart';
+import 'package:protofolio/Core/SupaBase/init_supabase.dart';
 import 'package:protofolio/features/About%20Me/presentation/Widgets/about_me_container_widget.dart';
 import 'package:protofolio/features/About%20Me/presentation/Widgets/about_me_paragraph_container_widget.dart';
 import 'package:protofolio/features/About%20Me/presentation/Widgets/about_me_pic_conatiner_widget.dart';
@@ -38,8 +39,8 @@ class AboutMeColumn extends StatelessWidget {
               child: AboutMeContainerWidget(
                 icon: FontAwesomeIcons.award,
                 title: "Experince",
-                subTitle: "1+ Year",
-                body: "Flutter Developer",
+                subTitle: "${profile!.name} Year",
+                body:  profile!.specialization,
                 height: height,
                 width: width,
                 isMobile: isMobile,
@@ -52,8 +53,8 @@ class AboutMeColumn extends StatelessWidget {
               child: AboutMeContainerWidget(
                 icon: FontAwesomeIcons.university,
                 title:  "Education",
-                subTitle: "The Hashemite University",
-                body: "Copmuter Science",
+                subTitle:  profile!.university,
+                body:  profile!.major,
                 height: height,
                 width: width,
                 isMobile: isMobile,

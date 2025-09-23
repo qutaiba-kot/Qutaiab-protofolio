@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:protofolio/Core/SupaBase/init_supabase.dart';
 import 'package:protofolio/Core/Theme/app_colors.dart';
 import 'package:protofolio/features/home/presentation/Widgets/contact_me_button.dart';
 import 'package:protofolio/features/home/presentation/Widgets/dowmload_cv_button.dart';
@@ -30,7 +31,7 @@ class IntroPersonaInfoWidget extends StatelessWidget {
             children: [
               Text("Hello, I'm", style: TextStyle(fontSize: helloFontSize, color: Colors.white)),
               Text(
-                "Qutaiba Hassan",
+                profile!.name,
                 style: TextStyle(
                   fontSize: nameFontSize,
                   fontWeight: FontWeight.bold, color: Colors.white

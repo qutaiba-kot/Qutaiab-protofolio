@@ -1,130 +1,146 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:protofolio/Core/SupaBase/init_supabase.dart';
 import 'package:protofolio/Core/Theme/app_colors.dart';
-import 'package:protofolio/features/Experince/Responsive%20Helper/about_me_responsive.dart';
-import 'package:protofolio/features/Experince/presentation/Widgets/experince_widget.dart';
+import 'package:protofolio/features/Experince/Logic/Cubit/experince_cubit.dart';
+import 'package:protofolio/features/Experince/Logic/Cubit/experince_state.dart';
+import 'package:protofolio/features/Experince/Responsive%20Helper/experince_responsive.dart';
 
 class ExperinceConatinerWidget extends StatelessWidget {
   final bool isMobile;
   final bool isTablet;
-  final double height ; 
-  final double width ; 
+  final double height;
+  final double width;
+
   const ExperinceConatinerWidget({
-    super.key, required this.height, required this.width, required this.isMobile, required this.isTablet,
+    super.key,
+    required this.isMobile,
+    required this.isTablet,
+    required this.height,
+    required this.width,
   });
 
   @override
   Widget build(BuildContext context) {
-    final double containerHeight = isMobile || isTablet? height*0.3: height*0.5 ; 
-    final double containerWidth = isMobile || isTablet? width*0.74: width*0.35 ; 
-
-    final sizes = ExperienceSizes(isMobile:isMobile || isTablet,height: containerHeight, width: containerWidth);
-    return Container(
-      height: containerHeight,
-      width: containerWidth,
-      decoration: BoxDecoration(
-        color: AppColors.secondary,
-        border: Border.all(color: Colors.transparent, width: 1.5),
-        borderRadius: BorderRadius.all(Radius.circular(isMobile || isTablet? 90:40)),
+    final sizes = ExperinceResponsive(
+      isMobile: isMobile,
+      isTablet: isTablet,
+      height: height,
+      width: width,
+    );
+    final projects = List.generate(
+      profile!.company.length,
+      (index) => Container(
+        decoration: BoxDecoration(
+          color: AppColors.secondary,
+          borderRadius: BorderRadius.circular(40),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Container(
+              width: sizes.picContainerWidth,
+              height: sizes.picContainerHeight,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(width: 3),
+                borderRadius: BorderRadius.circular(40),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(60)),
+                child: Image.network(profile!.profileImageUrl[index]),
+              ),
+            ),
+            Container(
+              alignment: isMobile || isTablet ? Alignment.center : null,
+              height: sizes.textContainerHeight,
+              width: sizes.textContainerWidth,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Company :  ${profile!.company[index]}",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: sizes.textSizes,
+                    ),
+                  ),
+                  Text(
+                    "Position :  ${profile!.position[index]}",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: sizes.textSizes,
+                    ),
+                  ),
+                  Text(
+                    "Duration :  ${profile!.workDuration[index]}",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: sizes.textSizes,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
-      child: Column(
-        children: [
-          SizedBox(height: height* 0.025),
-          Text(
-            "FrontEnd Development",
-            style: TextStyle(fontSize: sizes.containerTitle, color: Colors.grey),
-          ),
-          Expanded(
-            child: Row(
-              children: [
-                Expanded(
-                  child: Center(
-                    child: ExperinceWidget(
-                      height: containerHeight,
-                      width: containerWidth,
-                      isMobile: isMobile , isTablet:isTablet , 
-                      skill: "Flutter",
-                      level: "Perfect",
-                      icon: FontAwesomeIcons.flutter,
+    );
+    return BlocProvider(
+      create: (_) => ExperienceCubit(),
+      child: BlocBuilder<ExperienceCubit, ExperienceState>(
+        builder: (context, state) {
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(
+                height: sizes.cursolheight,
+                width: sizes.cursolWidth,
+                child: CarouselSlider(
+                  items: projects,
+                  options: CarouselOptions(
+                    height: 300,
+                    viewportFraction: 0.8,
+                    initialPage: 0,
+                    enableInfiniteScroll: true,
+                    autoPlay: true,
+                    autoPlayInterval: const Duration(seconds: 3),
+                    autoPlayAnimationDuration: const Duration(
+                      milliseconds: 1800,
                     ),
+                    autoPlayCurve: Curves.fastOutSlowIn,
+                    enlargeCenterPage: true,
+                    enlargeFactor: 1,
+                    scrollDirection: Axis.horizontal,
+                    disableCenter: true,
+                    onPageChanged: (index, reason) {
+                      context.read<ExperienceCubit>().changeIndex(index);
+                    },
                   ),
                 ),
-                Expanded(
-                  child: Center(
-                    child: ExperinceWidget(
-                      height: containerHeight,
-                      width: containerWidth,
-                      isMobile: isMobile , isTablet:isTablet , 
-                      skill: "Figma",
-                      level: "Mid",
-                      icon: FontAwesomeIcons.figma,
+              ),
+              SizedBox(height: height * 0.04),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: projects.asMap().entries.map((entry) {
+                  return Container(
+                    width: sizes.indectorWidth,
+                    height: sizes.indectorHeight,
+                    margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: state.currentIndex == entry.key
+                          ? AppColors.primary
+                          : Colors.grey,
                     ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: Row(
-              children: [
-                Expanded(
-                  child: Center(
-                    child: ExperinceWidget(
-                      height: containerHeight,
-                      width: containerWidth,
-                      isMobile: isMobile , isTablet:isTablet , 
-                      skill: "Java",
-                      level: "Perfect",
-                      icon: FontAwesomeIcons.java,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Center(
-                    child: ExperinceWidget(
-                      height: containerHeight,
-                      width: containerWidth,
-                      isMobile: isMobile , isTablet:isTablet , 
-                      skill: "C++",
-                      level: "Perfect",
-                      icon: FontAwesomeIcons.c,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: Row(
-              children: [
-                Expanded(
-                  child: Center(
-                    child: ExperinceWidget(
-                      height: containerHeight,
-                      width: containerWidth,
-                      isMobile: isMobile , isTablet:isTablet , 
-                      skill: "VB",
-                      level: "Perfect",
-                      icon: FontAwesomeIcons.certificate,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Center(
-                    child: ExperinceWidget(
-                      height: containerHeight,
-                      width: containerWidth,
-                      isMobile: isMobile , isTablet:isTablet , 
-                      skill: "UI/UX",
-                      level: "Perfect",
-                      icon: FontAwesomeIcons.uikit,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
+                  );
+                }).toList(),
+              ),
+            ],
+          );
+        },
       ),
     );
   }

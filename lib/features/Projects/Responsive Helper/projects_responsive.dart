@@ -47,13 +47,13 @@ class ProjectsSizes {
         ? (height * width) / 2 * 0.00007
         : isTablet
         ? (height * width) / 2 * 0.00004
-        : (height * width) / 2 * 0.00002;
+        : (height * width) / 2 * 0.00001;
 
-    final innerHeight = isTablet ? outerHeight * 0.5:  outerHeight * 0.65;
-    final innerWidth = isTablet ? outerWidth * 0.5: outerWidth * 0.7;
+    final innerHeight = isTablet || isMobile ? outerHeight * 0.6:  outerHeight * 0.65;
+    final innerWidth = isTablet ? outerWidth * 0.5: isMobile ? outerWidth * 0.6: outerWidth * 0.5;
 
     final buttonHeight = innerHeight * 0.1;
-    final buttonWidth = innerWidth * 0.5;
+    final buttonWidth = innerWidth * 0.7;
 
     return ProjectsSizes._(
       outerContainerHeight: outerHeight,

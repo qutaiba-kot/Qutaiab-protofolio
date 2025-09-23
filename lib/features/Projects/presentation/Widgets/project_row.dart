@@ -32,6 +32,7 @@ class ProjectRow extends StatelessWidget {
                   HomeAnimation(
                     beginOffset: Offset(-1, 0),
                     child: ProjectConatinerWidjets(
+                      projectNumber: 0,
                       isMobile: false,
                       isTablet: false,
                       height: height,
@@ -41,6 +42,7 @@ class ProjectRow extends StatelessWidget {
                   HomeAnimation(
                     beginOffset: Offset(0, 1),
                     child: ProjectConatinerWidjets(
+                      projectNumber: 1,
                       isMobile: false,
                       isTablet: false,
                       height: height,
@@ -50,6 +52,7 @@ class ProjectRow extends StatelessWidget {
                   HomeAnimation(
                     beginOffset: Offset(1, 0),
                     child: ProjectConatinerWidjets(
+                      projectNumber: 2,
                       isMobile: false,
                       isTablet: false,
                       height: height,
