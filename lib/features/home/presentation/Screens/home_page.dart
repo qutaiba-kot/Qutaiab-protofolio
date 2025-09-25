@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:protofolio/features/home/logic/cubit/home_cubit.dart';
-import 'package:protofolio/features/home/presentation/Widgets/home_body_row.dart';
-import 'package:protofolio/features/home/presentation/Widgets/home_body_column.dart';
+import 'package:protofolio/features/home/presentation/Widgets/home_pic.dart';
+import 'package:protofolio/features/home/presentation/Widgets/intro_persona_info_widget.dart';
 
 class HomePage extends StatelessWidget {
   final double height;
@@ -22,19 +22,39 @@ class HomePage extends StatelessWidget {
     return BlocProvider(
       create: (context) => HomeCubit(),
       child: SizedBox(
+        width: width,
         height: height,
         child: SingleChildScrollView(
-          child: Row(
-            children: [
-              isMobile || isTablet
-                  ? HomeBodyColumn(
+          child: isMobile || isTablet
+              ? Column(
+                  children: [
+                    SizedBox(height: height * 0.2),
+                    HomePic(height: height, width: width, isMobile: isMobile),
+                    IntroPersonaInfoWidget(
+                      isTablet: isTablet,
                       isMobile: isMobile,
                       height: height,
                       width: width,
-                    )
-                  : HomeBodyRow(height: height, width: width),
-            ],
-          ),
+                    ),
+                  ],
+                )
+              : Row(
+                  children: [
+                    SizedBox(width: width * 0.2),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(height: height * 0.3),
+                        IntroPersonaInfoWidget(
+                          isTablet: false,
+                          isMobile: false,
+                          height: height,
+                          width: width,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
         ),
       ),
     );
