@@ -56,30 +56,94 @@ class ExperinceConatinerWidget extends StatelessWidget {
               alignment: isMobile || isTablet ? Alignment.center : null,
               height: sizes.textContainerHeight,
               width: sizes.textContainerWidth,
+              padding: EdgeInsets.all(10),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Company :  ${profile!.company[index]}",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: sizes.textSizes,
-                    ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        "Company  :  ",
+                        style: TextStyle(
+                          color: AppColors.primary,
+                          fontSize: sizes.textSizes * 1.2,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        softWrap: false,
+                      ),
+                      Flexible(
+                        child: Text(
+                          "${profile!.company[index]}",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: sizes.textSizes,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                          softWrap: false,
+                        ),
+                      ),
+                    ],
                   ),
-                  Text(
-                    "Position :  ${profile!.position[index]}",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: sizes.textSizes,
-                    ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        "Position  :  ",
+                        style: TextStyle(
+                          color: AppColors.primary,
+                          fontSize: sizes.textSizes * 1.2,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        softWrap: false,
+                      ),
+                      Flexible(
+                        child: Text(
+                          "${profile!.position[index]}",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: sizes.textSizes,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                          softWrap: false,
+                        ),
+                      ),
+                    ],
                   ),
-                  Text(
-                    "Duration :  ${profile!.workDuration[index]}",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: sizes.textSizes,
-                    ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        "Duration  :  ",
+                        style: TextStyle(
+                          color: AppColors.primary,
+                          fontSize: sizes.textSizes * 1.2,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        softWrap: false,
+                      ),
+                      Flexible(
+                        child: Text(
+                          "${profile!.workDuration[index]}",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: sizes.textSizes,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                          softWrap: false,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -101,7 +165,7 @@ class ExperinceConatinerWidget extends StatelessWidget {
                 child: CarouselSlider(
                   items: projects,
                   options: CarouselOptions(
-                    height: 300,
+                    //height: height*0.2,
                     viewportFraction: 0.8,
                     initialPage: 0,
                     enableInfiniteScroll: true,

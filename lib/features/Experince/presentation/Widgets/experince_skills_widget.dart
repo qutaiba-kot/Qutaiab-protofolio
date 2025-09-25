@@ -6,7 +6,6 @@ import 'package:protofolio/Core/Theme/app_colors.dart';
 class ExperinceSkillsWidget extends StatelessWidget {
   final double height;
   final double width;
-  final Axis axisDirection;
   final bool isMobile;
   final bool isTablet;
 
@@ -14,7 +13,6 @@ class ExperinceSkillsWidget extends StatelessWidget {
     super.key,
     required this.height,
     required this.width,
-    required this.axisDirection,
     required this.isMobile,
     required this.isTablet,
   });
@@ -22,34 +20,74 @@ class ExperinceSkillsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return HomeAnimation(
-      beginOffset: const Offset(0, 1),
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppColors.secondary,
-          border: Border.all(color: AppColors.secondary , width: 1),
-          borderRadius: const BorderRadius.all(Radius.circular(40)),
-        ),
-        height: isMobile || isTablet ? height * 0.1 : height * 0.22,
-        width: isMobile || isTablet ? width * 0.9 : width * 0.8,
-        padding: const EdgeInsets.all(18.0),
-        child: GridView.builder(
-          scrollDirection: axisDirection,
-          padding:  EdgeInsets.all(isMobile || isTablet ? 0 : 15),
-          itemCount: profile!.skills.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 6,
-            mainAxisSpacing: 18,
-            crossAxisSpacing: 10,
-            childAspectRatio: 3,
+      beginOffset: const Offset(-1, 0),
+      child: Column(
+        children: [
+          Text(
+            "Skills",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              fontSize: isMobile ? 20 : 30,
+            ),
           ),
-          itemBuilder: (context, index) {
-            final skill = profile!.skills[index];
-            return Text(
-              skill,
-              style:  TextStyle(color: Colors.white, fontSize: isMobile || isTablet ? 10 : 18),
-            );
-          },
-        ),
+          SizedBox(height: isMobile || isTablet ? height * 0.02 : height * 0.02),
+          Container(
+            padding: EdgeInsets.all(10),
+            height: height * 0.15,
+            width: isMobile|| isTablet ? width*0.95 : width * 0.75,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+            color: AppColors.secondary
+            ),
+            child: GridView.builder(
+              scrollDirection: Axis.vertical,
+              itemCount: profile!.skills.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount:  isMobile || isTablet ?  4 : 6,
+                mainAxisSpacing: 12,
+                crossAxisSpacing: 12,
+                childAspectRatio: (width / 6) / (height * 0.15 / 3),
+              ),
+              itemBuilder: (context, index) {
+                final skill = profile!.skills[index];
+                return Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 4,
+                  ),
+                  decoration: BoxDecoration(
+                    color: AppColors.primary,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.circle,
+                        color: AppColors.secondary,
+                        size: isMobile ? 6 : 12,
+                      ),
+                      const SizedBox(width: 6),
+                      Expanded(
+                        child: Text(
+                          skill,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: isMobile ? 12 : 16,
+                            fontWeight: FontWeight.w600,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                          softWrap: false,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

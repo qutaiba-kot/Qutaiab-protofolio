@@ -21,7 +21,7 @@ class ExperinceResponsive {
     required this.width,
   }) {
     picContainerWidth = isMobile
-        ? width * 0.4
+        ? width * 0.3
         : isTablet
         ? width * 0.3
         : width * 0.1;

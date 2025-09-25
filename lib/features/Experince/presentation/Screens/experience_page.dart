@@ -35,12 +35,11 @@ class ExperiencePage extends StatelessWidget {
                   subTitle: "Experience",
                 ),
                 SizedBox(
-                  height: isMobile || isTablet ? height * 0.04 : height * 0.12,
+                  height: isMobile || isTablet ? height * 0.1 : height * 0.1,
                 ),
                 isTablet || isMobile
                     ? Column(
                         children: [
-                          SizedBox(height: height * 0.1),
                           HomeAnimation(
                             beginOffset: Offset(-1, 0),
                             child: ExperinceConatinerWidget(
@@ -52,29 +51,29 @@ class ExperiencePage extends StatelessWidget {
                           ),
                         ],
                       )
-                    : HomeAnimation(
-                        beginOffset: Offset(-1, 0),
-                        child: ExperinceConatinerWidget(
-                          isMobile: false,
-                          isTablet: false,
-                          height: height,
-                          width: width,
-                        ),
+                    : Column(
+                        children: [
+                          HomeAnimation(
+                            beginOffset: Offset(0, 1),
+                            child: ExperinceConatinerWidget(
+                              isMobile: false,
+                              isTablet: false,
+                              height: height,
+                              width: width,
+                            ),
+                          ),
+                        ],
                       ),
+                       SizedBox(
+                  height: height * 0.05,
+                ),
+                ExperinceSkillsWidget(
+                  height: height,
+                  width: width,
+                  isMobile: isMobile,
+                  isTablet: isTablet,
+                ),
               ],
-            ),
-            Positioned(
-              bottom: isMobile || isTablet ? height * 0.2 : height * 0.05,
-              left: isTablet|| isMobile
-                  ? width * 0.05
-                  : width * 0.1,
-              child: ExperinceSkillsWidget(
-                height: height,
-                width: width,
-                axisDirection: Axis.vertical,
-                isMobile: isMobile,
-                isTablet: isTablet,
-              ),
             ),
           ],
         ),

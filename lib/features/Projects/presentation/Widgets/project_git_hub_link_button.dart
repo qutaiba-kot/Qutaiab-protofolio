@@ -42,7 +42,7 @@ class ProjectGitHubLinkButton extends StatelessWidget {
         },
         child: const Text(
           "GitHub",
-          style: TextStyle(fontSize: 15, color: Colors.black),
+          style: TextStyle(fontSize: 15, color: Colors.white),
         ),
       ),
     );
