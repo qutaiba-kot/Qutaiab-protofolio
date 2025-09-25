@@ -17,17 +17,17 @@ class AboutMePicConatinerWidget extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    final sizes = PicSizes(
+    final sizes = AboutMeResponsive(
       isMobile: isMobile,
       isTablet: isTablet,
-      screenHeight: height,
-      screenWidth: width,
+      height: height,
+      width: width,
     );
     return HomeAnimation(
       beginOffset: Offset(-1, 0),
       child: Container(
-        height: sizes.height,
-        width: sizes.width,
+        height: sizes.picHeight,
+        width: sizes.picWidth,
         child: ClipRRect(
           borderRadius: BorderRadius.all(Radius.circular(60)),
           child: Image.network(profile!.secondPic, fit: BoxFit.cover),

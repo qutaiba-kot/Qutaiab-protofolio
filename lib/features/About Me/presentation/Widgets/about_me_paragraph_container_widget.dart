@@ -20,33 +20,30 @@ class AboutMeParagraphContainerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final sizes = ParagraphSizes(
+    final sizes = AboutMeResponsive(
       isMobile: isMobile,
       isTablet: isTablet,
       height: height,
       width: width,
     );
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: HomeAnimation(
-        beginOffset: Offset(0, 1),
-        child: Container(
-          height: sizes.containerHeight,
-          width: sizes.containerWidth,
-          decoration: BoxDecoration(
-          color:  AppColors.secondary,
-          border: Border.all(color: Colors.transparent, width: 1),
-          borderRadius: BorderRadius.all(Radius.circular(40)),
-        ),
-          child: Padding(
-            padding: const EdgeInsets.all(12),
-            child: AutoSizeText(
-               profile!.aboutMeParagraph,
-              style: const TextStyle(fontSize: 90 , color: Colors.white),
-              maxLines: 10,
-              minFontSize: 0,
-              overflow: TextOverflow.ellipsis,
-            ),
+    return HomeAnimation(
+      beginOffset: Offset(0, 1),
+      child: Container(
+        height: sizes.parahraphHeight,
+        width: sizes.parahraphWidth,
+        decoration: BoxDecoration(
+        color:  AppColors.secondary,
+        border: Border.all(color: Colors.transparent, width: 1),
+        borderRadius: BorderRadius.all(Radius.circular(40)),
+      ),
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: AutoSizeText(
+             profile!.aboutMeParagraph,
+            style: const TextStyle(fontSize: 90 , color: Colors.white),
+            maxLines: 10,
+            minFontSize: 0,
+            overflow: TextOverflow.ellipsis,
           ),
         ),
       ),

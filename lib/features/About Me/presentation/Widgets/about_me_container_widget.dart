@@ -25,12 +25,17 @@ class AboutMeContainerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final sizes = AboutMeResponsive(isMobile: isMobile, isTablet: isTablet, height: height, width: width);
+    final sizes = AboutMeResponsive(
+      isMobile: isMobile,
+      isTablet: isTablet,
+      height: height,
+      width: width,
+    );
     return Container(
       height: sizes.containerHeight,
       width: sizes.containerWidth,
       decoration: BoxDecoration(
-        color:  AppColors.secondary,
+        color: AppColors.secondary,
         border: Border.all(color: Colors.transparent, width: 1),
         borderRadius: BorderRadius.all(Radius.circular(40)),
       ),
@@ -38,22 +43,36 @@ class AboutMeContainerWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, size: sizes.iconSize, color: Colors.white),
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: sizes.titleSize,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
+          Flexible(
+            child: Icon(icon, size: sizes.iconSize, color: Colors.white),
+          ),
+          Flexible(
+            child: Text(
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              title,
+              style: TextStyle(
+                fontSize: sizes.titleSize,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
-          Text(
-            subTitle,
-            style: TextStyle(fontSize: sizes.subTitleSize, color: Colors.grey),
+          Flexible(
+            child: Text(
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              subTitle,
+              style: TextStyle(fontSize: sizes.subTitleSize, color: Colors.grey),
+            ),
           ),
-          Text(
-            body,
-            style: TextStyle(fontSize: sizes.bodySize, color: Colors.grey),
+          Flexible(
+            child: Text(
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              body,
+              style: TextStyle(fontSize: sizes.bodySize, color: Colors.grey),
+            ),
           ),
         ],
       ),
