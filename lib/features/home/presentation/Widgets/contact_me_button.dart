@@ -8,7 +8,13 @@ class ContactMeButton extends StatelessWidget {
   final double width;
   final bool isMobile;
   final bool isTablet;
-  const ContactMeButton({super.key, required this.height, required this.width, required this.isMobile, required this.isTablet});
+  const ContactMeButton({
+    super.key,
+    required this.height,
+    required this.width,
+    required this.isMobile,
+    required this.isTablet,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +26,7 @@ class ContactMeButton extends StatelessWidget {
     );
     return SizedBox(
       width: sizes.buttonWidth,
-      height:sizes.buttonHeight,
+      height: sizes.buttonHeight,
       child: ElevatedButton(
         onPressed: () {
           context.read<PageViewNavigationCubit>().changePage(4);

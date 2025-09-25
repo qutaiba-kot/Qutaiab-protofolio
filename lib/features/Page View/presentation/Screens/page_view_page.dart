@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:protofolio/Core/SupaBase/init_supabase.dart';
-import 'package:protofolio/features/Page%20View/Responsive%20helper/responsive_helper.dart';
+import 'package:protofolio/features/Page%20View/Responsive%20helper/page_view_responsive.dart';
 import 'package:protofolio/Core/cubit/screen_cubit.dart';
 import 'package:protofolio/Core/cubit/screen_state.dart';
 import 'package:protofolio/features/Page%20View/presentation/Widgets/next_page_button.dart';
@@ -34,7 +34,12 @@ class PageViewNavigation extends StatelessWidget {
             builder: (context, deviceType) {
               final isMobile = deviceType == DeviceTypes.mobile;
               final isTablet = deviceType == DeviceTypes.tablet;
-
+              final sizes = PageViewResponsive(
+                width: width,
+                height: height,
+                isMobile: isMobile,
+                isTablet: isTablet,
+              );
               return Scaffold(
                 backgroundColor: Colors.black,
                 extendBodyBehindAppBar: true,
@@ -44,13 +49,15 @@ class PageViewNavigation extends StatelessWidget {
                   isMobile: isMobile,
                   isTablet: isTablet,
                 ),
-                endDrawer: BurgerMenuDrawer(width: width),
+                endDrawer: isMobile || isTablet
+                    ? BurgerMenuDrawer(width: width)
+                    : null,
                 body: Stack(
                   children: [
                     isTablet || isMobile
                         ? const SizedBox.shrink()
                         : Positioned.fill(
-                            child:Image.network(profile!.backgroundPic),
+                            child: Image.network(profile!.backgroundPic),
                           ),
                     PageViewWidget(
                       height: height,
@@ -67,22 +74,14 @@ class PageViewNavigation extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                      bottom: height * 0.1,
-                      right: positionedWidth(
-                        width: width,
-                        isTablet: isTablet,
-                        isMobile: isMobile,
-                      ),
-                      child: const NextPageButton(),
+                      bottom: height * 0.8,
+                      right: sizes.positionedWidth,
+                      child: const PreviousPageButton(),
                     ),
                     Positioned(
-                      bottom: height * 0.8,
-                      right: positionedWidth(
-                        width: width,
-                        isTablet: isTablet,
-                        isMobile: isMobile,
-                      ),
-                      child: const PreviousPageButton(),
+                      bottom: height * 0.1,
+                      right: sizes.positionedWidth,
+                      child: const NextPageButton(),
                     ),
                   ],
                 ),

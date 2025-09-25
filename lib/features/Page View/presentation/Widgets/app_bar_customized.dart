@@ -18,20 +18,15 @@ class AppBarCustomized extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double fontSize = width < 600
-        ? 25
-        : width < 1200
-        ? 40
-        : 50;
     return HomeAnimation(
       beginOffset: Offset(1, 0),
       child: AppBar(
         backgroundColor: Colors.transparent, 
         forceMaterialTransparency: true,
-        title: Text("", style: TextStyle(fontSize: fontSize , color: Colors.white)),
+        title: Text(""),
         leading: Text(""),
         actions: [
-          if (width < 1200)
+          if (isMobile || isTablet)
             IconButton(
               onPressed: () {
                 Scaffold.of(context).openEndDrawer();
