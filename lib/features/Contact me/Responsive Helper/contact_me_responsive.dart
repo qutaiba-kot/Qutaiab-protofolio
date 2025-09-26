@@ -6,7 +6,7 @@ class ContactMeResponsive {
 
   final double linksSpacing;
   final double copyrightsSpacing;
-  final double CopyrightTextSize;
+  final double copyrightTextSize;
   final double containerHeight;
   final double containerWidth;
   final double linksTextSize;
@@ -17,16 +17,16 @@ class ContactMeResponsive {
     required this.isTablet,
     required this.height,
     required this.width,
-  }) : CopyrightTextSize = isMobile
-           ? (height * width) / 140 * 0.004
+  }) : copyrightTextSize = isMobile
+           ? 9
            : isTablet
-           ? (height * width) / 140 * 0.002
-           : (height * width) / 140 * 0.0015,
+           ? 13
+           : 19,
        linksTextSize = isMobile
-           ? (height * width) / 140 * 0.0055
+           ? 11.3
            : isTablet
-           ? (height * width) / 140 * 0.003
-           : (height * width) / 140 * 0.002,
+           ? 17.8
+           : 13.7,
        linksSpacing =
            height *
            (isMobile
@@ -34,9 +34,9 @@ class ContactMeResponsive {
                : isTablet
                ? 0.04
                : 0.05),
-       copyrightsSpacing =
-           height *0.35,
-           topSpacing = height *
+       copyrightsSpacing = height * 0.35,
+       topSpacing =
+           height *
            (isMobile
                ? 0.3
                : isTablet

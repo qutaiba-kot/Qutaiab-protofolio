@@ -52,13 +52,17 @@ class ContactMePage extends StatelessWidget {
                 width: width,
               ),
               SizedBox(height: sizes.copyrightsSpacing),
-              HomeAnimation(
-                beginOffset: Offset(0, 1),
-                child: Text(
-                  "Copyright 2025 Qutaiba Hassan. All Rights Reserved",
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: sizes.CopyrightTextSize,
+              Flexible(
+                child: HomeAnimation(
+                  beginOffset: Offset(0, 1),
+                  child: Text(
+                    "Copyright 2025 Qutaiba Hassan. All Rights Reserved",
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: sizes.copyrightTextSize,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ),
