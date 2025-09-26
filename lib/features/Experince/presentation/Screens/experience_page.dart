@@ -24,56 +24,33 @@ class ExperiencePage extends StatelessWidget {
         height: height,
         child: Stack(
           children: [
-            Column(
-              children: [
-                TitleAndSub(
-                  isMobile: isMobile,
-                  isTablet: isTablet,
-                  height: height,
-                  width: width,
-                  title: "Explore My",
-                  subTitle: "Experience",
-                ),
-                SizedBox(
-                  height: isMobile || isTablet ? height * 0.1 : height * 0.1,
-                ),
-                isTablet || isMobile
-                    ? Column(
-                        children: [
-                          HomeAnimation(
-                            beginOffset: Offset(-1, 0),
-                            child: ExperinceConatinerWidget(
-                              isMobile: isMobile,
-                              isTablet: isTablet,
-                              height: height,
-                              width: width,
-                            ),
-                          ),
-                        ],
-                      )
-                    : Column(
-                        children: [
-                          HomeAnimation(
-                            beginOffset: Offset(0, 1),
-                            child: ExperinceConatinerWidget(
-                              isMobile: false,
-                              isTablet: false,
-                              height: height,
-                              width: width,
-                            ),
-                          ),
-                        ],
-                      ),
-                       SizedBox(
-                  height: height * 0.05,
-                ),
-                ExperinceSkillsWidget(
-                  height: height,
-                  width: width,
-                  isMobile: isMobile,
-                  isTablet: isTablet,
-                ),
-              ],
+            Center(
+              child: Column(
+                children: [
+                  TitleAndSub(
+                    isMobile: isMobile,
+                    isTablet: isTablet,
+                    height: height,
+                    width: width,
+                    title: "Explore My",
+                    subTitle: "Experience",
+                  ),
+                  SizedBox(
+                    height: height * 0.1,
+                  ),
+                  HomeAnimation(
+                    beginOffset: Offset(-1, 0),
+                    child: ExperinceConatinerWidget(
+                      isMobile: isMobile,
+                      isTablet: isTablet,
+                      height: height,
+                      width: width,
+                    ),
+                  ),
+                  SizedBox(height: height * 0.05),
+                  ExperinceSkillsWidget(height: height, width: width, isMobile: isMobile, isTablet: isTablet)
+                ],
+              ),
             ),
           ],
         ),

@@ -8,7 +8,7 @@ class PageViewResponsive {
     required double height,
     required bool isMobile,
     required bool isTablet,
-  }) : fontSize =  30,
+  }) : fontSize =  20,
        positionedWidth = isTablet
            ? width * 0.050
            : isMobile
