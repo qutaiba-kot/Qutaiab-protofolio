@@ -38,11 +38,7 @@ class ProjectConatinerWidjets extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all( width: 3),
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-            ),
+          SizedBox(
             height: sizes.innerContainerHeight,
             width: sizes.innerContainerWidth,
             child: ClipRRect(
@@ -53,9 +49,16 @@ class ProjectConatinerWidjets extends StatelessWidget {
               ),
             ),
           ),
-          Text(
-            profile!.projectNames[projectNumber],
-            style: TextStyle(fontSize: sizes.projectName, color: Colors.white),
+          Flexible(
+            child: Text(
+              profile!.projectNames[projectNumber],
+              style: TextStyle(
+                fontSize: sizes.projectName,
+                color: Colors.white,
+              ),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+            ),
           ),
           ProjectGitHubLinkButton(
             projectNumber: projectNumber,

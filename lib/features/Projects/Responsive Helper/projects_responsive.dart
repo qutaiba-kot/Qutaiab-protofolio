@@ -1,69 +1,34 @@
 class ProjectsSizes {
-  final double outerContainerHeight;
-  final double outerContainerWidth;
-  final double innerContainerHeight;
-  final double innerContainerWidth;
-  final double projectName;
-  final double buttonText;
-  final double buttonHeight;
-  final double buttonWidth;
+  late final double outerContainerHeight;
+  late final double outerContainerWidth;
+  late final double innerContainerHeight;
+  late final double innerContainerWidth;
+  late final double projectName;
+  late final double buttonHeight;
+  late final double buttonWidth;
 
-  ProjectsSizes._({
-    required this.outerContainerHeight,
-    required this.outerContainerWidth,
-    required this.innerContainerHeight,
-    required this.innerContainerWidth,
-    required this.projectName,
-    required this.buttonText,
-    required this.buttonHeight,
-    required this.buttonWidth,
-  });
-
-  factory ProjectsSizes({
-    required bool isMobile,
-    required bool isTablet,
+  ProjectsSizes({
     required double height,
     required double width,
+    required bool isMobile,
+    required bool isTablet,
   }) {
-    final outerHeight = isMobile
-        ? (height * width) / 2 * 0.003
+    outerContainerHeight = height * 0.6;
+    outerContainerWidth = width * 0.18;
+    projectName = isMobile
+        ? 20
         : isTablet
-        ? (height * width) / 2 * 0.0015
-        : (height * width) / 2 * 0.0006;
-
-    final outerWidth = isMobile
-        ? (height * width) / 2 * 0.0015
-        : isTablet
-        ? (height * width) / 2 * 0.0009
-        : (height * width) / 2 * 0.0004;
-
-    final projectName = isMobile
-        ? (height * width) / 2 * 0.00009
-        : isTablet
-        ? (height * width) / 2 * 0.00006
-        : (height * width) / 2 * 0.00003;
-
-    final buttonText = isMobile
-        ? (height * width) / 2 * 0.00007
-        : isTablet
-        ? (height * width) / 2 * 0.00004
-        : (height * width) / 2 * 0.00001;
-
-    final innerHeight = isTablet || isMobile ? outerHeight * 0.6:  outerHeight * 0.65;
-    final innerWidth = isTablet ? outerWidth * 0.5: isMobile ? outerWidth * 0.6: outerWidth * 0.5;
-
-    final buttonHeight = innerHeight * 0.1;
-    final buttonWidth = innerWidth * 0.7;
-
-    return ProjectsSizes._(
-      outerContainerHeight: outerHeight,
-      outerContainerWidth: outerWidth,
-      innerContainerHeight: innerHeight,
-      innerContainerWidth: innerWidth,
-      projectName: projectName,
-      buttonText: buttonText,
-      buttonHeight: buttonHeight,
-      buttonWidth: buttonWidth,
-    );
+        ? 20
+        : 17;
+    innerContainerHeight = isMobile
+        ? outerContainerHeight * 0.65
+        : outerContainerHeight * 0.6;
+    innerContainerWidth = isTablet
+        ? (height * 0.6) * 0.32
+        : isMobile
+        ? (height * 0.8) * 0.25
+        : outerContainerWidth * 0.5;
+    buttonHeight = innerContainerHeight * 0.1;
+    buttonWidth = innerContainerWidth * 0.7;
   }
 }

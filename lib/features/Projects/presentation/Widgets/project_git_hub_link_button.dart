@@ -38,11 +38,16 @@ class ProjectGitHubLinkButton extends StatelessWidget {
           backgroundColor: MaterialStateProperty.all(AppColors.primary),
         ),
         onPressed: () {
-          context.read<ProjectsCubit>().launchURL(profile!.projectLinks[projectNumber]);
+          context.read<ProjectsCubit>().launchURL(
+            profile!.projectLinks[projectNumber],
+          );
         },
-        child: const Text(
-          "GitHub",
-          style: TextStyle(fontSize: 15, color: Colors.white),
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            "GitHub",
+            style: TextStyle(fontSize: 15, color: Colors.white),
+          ),
         ),
       ),
     );

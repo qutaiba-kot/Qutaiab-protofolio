@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:protofolio/Core/Widgets/title_and_sub.dart';
 import 'package:protofolio/features/Projects/logic/cubit/projects_cubit.dart';
 import 'package:protofolio/features/Projects/presentation/Widgets/project_column.dart';
 import 'package:protofolio/features/Projects/presentation/Widgets/project_row.dart';
@@ -22,14 +23,27 @@ class ProjectPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => ProjectsCubit(),
       child: SingleChildScrollView(
-        child: isMobile || isTablet
-            ? ProjectColumn(
-                isMobile: isMobile,
-                isTablet: isTablet,
-                height: height,
-                width: width,
-              )
-            : ProjectRow(height: height, width: width),
+        child: Column(
+          children: [
+            TitleAndSub(
+            isMobile: isMobile,
+            isTablet: isTablet,
+            height: height,
+            width: width,
+            title: "Browse My recent",
+            subTitle: "Projects",
+          ),
+          SizedBox(height: isMobile ||isTablet ? height * 0.07 : height * 0.1),
+            isMobile || isTablet
+                ? ProjectColumn(
+                    isMobile: isMobile,
+                    isTablet: isTablet,
+                    height: height,
+                    width: width,
+                  )
+                : ProjectRow(height: height, width: width),
+          ],
+        ),
       ),
     );
   }
