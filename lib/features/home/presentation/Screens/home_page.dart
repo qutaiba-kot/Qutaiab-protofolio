@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:protofolio/features/home/logic/cubit/home_cubit.dart';
-import 'package:protofolio/features/home/presentation/Widgets/home_pic.dart';
 import 'package:protofolio/features/home/presentation/Widgets/intro_persona_info_widget.dart';
 
 class HomePage extends StatelessWidget {
@@ -28,8 +27,7 @@ class HomePage extends StatelessWidget {
           child: isMobile || isTablet
               ? Column(
                   children: [
-                    SizedBox(height: height * 0.2),
-                    HomePic(height: height, width: width, isMobile: isMobile),
+                    SizedBox(height: height * 0.4),
                     IntroPersonaInfoWidget(
                       isTablet: isTablet,
                       isMobile: isMobile,

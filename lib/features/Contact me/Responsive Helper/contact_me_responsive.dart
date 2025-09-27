@@ -26,7 +26,7 @@ class ContactMeResponsive {
            ? 11.3
            : isTablet
            ? 17.8
-           : 13.7,
+           : 13.6,
        linksSpacing =
            height *
            (isMobile
@@ -34,14 +34,8 @@ class ContactMeResponsive {
                : isTablet
                ? 0.04
                : 0.05),
-       copyrightsSpacing = height * 0.35,
-       topSpacing =
-           height *
-           (isMobile
-               ? 0.3
-               : isTablet
-               ? 0.2
-               : 0.25),
+       copyrightsSpacing = isTablet || isMobile ? height * 0.25 : height * 0.35,
+       topSpacing = height * (isMobile ?  0.3 : isTablet ? 0.4 : 0.25),
 
        containerHeight = isMobile
            ? height * 0.070

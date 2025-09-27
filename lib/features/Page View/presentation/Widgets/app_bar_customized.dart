@@ -19,7 +19,7 @@ class AppBarCustomized extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return HomeAnimation(
-      beginOffset: Offset(1, 0),
+      beginOffset: Offset(0, -1),
       child: AppBar(
         backgroundColor: Colors.transparent, 
         forceMaterialTransparency: true,

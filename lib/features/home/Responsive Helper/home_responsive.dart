@@ -28,22 +28,20 @@ class HomeResponsive {
         ? 30
         : 30;
     nameFontsize = isMobile
-        ? 20
+        ? 30
         : isTablet
-        ? 25
+        ? 35
         : 50;
     specializationFontsize = isMobile
         ? 20
         : isTablet
-        ? 20
+        ? 25
         : 30;
-    buttonTextFontsize = isMobile
+    buttonTextFontsize = isMobile || isTablet
         ? 12
-        : isTablet
-        ? 15
-        : 16;
+        : 12.8;
     buttonHeight = height * 0.1;
-    buttonWidth = width * 0.4;
+    buttonWidth = isTablet ? width * 0.26: isMobile ? width * 0.39 :  width * 0.35;
     picRadius = isMobile
             ? (height * width) * 0.0003
             : (height * width) * 0.00016;

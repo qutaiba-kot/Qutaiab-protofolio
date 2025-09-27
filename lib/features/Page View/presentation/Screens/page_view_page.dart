@@ -55,9 +55,11 @@ class PageViewNavigation extends StatelessWidget {
                 body: Stack(
                   children: [
                     isTablet || isMobile
-                        ? const SizedBox.shrink()
+                        ? Positioned.fill(
+                            child: Image.network(profile!.mobAndTabBackgroundPic),
+                          )
                         : Positioned.fill(
-                            child: Image.network(profile!.backgroundPic),
+                            child: Image.network(profile!.pcBackgroundPic),
                           ),
                     PageViewWidget(
                       height: height,
