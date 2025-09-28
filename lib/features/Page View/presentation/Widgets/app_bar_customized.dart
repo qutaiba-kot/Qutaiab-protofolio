@@ -24,14 +24,9 @@ class AppBarCustomized extends StatelessWidget implements PreferredSizeWidget {
         backgroundColor: Colors.transparent,
         forceMaterialTransparency: true,
         title: !(isMobile || isTablet)
-            ? RowSelectionPage(
-                width: width,
-                height: height,
-                isMobile: isMobile,
-                isTablet: isTablet,
-              )
+            ? RowSelectionPage(width: width, height: height, isMobile: isMobile, isTablet: isTablet)
             : null,
-        centerTitle: true,
+        centerTitle: false,
         actions: isMobile || isTablet
             ? [
                 IconButton(

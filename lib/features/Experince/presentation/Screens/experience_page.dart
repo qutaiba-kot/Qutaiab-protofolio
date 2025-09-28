@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:protofolio/Core/Animations/home_animation.dart';
 import 'package:protofolio/Core/Widgets/title_and_sub.dart';
-import 'package:protofolio/features/Experince/presentation/Widgets/experince_conatiner_widget.dart';
+import 'package:protofolio/features/Experince/presentation/Widgets/experince_work_widget.dart';
 import 'package:protofolio/features/Experince/presentation/Widgets/experince_skills_widget.dart';
 
 class ExperiencePage extends StatelessWidget {
@@ -19,9 +18,9 @@ class ExperiencePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: SizedBox(
-        height: height,
+    return SizedBox(
+      height: height,
+      child: SingleChildScrollView(
         child: Stack(
           children: [
             Center(
@@ -35,20 +34,44 @@ class ExperiencePage extends StatelessWidget {
                     title: "Explore My",
                     subTitle: "Experience",
                   ),
-                  SizedBox(
-                    height: height * 0.1,
-                  ),
-                  HomeAnimation(
-                    beginOffset: Offset(-1, 0),
-                    child: ExperinceConatinerWidget(
-                      isMobile: isMobile,
-                      isTablet: isTablet,
-                      height: height,
-                      width: width,
-                    ),
-                  ),
-                  SizedBox(height: height * 0.05),
-                  ExperinceSkillsWidget(height: height, width: width, isMobile: isMobile, isTablet: isTablet)
+                  SizedBox(height: height*0.08,),
+                  isMobile || isTablet
+                      ? Column(
+                          children: [
+                            ExperinceConatinerWidget(
+                              isMobile: isMobile,
+                              isTablet: isTablet,
+                              height: height,
+                              width: width,
+                            ),
+                            SizedBox(height: height * 0.05),
+                            ExperinceSkillsWidget(
+                              isMobile: isMobile,
+                              isTablet: isTablet,
+                              height: height,
+                              width: width,
+                            ),
+                            SizedBox(height: height * 0.05),
+                          ],
+                        )
+                      : Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ExperinceConatinerWidget(
+                              isMobile: isMobile,
+                              isTablet: isTablet,
+                              height: height,
+                              width: width,
+                            ),
+                            SizedBox(width: width * 0.05),
+                            ExperinceSkillsWidget(
+                              isMobile: isMobile,
+                              isTablet: isTablet,
+                              height: height,
+                              width: width,
+                            ),
+                          ],
+                        ),
                 ],
               ),
             ),

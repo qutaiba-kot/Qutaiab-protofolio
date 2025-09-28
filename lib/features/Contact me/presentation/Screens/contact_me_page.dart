@@ -35,15 +35,7 @@ class ContactMePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
-                height:
-                    height *
-                    (isMobile
-                        ? 0.3
-                        : isTablet
-                        ? 0.4
-                        : 0.2),
-              ),
+              SizedBox(height: height * (isMobile ? 0.3 : 0.2)),
               TitleAndSub(
                 isMobile: isMobile,
                 isTablet: isTablet,
@@ -67,7 +59,13 @@ class ContactMePage extends StatelessWidget {
                 height: height,
                 width: width,
               ),
-              SizedBox(height: isTablet ? height * 0.2 : isMobile ? height * 0.3 : height * 0.3),
+              SizedBox(
+                height: isTablet
+                    ? height * 0.2
+                    : isMobile
+                    ? height * 0.3
+                    : height * 0.3,
+              ),
               HomeAnimation(
                 beginOffset: Offset(0, 1),
                 child: SizedBox(
@@ -77,10 +75,7 @@ class ContactMePage extends StatelessWidget {
                     fit: BoxFit.scaleDown,
                     child: Text(
                       "Copyright 2025 Qutaiba Hassan. All Rights Reserved",
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 19,
-                      ),
+                      style: TextStyle(color: Colors.grey, fontSize: 19),
                     ),
                   ),
                 ),

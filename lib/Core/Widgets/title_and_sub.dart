@@ -14,26 +14,34 @@ class TitleAndSub extends StatelessWidget {
   Widget build(BuildContext context) {
     return HomeAnimation(
       beginOffset: Offset(0, -1),
-      child: FittedBox(
-        fit: BoxFit.scaleDown,
-        child: Column(
-          spacing: 10,
-          children: [
-            SizedBox(height: isMobile || isTablet ?  height * 0.07 : height * 0.15 ),
-            Text(
-              title,
-              style: TextStyle(color: Colors.grey, fontSize: 20),
-            ),
-            Text(
-              subTitle,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 30,
-                color: Colors.white
+      child: Column(
+        children: [
+          SizedBox(height:isTablet || isMobile ? height*0.06 : height*0.1,),
+          SizedBox(
+            height:  height*0.1,
+            width:isTablet || isMobile?  width*0.25 : width*0.1,
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Column(
+                spacing: 10,
+                children: [
+                  Text(
+                    title,
+                    style: TextStyle(color: Colors.grey, fontSize: 20),
+                  ),
+                  Text(
+                  subTitle,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                    color: Colors.white
+                  ),
+                ),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

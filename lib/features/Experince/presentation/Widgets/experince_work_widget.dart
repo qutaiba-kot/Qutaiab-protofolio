@@ -3,15 +3,15 @@ import 'package:protofolio/Core/Animations/home_animation.dart';
 import 'package:protofolio/Core/SupaBase/init_supabase.dart';
 import 'package:protofolio/Core/Theme/app_colors.dart';
 import 'package:protofolio/features/Experince/Responsive%20Helper/experince_responsive.dart';
-import 'package:protofolio/features/Experince/presentation/Widgets/experince_skill_card.dart';
+import 'package:protofolio/features/Experince/presentation/Widgets/experince_work_card.dart';
 
-class ExperinceSkillsWidget extends StatelessWidget {
+class ExperinceConatinerWidget extends StatelessWidget {
   final bool isMobile;
   final bool isTablet;
   final double height;
   final double width;
 
-  const ExperinceSkillsWidget({
+  const ExperinceConatinerWidget({
     super.key,
     required this.isMobile,
     required this.isTablet,
@@ -27,9 +27,18 @@ class ExperinceSkillsWidget extends StatelessWidget {
       height: height,
       width: width,
     );
-
+    final projects = List.generate(
+      profile!.company.length,
+      (index) => ExperinceWorkCard(
+        isMobile: isMobile,
+        isTablet: isTablet,
+        height: height,
+        width: width,
+        index: index,
+      ),
+    );
     return HomeAnimation(
-      beginOffset: const Offset(1, 0),
+      beginOffset: Offset(-1, 0),
       child: Container(
         decoration: BoxDecoration(
           color: AppColors.secondary,
@@ -38,15 +47,15 @@ class ExperinceSkillsWidget extends StatelessWidget {
         height: sizes.containerHeight,
         width: sizes.containerWidth,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            SizedBox(height: sizes.containerHeight * 0.03),
             SizedBox(
-              height: sizes.containerHeight * 0.07,
-              width: sizes.containerWidth * 0.15,
+              height: sizes.containerHeight*0.07,
+              width: sizes.containerWidth*0.15,
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: const Text(
-                  "Skills",
+                  "Work",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 25,
@@ -55,25 +64,7 @@ class ExperinceSkillsWidget extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: sizes.containerHeight * 0.1),
-            SizedBox(
-              height: sizes.containerHeight * 0.7,
-              width: sizes.containerWidth * 0.9,
-              child: SingleChildScrollView(
-                child: Wrap(
-                  alignment: WrapAlignment.center,
-                  spacing: 100,
-                  runSpacing: 100,
-                  children: profile!.skills.map((skill) {
-                    return ExperinceSkillCard(
-                      text: skill,
-                      height: sizes.containerHeight,
-                      width: sizes.containerWidth,
-                    );
-                  }).toList(),
-                ),
-              ),
-            ),
+           ...projects 
           ],
         ),
       ),

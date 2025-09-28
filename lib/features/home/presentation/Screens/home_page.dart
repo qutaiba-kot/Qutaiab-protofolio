@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                height: isMobile || isTablet ? height * 0.44 : height * 0.32,
+                height: isMobile || isTablet ? height * 0.4 : height * 0.32,
               ),
               isMobile || isTablet
                   ? IntroPersonaInfoWidget(
@@ -56,7 +56,7 @@ class HomePage extends StatelessWidget {
                       ],
                     ),
               SizedBox(
-                height: isMobile || isTablet ? height * 0.09 : height * 0.2,
+                height: isMobile || isTablet ? height * 0.13 : height * 0.2,
               ),
               SizedBox(
                 width: sizes.widthContainerTiele,

@@ -32,7 +32,7 @@ class AboutMePage extends StatelessWidget {
               subTitle: "About Me",
             ),
             SizedBox(
-              height: isMobile || isTablet ? height * 0.1 : height * 0.15,
+              height: isMobile || isTablet ? height * 0.05 : height * 0.1,
             ),
             isMobile || isTablet
                 ? Column(
