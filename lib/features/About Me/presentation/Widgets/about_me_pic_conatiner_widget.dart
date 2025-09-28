@@ -25,7 +25,7 @@ class AboutMePicConatinerWidget extends StatelessWidget {
     );
     return HomeAnimation(
       beginOffset: Offset(-1, 0),
-      child: Container(
+      child: SizedBox(
         height: sizes.picHeight,
         width: sizes.picWidth,
         child: ClipRRect(

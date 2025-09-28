@@ -35,7 +35,7 @@ class ProjectGitHubLinkButton extends StatelessWidget {
       width: sizes.buttonWidth,
       child: ElevatedButton(
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(AppColors.primary),
+          backgroundColor: WidgetStateProperty.all(AppColors.primary),
         ),
         onPressed: () {
           context.read<ProjectsCubit>().launchURL(

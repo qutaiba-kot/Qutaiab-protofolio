@@ -36,14 +36,15 @@ class DowmloadCvButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(40),
           ),
         ),
-        child: Text(
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          "Download CV",
-          style: TextStyle(
-            fontSize: sizes.buttonTextFontsize,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
+        child: FittedBox(
+          fit: BoxFit.fill,
+          child: Text(
+            "Download CV",
+            style: TextStyle(
+              fontSize:  120,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
           ),
         ),
       ),

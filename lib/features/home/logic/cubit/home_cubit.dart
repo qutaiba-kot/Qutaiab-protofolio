@@ -1,10 +1,10 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:io';
+// ignore: deprecated_member_use, avoid_web_libraries_in_flutter
 import 'dart:html' as html;
+// ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
-
 
 import 'package:path_provider/path_provider.dart';
 import 'package:protofolio/Core/SupaBase/init_supabase.dart';
@@ -15,7 +15,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   void downloadCv() async {
     final fileName = 'My_CV.pdf';
-    final fileUrl = profile!.cvLink; 
+    final fileUrl = profile!.cvLink;
 
     if (kIsWeb) {
       final response = await http.get(Uri.parse(fileUrl));
@@ -31,8 +31,6 @@ class HomeCubit extends Cubit<HomeState> {
       final dir = await getApplicationDocumentsDirectory();
       final file = File('${dir.path}/$fileName');
       await file.writeAsBytes(response.bodyBytes);
-
-      print('✅ الملف تم تنزيله إلى: ${file.path}');
     }
   }
 }

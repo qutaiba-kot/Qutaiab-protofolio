@@ -7,7 +7,7 @@ class ScreenState extends Equatable {
   final double height;
   final DeviceTypes deviceType;
 
-  ScreenState({
+ const ScreenState({
     required this.width,
     required this.height,
     required this.deviceType,

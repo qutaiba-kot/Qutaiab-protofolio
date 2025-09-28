@@ -6,11 +6,6 @@ class AboutMeResponsive {
 
   late final double containerHeight;
   late final double containerWidth;
-  late final double size;
-  late final double iconSize;
-  late final double titleSize;
-  late final double subTitleSize;
-  late final double bodySize;
   late final double picWidth;
   late final double picHeight;
   late final double parahraphHeight;
@@ -24,14 +19,6 @@ class AboutMeResponsive {
   }) {
     containerHeight = (isMobile || isTablet) ? height * 0.180 : height * 0.250;
     containerWidth = (isMobile || isTablet) ? width * 0.350 : width * 0.200;
-
-    iconSize = isMobile || isTablet ? 25 : 30;
-
-    titleSize = isMobile ? 15 : 20;
-
-    subTitleSize = isMobile ? 11 : 15;
-
-    bodySize = isMobile ? 12 : 17;
     picHeight = (isMobile || isTablet) ? height * 0.3 : height * 0.45;
     picWidth = (isMobile || isTablet) ? width * 0.7 : width * 0.3;
     parahraphHeight = isMobile

@@ -21,26 +21,27 @@ class AppBarCustomized extends StatelessWidget implements PreferredSizeWidget {
     return HomeAnimation(
       beginOffset: Offset(0, -1),
       child: AppBar(
-        backgroundColor: Colors.transparent, 
+        backgroundColor: Colors.transparent,
         forceMaterialTransparency: true,
-        title: Text(""),
-        leading: Text(""),
-        actions: [
-          if (isMobile || isTablet)
-            IconButton(
-              onPressed: () {
-                Scaffold.of(context).openEndDrawer();
-              },
-              icon: const Icon(Icons.menu , color: AppColors.primary),
-            )
-          else
-            RowSelectionPage(
-              width: width,
-              height: height,
-              isMobile: isMobile,
-              isTablet: isTablet,
-            ),
-        ],
+        title: !(isMobile || isTablet)
+            ? RowSelectionPage(
+                width: width,
+                height: height,
+                isMobile: isMobile,
+                isTablet: isTablet,
+              )
+            : null,
+        centerTitle: true,
+        actions: isMobile || isTablet
+            ? [
+                IconButton(
+                  onPressed: () {
+                    Scaffold.of(context).openEndDrawer();
+                  },
+                  icon: const Icon(Icons.menu, color: AppColors.primary),
+                ),
+              ]
+            : [],
       ),
     );
   }

@@ -26,29 +26,28 @@ class BurgerMenuDrawer extends StatelessWidget {
             selector: (state) =>
                 (state is PageViewNavigationChanged) ? state.pageIndex : 0,
             builder: (context, currentIndex) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Flexible(
-                    child: Text(
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+              return FittedBox(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
                       "Go To",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: width < 600 ? 20 : 40,
                       ),
                     ),
-                  ),
-                  ...navItems.map((item) {
-                    return _NavItem(
-                      title: item["title"] as String,
-                      index: item["index"] as int,
-                      isSelected: currentIndex == item["index"],
-                      fontSize: (width * 0.03),
-                    );
-                  }).toList(),
-                ],
+                    ...navItems.map((item) {
+                      return _NavItem(
+                        title: item["title"] as String,
+                        index: item["index"] as int,
+                        isSelected: currentIndex == item["index"],
+                        fontSize: (width * 0.03),
+                      );
+                    }),
+                  ],
+                ),
               );
             },
           ),
@@ -76,7 +75,7 @@ class _NavItem extends StatefulWidget {
 class _NavItemState extends State<_NavItem> {
   @override
   Widget build(BuildContext context) {
-    final bgColor = Colors.white.withOpacity(0.2);
+    final bgColor = Colors.white.withValues(alpha: 0.2);
     final textColor = widget.isSelected ? AppColors.primary : Colors.white;
 
     return GestureDetector(

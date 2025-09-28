@@ -9,7 +9,7 @@ class ExperiencePage extends StatelessWidget {
   final double width;
   final bool isMobile;
   final bool isTablet;
-  ExperiencePage({
+  const ExperiencePage({
     super.key,
     required this.height,
     required this.width,

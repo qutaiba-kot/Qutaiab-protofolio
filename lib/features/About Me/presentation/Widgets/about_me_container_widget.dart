@@ -39,42 +39,35 @@ class AboutMeContainerWidget extends StatelessWidget {
         border: Border.all(color: Colors.transparent, width: 1),
         borderRadius: BorderRadius.all(Radius.circular(40)),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Flexible(
-            child: Icon(icon, size: sizes.iconSize, color: Colors.white),
-          ),
-          Flexible(
-            child: Text(
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              title,
-              style: TextStyle(
-                fontSize: sizes.titleSize,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, size: 25, color: Colors.white),
+              Text(
+                title,
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-          ),
-          Flexible(
-            child: Text(
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              subTitle,
-              style: TextStyle(fontSize: sizes.subTitleSize, color: Colors.grey),
-            ),
-          ),
-          Flexible(
-            child: Text(
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              body,
-              style: TextStyle(fontSize: sizes.bodySize, color: Colors.grey),
-            ),
-          ),
-        ],
+              Text(
+                subTitle,
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Colors.grey,
+                ),
+              ),
+              Text(
+                body,
+                style: TextStyle(fontSize:15, color: Colors.grey),
+              ),
+          ],
+        ),
       ),
     );
   }

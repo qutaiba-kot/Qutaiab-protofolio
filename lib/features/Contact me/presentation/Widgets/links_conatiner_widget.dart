@@ -39,31 +39,30 @@ class LinksConatinerWidget extends StatelessWidget {
         ),
         height: sizes.containerHeight,
         width: sizes.containerWidth,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Row(
+            spacing: 50,
           children: [
-            _MyWidget(
-              icon: FontAwesomeIcons.github,
-              tilte: "GitHub",
-              action: profile!.gitHubLink,
-              width: sizes.containerWidth,
-              size: sizes.linksTextSize,
-            ),
-            _MyWidget(
-              icon: Icons.email,
-              tilte: "Email",
-              action: profile!.emailLink,
-              width: sizes.containerWidth,
-              size: sizes.linksTextSize,
-            ),
-            _MyWidget(
-              icon: FontAwesomeIcons.linkedin,
-              tilte: "linkedin",
-              action: profile!.linkedinLink,
-              width: sizes.containerWidth,
-              size: sizes.linksTextSize,
-            ),
-          ],
+              SizedBox(width: width*0.01,),
+              _MyWidget(
+                icon: FontAwesomeIcons.github,
+                tilte: "GitHub",
+                action: profile!.gitHubLink,
+              ),
+              _MyWidget(
+                icon: Icons.email,
+                tilte: "Email",
+                action: profile!.emailLink,
+              ),
+              _MyWidget(
+                icon: FontAwesomeIcons.linkedin,
+                tilte: "linkedin",
+                action: profile!.linkedinLink,
+              ),
+              SizedBox(width: width*0.01,),
+            ],
+          ),
         ),
       ),
     );
@@ -74,41 +73,25 @@ class _MyWidget extends StatelessWidget {
   final IconData icon;
   final String tilte;
   final String action;
-  final double width;
-  final double size;
   const _MyWidget({
     required this.icon,
     required this.tilte,
     required this.action,
-    required this.width,
-    required this.size,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: width * 0.3,
-      child: InkWell(
-        onTap: () {
-          context.read<ConatctCubit>().launchURL(action);
-        },
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Flexible(
-              child: Icon(icon, size: size, color: Colors.white),
-            ),
-            SizedBox(width: width * 0.02),
-            Flexible(
-              child: Text(
-                tilte,
-                style: TextStyle(fontSize: size, color: Colors.white),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
-              ),
-            ),
-          ],
-        ),
+    return InkWell(
+      onTap: () {
+        context.read<ConatctCubit>().launchURL(action);
+      },
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        spacing: 5,
+        children: [
+          Icon(icon, size: 20, color: Colors.white),
+          Text(tilte, style: TextStyle(fontSize: 20, color: Colors.white)),
+        ],
       ),
     );
   }

@@ -77,7 +77,7 @@ class ExperinceCard extends StatelessWidget {
                         ),
                         Flexible(
                           child: Text(
-                            "${profile!.company[index]}",
+                            profile!.company[index],
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: sizes.cardTextSizes,
@@ -107,7 +107,7 @@ class ExperinceCard extends StatelessWidget {
                         ),
                         Flexible(
                           child: Text(
-                            "${profile!.position[index]}",
+                            profile!.position[index],
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: sizes.cardTextSizes,
@@ -137,7 +137,7 @@ class ExperinceCard extends StatelessWidget {
                         ),
                         Flexible(
                           child: Text(
-                            "${profile!.workDuration[index]}",
+                            profile!.workDuration[index],
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: sizes.cardTextSizes,

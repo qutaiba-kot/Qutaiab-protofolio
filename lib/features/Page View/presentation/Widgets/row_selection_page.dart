@@ -41,13 +41,14 @@ class RowSelectionPage extends StatelessWidget {
           (state is PageViewNavigationChanged) ? state.pageIndex : 0,
       builder: (context, currentIndex) {
         return Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: navItems.map((item) {
             final isSelected = currentIndex == item["index"];
             final title = item["title"] as String;
             final index = item["index"] as int;
-
+        
             return Padding(
-              padding: EdgeInsets.only(right: width * 0.03),
+              padding: EdgeInsets.all(20),
               child: _NavItem(
                 title: title,
                 index: index,

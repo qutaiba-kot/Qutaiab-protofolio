@@ -37,14 +37,15 @@ class ContactMeButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(40),
           ),
         ),
-        child: Text(
-          "Contact Info",
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: TextStyle(
-            fontSize: sizes.buttonTextFontsize,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            "Contact Info",
+            style: TextStyle(
+              fontSize:  12.8,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
           ),
         ),
       ),

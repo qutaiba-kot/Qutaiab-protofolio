@@ -6,13 +6,9 @@ class HomeResponsive {
 
   late final double containerHeight;
   late final double containerWidth;
-  late final double helloFontsize;
-  late final double specializationFontsize;
-  late final double nameFontsize;
-  late final double buttonTextFontsize;
   late final double buttonHeight;
   late final double buttonWidth;
-  late final double picRadius;
+  late final double widthContainerTiele;
 
   HomeResponsive({
     required this.isMobile,
@@ -21,29 +17,13 @@ class HomeResponsive {
     required this.width,
   }) {
     containerHeight = height * 0.40;
-    containerWidth = isMobile || isTablet ? width * 0.80 : width * 0.30;
-    helloFontsize = isMobile
-        ? 20
+    containerWidth = isMobile
+        ? width * 0.6
         : isTablet
-        ? 30
-        : 30;
-    nameFontsize = isMobile
-        ? 30
-        : isTablet
-        ? 35
-        : 50;
-    specializationFontsize = isMobile
-        ? 20
-        : isTablet
-        ? 25
-        : 30;
-    buttonTextFontsize = isMobile || isTablet
-        ? 12
-        : 12.8;
-    buttonHeight = height * 0.1;
-    buttonWidth = isTablet ? width * 0.26: isMobile ? width * 0.39 :  width * 0.35;
-    picRadius = isMobile
-            ? (height * width) * 0.0003
-            : (height * width) * 0.00016;
+        ? width * 0.6
+        : width * 0.22;
+    buttonHeight = containerHeight * 0.2;
+    buttonWidth = isMobile || isTablet ? containerWidth*0.5 : containerWidth*1.5;
+    widthContainerTiele = isMobile || isTablet ? width * 0.41 : width * 0.21 ;
   }
 }

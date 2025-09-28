@@ -33,41 +33,42 @@ class ProjectConatinerWidjets extends StatelessWidget {
         border: Border.all(color: Colors.transparent, width: 1),
         borderRadius: BorderRadius.all(Radius.circular(40)),
       ),
-      height: sizes.outerContainerHeight,
-      width: sizes.outerContainerWidth,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          SizedBox(
-            height: sizes.innerContainerHeight,
-            width: sizes.innerContainerWidth,
-            child: ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-              child: Image.network(
-                profile!.projectPics[projectNumber],
-                fit: BoxFit.fill,
+      height: isMobile || isTablet ? sizes.outerContainerHeight : height* 0.55,
+      width: isMobile || isTablet ? sizes.outerContainerWidth : width* 0.2,
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            SizedBox(
+              height:isMobile || isTablet ? sizes.innerContainerHeight : height* 0.35,
+              width: isMobile || isTablet ?sizes.innerContainerWidth :  width* 0.085,
+              child: ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(20)),
+                child: Image.network(
+                  fit: BoxFit.fill,
+                  profile!.projectPics[projectNumber],
+                  
+                ),
               ),
             ),
-          ),
-          Flexible(
-            child: Text(
+            Text(
               profile!.projectNames[projectNumber],
               style: TextStyle(
-                fontSize: sizes.projectName,
+                fontSize: 17,
                 color: Colors.white,
               ),
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
             ),
-          ),
-          ProjectGitHubLinkButton(
-            projectNumber: projectNumber,
-            isMobile: isMobile,
-            isTablet: isTablet,
-            height: height,
-            width: width,
-          ),
-        ],
+            ProjectGitHubLinkButton(
+              projectNumber: projectNumber,
+              isMobile: isMobile,
+              isTablet: isTablet,
+              height: height,
+              width: width,
+            ),
+          ],
+        ),
       ),
     );
   }

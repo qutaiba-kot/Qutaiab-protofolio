@@ -12,32 +12,23 @@ class TitleAndSub extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double titleFontSize = isMobile
-              ? (width*height) * 0.000040
-              : isTablet
-              ? (width*height) * 0.000019
-              : (width*height) * 0.000012;
-          final double subTitleFontSize = isMobile
-              ? (width*height) * 0.00006
-              : isTablet
-              ? (width*height) * 0.00004
-              : (width*height) * 0.000019;
     return HomeAnimation(
       beginOffset: Offset(0, -1),
-      child: Container(
-        child:  Column(
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Column(
+          spacing: 10,
           children: [
-            SizedBox(height: height * 0.07),
+            SizedBox(height: isMobile || isTablet ?  height * 0.07 : height * 0.15 ),
             Text(
               title,
-              style: TextStyle(color: Colors.grey, fontSize: titleFontSize),
+              style: TextStyle(color: Colors.grey, fontSize: 20),
             ),
-            SizedBox(height: height * 0.01),
             Text(
               subTitle,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: subTitleFontSize,
+                fontSize: 30,
                 color: Colors.white
               ),
             ),

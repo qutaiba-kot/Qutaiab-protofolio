@@ -33,7 +33,7 @@ class ProjectPage extends StatelessWidget {
             title: "Browse My recent",
             subTitle: "Projects",
           ),
-          SizedBox(height: isMobile ||isTablet ? height * 0.07 : height * 0.1),
+          SizedBox(height: isMobile ||isTablet ? height * 0.07 : height * 0.05),
             isMobile || isTablet
                 ? ProjectColumn(
                     isMobile: isMobile,
