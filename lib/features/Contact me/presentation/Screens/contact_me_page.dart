@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:protofolio/Core/Animations/home_animation.dart';
+import 'package:protofolio/Core/Animations/main_animation.dart';
 import 'package:protofolio/Core/Widgets/title_and_sub.dart';
 import 'package:protofolio/features/Contact%20me/Responsive%20Helper/contact_me_responsive.dart';
 import 'package:protofolio/features/Contact%20me/logic/cubit/conatct_cubit.dart';
@@ -53,11 +53,14 @@ class ContactMePage extends StatelessWidget {
                         ? 0.04
                         : 0.05),
               ),
-              LinksConatinerWidget(
-                isMobile: isMobile,
-                isTablet: isTablet,
-                height: height,
-                width: width,
+              MainAnimation(
+                delay: const Duration(milliseconds: 600),
+                child: LinksConatinerWidget(
+                  isMobile: isMobile,
+                  isTablet: isTablet,
+                  height: height,
+                  width: width,
+                ),
               ),
               SizedBox(
                 height: isTablet
@@ -66,8 +69,8 @@ class ContactMePage extends StatelessWidget {
                     ? height * 0.3
                     : height * 0.3,
               ),
-              HomeAnimation(
-                beginOffset: Offset(0, 1),
+              MainAnimation(
+                delay: const Duration(milliseconds: 800),
                 child: SizedBox(
                   height: sizes.copyrightContainerHeight,
                   width: sizes.copyrightContainerWidth,

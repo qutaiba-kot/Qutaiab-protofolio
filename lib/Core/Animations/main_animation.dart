@@ -1,26 +1,32 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 
-class HomeAnimation extends StatefulWidget {
+class MainAnimation extends StatefulWidget {
   final Widget child;
   final Duration duration;
   final Offset beginOffset;
-  const HomeAnimation({
+  final Duration delay;
+
+  const MainAnimation({
     super.key,
     required this.child,
     this.duration = const Duration(milliseconds: 800),
-    this.beginOffset = const Offset(-1, 0),
+    this.beginOffset = const Offset(0, 0),
+    this.delay = Duration.zero,
   });
 
   @override
-  State<HomeAnimation> createState() => _ScaleSlideFadeAnimationState();
+  State<MainAnimation> createState() => _MainAnimationState();
 }
 
-class _ScaleSlideFadeAnimationState extends State<HomeAnimation>
+class _MainAnimationState extends State<MainAnimation>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
   late Animation<Offset> _slideAnimation;
   late Animation<double> _fadeAnimation;
+
+  Timer? _delayTimer; 
 
   @override
   void initState() {
@@ -43,14 +49,17 @@ class _ScaleSlideFadeAnimationState extends State<HomeAnimation>
     );
 
     _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeIn),
+      CurvedAnimation(parent: _controller, curve: Curves.fastEaseInToSlowEaseOut),
     );
 
-    _controller.forward();
+    _delayTimer = Timer(widget.delay, () {
+      if (mounted) _controller.forward();
+    });
   }
 
   @override
   void dispose() {
+    _delayTimer?.cancel();
     _controller.dispose();
     super.dispose();
   }

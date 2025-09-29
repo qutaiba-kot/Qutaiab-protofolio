@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:protofolio/Core/Animations/home_animation.dart';
+import 'package:protofolio/Core/Animations/main_animation.dart';
 import 'package:protofolio/Core/SupaBase/init_supabase.dart';
 import 'package:protofolio/features/About%20Me/Responsive%20Helper/about_me_responsive.dart';
 
@@ -23,8 +23,9 @@ class AboutMePicConatinerWidget extends StatelessWidget {
       height: height,
       width: width,
     );
-    return HomeAnimation(
-      beginOffset: Offset(-1, 0),
+    return MainAnimation(
+      
+      delay: const Duration(milliseconds: 600),
       child: SizedBox(
         height: sizes.picHeight,
         width: sizes.picWidth,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:protofolio/Core/Animations/home_animation.dart';
+import 'package:protofolio/Core/Animations/main_animation.dart';
 import 'package:protofolio/Core/SupaBase/init_supabase.dart';
 import 'package:protofolio/Core/Theme/app_colors.dart';
 import 'package:protofolio/features/Contact%20me/Responsive%20Helper/contact_me_responsive.dart';
@@ -30,7 +30,7 @@ class LinksConatinerWidget extends StatelessWidget {
       width: width,
     );
 
-    return HomeAnimation(
+    return MainAnimation(
       child: Container(
         decoration: BoxDecoration(
           color: AppColors.primary,

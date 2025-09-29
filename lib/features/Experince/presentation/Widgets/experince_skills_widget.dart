@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:protofolio/Core/Animations/home_animation.dart';
+import 'package:protofolio/Core/Animations/main_animation.dart';
 import 'package:protofolio/Core/SupaBase/init_supabase.dart';
 import 'package:protofolio/Core/Theme/app_colors.dart';
 import 'package:protofolio/features/Experince/Responsive%20Helper/experince_responsive.dart';
@@ -28,8 +28,8 @@ class ExperinceSkillsWidget extends StatelessWidget {
       width: width,
     );
 
-    return HomeAnimation(
-      beginOffset: const Offset(1, 0),
+    return MainAnimation(
+      delay: const Duration(milliseconds: 1000),
       child: Container(
         decoration: BoxDecoration(
           color: AppColors.secondary,

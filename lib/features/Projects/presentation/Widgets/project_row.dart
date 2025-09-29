@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:protofolio/Core/Animations/home_animation.dart';
+import 'package:protofolio/Core/Animations/main_animation.dart';
 import 'package:protofolio/features/Projects/presentation/Widgets/project_conatiner_widjets.dart';
 
 class ProjectRow extends StatelessWidget {
@@ -13,8 +13,9 @@ class ProjectRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       spacing: 80,
       children: [
-        HomeAnimation(
-          beginOffset: Offset(-1, 0),
+        MainAnimation(
+          
+          delay: const Duration(milliseconds: 600),
           child: ProjectConatinerWidjets(
             projectNumber: 0,
             isMobile: false,
@@ -23,8 +24,9 @@ class ProjectRow extends StatelessWidget {
             width: width,
           ),
         ),
-        HomeAnimation(
-          beginOffset: Offset(0, 1),
+        MainAnimation(
+          
+          delay: const Duration(milliseconds: 800),
           child: ProjectConatinerWidjets(
             projectNumber: 1,
             isMobile: false,
@@ -33,8 +35,9 @@ class ProjectRow extends StatelessWidget {
             width: width,
           ),
         ),
-        HomeAnimation(
-          beginOffset: Offset(1, 0),
+        MainAnimation(
+          
+          delay: const Duration(milliseconds: 1000),
           child: ProjectConatinerWidjets(
             projectNumber: 2,
             isMobile: false,

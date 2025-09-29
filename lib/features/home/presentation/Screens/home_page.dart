@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:protofolio/Core/Animations/main_animation.dart';
 import 'package:protofolio/features/home/Responsive%20Helper/home_responsive.dart';
 import 'package:protofolio/features/home/logic/cubit/home_cubit.dart';
 import 'package:protofolio/features/home/presentation/Widgets/intro_persona_info_widget.dart';
@@ -58,15 +59,18 @@ class HomePage extends StatelessWidget {
               SizedBox(
                 height: isMobile || isTablet ? height * 0.13 : height * 0.2,
               ),
-              SizedBox(
-                width: sizes.widthContainerTiele,
-                child: FittedBox(
-                  child: Text(
-                    "IN THE POWER OF FLUTTER",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 28,
+              MainAnimation(
+                delay: Duration(milliseconds: 200),
+                child: SizedBox(
+                  width: sizes.widthContainerTiele,
+                  child: FittedBox(
+                    child: Text(
+                      "IN THE POWER OF FLUTTER",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 28,
+                      ),
                     ),
                   ),
                 ),

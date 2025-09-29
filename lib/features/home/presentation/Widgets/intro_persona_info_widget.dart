@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:protofolio/Core/Animations/home_animation.dart';
+import 'package:protofolio/Core/Animations/main_animation.dart';
 import 'package:protofolio/Core/SupaBase/init_supabase.dart';
 import 'package:protofolio/Core/Theme/app_colors.dart';
 import 'package:protofolio/features/home/Responsive%20Helper/home_responsive.dart';
@@ -28,8 +28,8 @@ class IntroPersonaInfoWidget extends StatelessWidget {
       height: height,
       width: width,
     );
-    return HomeAnimation(
-      beginOffset: Offset(-1, 0),
+    return MainAnimation(
+      delay: Duration(milliseconds: 500),
       child: SizedBox(
         width: sizes.containerWidth,
         height: sizes.containerHeight,

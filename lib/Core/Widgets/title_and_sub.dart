@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:protofolio/Core/Animations/home_animation.dart';
+import 'package:protofolio/Core/Animations/main_animation.dart';
 
 class TitleAndSub extends StatelessWidget {
  final bool isMobile ;
@@ -12,8 +12,8 @@ class TitleAndSub extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HomeAnimation(
-      beginOffset: Offset(0, -1),
+    return MainAnimation(
+      delay: const Duration(milliseconds: 400),
       child: Column(
         children: [
           SizedBox(height:isTablet || isMobile ? height*0.06 : height*0.1,),

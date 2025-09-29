@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:protofolio/Core/Animations/home_animation.dart';
+import 'package:protofolio/Core/Animations/main_animation.dart';
 import 'package:protofolio/Core/SupaBase/init_supabase.dart';
 import 'package:protofolio/Core/Theme/app_colors.dart';
 import 'package:protofolio/features/Experince/Responsive%20Helper/experince_responsive.dart';
@@ -37,8 +37,8 @@ class ExperinceConatinerWidget extends StatelessWidget {
         index: index,
       ),
     );
-    return HomeAnimation(
-      beginOffset: Offset(-1, 0),
+    return MainAnimation(
+      delay: const Duration(milliseconds: 600),
       child: Container(
         decoration: BoxDecoration(
           color: AppColors.secondary,
@@ -50,8 +50,8 @@ class ExperinceConatinerWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             SizedBox(
-              height: sizes.containerHeight*0.07,
-              width: sizes.containerWidth*0.15,
+              height: sizes.containerHeight * 0.07,
+              width: sizes.containerWidth * 0.15,
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: const Text(
@@ -64,7 +64,7 @@ class ExperinceConatinerWidget extends StatelessWidget {
                 ),
               ),
             ),
-           ...projects 
+            ...projects,
           ],
         ),
       ),

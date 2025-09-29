@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:protofolio/Core/Animations/home_animation.dart';
+import 'package:protofolio/Core/Animations/main_animation.dart';
 import 'package:protofolio/Core/Theme/app_colors.dart';
 import 'package:protofolio/features/Page%20View/Responsive%20helper/page_view_responsive.dart';
 
@@ -33,8 +33,9 @@ class ScrollbarCustome extends StatelessWidget {
           isTablet: false,
           pageIndex: pageIndex,
         ).statusBar;
-        return HomeAnimation(
-          beginOffset: const Offset(1, 0),
+        return MainAnimation(
+          delay: Duration(milliseconds: 1200),
+          //beginOffset: const Offset(1, 0),
           child: Container(
             height: height * 0.65,
             width: width * 0.001,

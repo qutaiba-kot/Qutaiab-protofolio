@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:protofolio/Core/Animations/home_animation.dart';
+import 'package:protofolio/Core/Animations/main_animation.dart';
 import 'package:protofolio/Core/Theme/app_colors.dart';
 import 'package:protofolio/features/Page%20View/presentation/Widgets/row_selection_page.dart';
 
@@ -18,8 +18,9 @@ class AppBarCustomized extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HomeAnimation(
-      beginOffset: Offset(0, -1),
+    return MainAnimation(
+      delay: Duration(milliseconds: 900),
+      //beginOffset: Offset(0, 1),
       child: AppBar(
         backgroundColor: Colors.transparent,
         forceMaterialTransparency: true,
