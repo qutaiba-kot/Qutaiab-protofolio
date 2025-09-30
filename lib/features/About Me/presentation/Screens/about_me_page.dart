@@ -1,55 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:protofolio/Core/Sizer/main_sizer.dart';
 import 'package:protofolio/Core/Widgets/title_and_sub.dart';
 import 'package:protofolio/features/About%20Me/presentation/Widgets/about_me_pic_conatiner_widget.dart';
 import 'package:protofolio/features/About%20Me/presentation/Widgets/about_me_body.dart';
 
 class AboutMePage extends StatelessWidget {
-  final double height;
-  final double width;
-  final bool isMobile;
-  final bool isTablet;
+  final MainSizer mainSizer;
   const AboutMePage({
-    super.key,
-    required this.height,
-    required this.width,
-    required this.isMobile,
-    required this.isTablet,
+    super.key,required this.mainSizer
   });
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: SizedBox(
-        height: height,
+        height: mainSizer.height,
         child: Column(
           children: [
             TitleAndSub(
-              isMobile: isMobile,
-              isTablet: isTablet,
-              height: height,
-              width: width,
+              mainSizer: mainSizer,
               title: "Get To Know More",
               subTitle: "About Me",
             ),
             SizedBox(
-              height: isMobile || isTablet ? height * 0.05 : height * 0.1,
+              height: mainSizer.isMobile || mainSizer.isTablet ? mainSizer.height * 0.05 : mainSizer.height * 0.1,
             ),
-            isMobile || isTablet
+           mainSizer. isMobile || mainSizer.isTablet
                 ? Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       AboutMePicConatinerWidget(
-                        height: height,
-                        width: width,
-                        isMobile: isMobile,
-                        isTablet: isTablet,
+                        mainSizer: mainSizer,
                       ),
-                      SizedBox(height: height * 0.02),
+                      SizedBox(height: mainSizer.height * 0.02),
                       AboutMeBody(
-                        height: height,
-                        width: width,
-                        isMobile: isMobile,
-                        isTablet: isTablet,
+                        mainSizer: mainSizer,
                       ),
                     ],
                   )
@@ -57,17 +42,11 @@ class AboutMePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       AboutMePicConatinerWidget(
-                        height: height,
-                        width: width,
-                        isMobile: isMobile,
-                        isTablet: isTablet,
+                        mainSizer: mainSizer,
                       ),
-                      SizedBox(width: width * 0.030),
+                      SizedBox(width: mainSizer.width * 0.030),
                       AboutMeBody(
-                        height: height,
-                        width: width,
-                        isMobile: isMobile,
-                        isTablet: isTablet,
+                        mainSizer: mainSizer,
                       ),
                     ],
                   ),

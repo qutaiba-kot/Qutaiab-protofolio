@@ -4,26 +4,13 @@ import 'package:protofolio/features/Page%20View/logic/cubit/page_view_navigation
 import 'package:protofolio/features/home/Responsive%20Helper/home_responsive.dart';
 
 class ContactMeButton extends StatelessWidget {
-  final double height;
-  final double width;
-  final bool isMobile;
-  final bool isTablet;
+  final HomeResponsive sizes;
   const ContactMeButton({
-    super.key,
-    required this.height,
-    required this.width,
-    required this.isMobile,
-    required this.isTablet,
+    super.key, required this.sizes,
   });
 
   @override
   Widget build(BuildContext context) {
-    final sizes = HomeResponsive(
-      isMobile: isMobile,
-      isTablet: isTablet,
-      height: height,
-      width: width,
-    );
     return SizedBox(
       width: sizes.buttonWidth,
       height: sizes.buttonHeight,

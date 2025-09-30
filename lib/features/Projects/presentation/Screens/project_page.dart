@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:protofolio/Core/Sizer/main_sizer.dart';
 import 'package:protofolio/Core/Widgets/title_and_sub.dart';
 import 'package:protofolio/features/Projects/logic/cubit/projects_cubit.dart';
 import 'package:protofolio/features/Projects/presentation/Widgets/project_column.dart';
 import 'package:protofolio/features/Projects/presentation/Widgets/project_row.dart';
 
 class ProjectPage extends StatelessWidget {
-  final double height;
-  final double width;
-  final bool isMobile;
-  final bool isTablet;
+  final MainSizer mainSizer;
   const ProjectPage({
     super.key,
-    required this.height,
-    required this.width,
-    required this.isMobile,
-    required this.isTablet,
+    required this.mainSizer
   });
 
   @override
@@ -26,22 +21,16 @@ class ProjectPage extends StatelessWidget {
         child: Column(
           children: [
             TitleAndSub(
-            isMobile: isMobile,
-            isTablet: isTablet,
-            height: height,
-            width: width,
+            mainSizer: mainSizer,
             title: "Browse My recent",
             subTitle: "Projects",
           ),
-          SizedBox(height: isMobile ||isTablet ? height * 0.07 : height * 0.08),
-            isMobile || isTablet
+          SizedBox(height: mainSizer.isMobile ||mainSizer.isTablet ? mainSizer.height * 0.07 : mainSizer.height * 0.08),
+            mainSizer.isMobile || mainSizer.isTablet
                 ? ProjectColumn(
-                    isMobile: isMobile,
-                    isTablet: isTablet,
-                    height: height,
-                    width: width,
+                    mainSizer: mainSizer,
                   )
-                : ProjectRow(height: height, width: width),
+                : ProjectRow(mainSizer: mainSizer,),
           ],
         ),
       ),

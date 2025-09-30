@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:protofolio/Core/Sizer/main_sizer.dart';
 import 'package:protofolio/features/About%20Me/presentation/Screens/about_me_page.dart';
 import 'package:protofolio/features/Contact%20me/presentation/Screens/contact_me_page.dart';
 import 'package:protofolio/features/Experince/presentation/Screens/experience_page.dart';
@@ -8,17 +9,8 @@ import 'package:protofolio/features/Projects/presentation/Screens/project_page.d
 import 'package:protofolio/features/home/presentation/Screens/home_page.dart';
 
 class PageViewWidget extends StatelessWidget {
-  final double height;
-  final double width;
-  final bool isMobile;
-  final bool isTablet;
-  const PageViewWidget({
-    super.key,
-    required this.height,
-    required this.width,
-    required this.isMobile,
-    required this.isTablet,
-  });
+  final MainSizer mainSizer;
+  const PageViewWidget({super.key, required this.mainSizer});
 
   @override
   Widget build(BuildContext context) {
@@ -29,34 +21,19 @@ class PageViewWidget extends StatelessWidget {
       onPageChanged: pageCubit.changePage,
       children: [
         HomePage(
-          height: height,
-          width: width,
-          isMobile: isMobile,
-          isTablet: isTablet,
+          mainSizer: mainSizer,
         ),
         AboutMePage(
-          height: height,
-          width: width,
-          isMobile: isMobile,
-          isTablet: isTablet,
+          mainSizer: mainSizer,
         ),
         ExperiencePage(
-          height: height,
-          width: width,
-          isMobile: isMobile,
-          isTablet: isTablet,
+          mainSizer: mainSizer,
         ),
         ProjectPage(
-          height: height,
-          width: width,
-          isMobile: isMobile,
-          isTablet: isTablet,
+          mainSizer: mainSizer,
         ),
         ContactMePage(
-          height: height,
-          width: width,
-          isMobile: isMobile,
-          isTablet: isTablet,
+          mainSizer: mainSizer,
         ),
       ],
     );

@@ -8,26 +8,13 @@ import 'package:protofolio/features/home/presentation/Widgets/contact_me_button.
 import 'package:protofolio/features/home/presentation/Widgets/dowmload_cv_button.dart';
 
 class IntroPersonaInfoWidget extends StatelessWidget {
-  final bool isMobile;
-  final bool isTablet;
-  final double height;
-  final double width;
+  final HomeResponsive sizes;
   const IntroPersonaInfoWidget({
-    super.key,
-    required this.isMobile,
-    required this.isTablet,
-    required this.height,
-    required this.width,
+    super.key, required this.sizes,
   });
 
   @override
   Widget build(BuildContext context) {
-    final sizes = HomeResponsive(
-      isMobile: isMobile,
-      isTablet: isTablet,
-      height: height,
-      width: width,
-    );
     return MainAnimation(
       delay: Duration(milliseconds: 500),
       child: SizedBox(
@@ -64,17 +51,11 @@ class IntroPersonaInfoWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   DowmloadCvButton(
-                    isMobile: isMobile,
-                    isTablet: isTablet,
-                    height: sizes.containerHeight,
-                    width: sizes.containerHeight,
+                    sizes: sizes,
                   ),
                   SizedBox(width: sizes.containerHeight * 0.05),
                   ContactMeButton(
-                    isMobile: isMobile,
-                    isTablet: isTablet,
-                    height: sizes.containerHeight,
-                    width: sizes.containerHeight,
+                    sizes: sizes,
                   ),
                 ],
               ),

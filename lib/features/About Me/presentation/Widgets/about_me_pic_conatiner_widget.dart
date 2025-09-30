@@ -1,27 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:protofolio/Core/Animations/main_animation.dart';
+import 'package:protofolio/Core/Sizer/main_sizer.dart';
 import 'package:protofolio/Core/SupaBase/init_supabase.dart';
 import 'package:protofolio/features/About%20Me/Responsive%20Helper/about_me_responsive.dart';
 
 class AboutMePicConatinerWidget extends StatelessWidget {
-  final double height;
-  final double width;
-  final bool isMobile;
-  final bool isTablet;
+  final MainSizer mainSizer;
   const AboutMePicConatinerWidget({
-    super.key,
-    required this.height,
-    required this.width,
-    required this.isMobile,
-    required this.isTablet,
+    super.key,required this.mainSizer
   });
   @override
   Widget build(BuildContext context) {
     final sizes = AboutMeResponsive(
-      isMobile: isMobile,
-      isTablet: isTablet,
-      height: height,
-      width: width,
+     mainSizer: mainSizer
     );
     return MainAnimation(
       

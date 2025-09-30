@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:protofolio/Core/Sizer/main_sizer.dart';
 import 'package:protofolio/Core/Theme/app_colors.dart';
 import '../../Responsive Helper/about_me_responsive.dart';
 
@@ -7,29 +8,20 @@ class AboutMeContainerWidget extends StatelessWidget {
   final String title;
   final String subTitle;
   final String body;
-  final double height;
-  final double width;
-  final bool isMobile;
-  final bool isTablet;
+  final MainSizer mainSizer;
   const AboutMeContainerWidget({
     super.key,
     required this.icon,
     required this.title,
     required this.subTitle,
     required this.body,
-    required this.height,
-    required this.width,
-    required this.isMobile,
-    required this.isTablet,
+    required this.mainSizer
   });
 
   @override
   Widget build(BuildContext context) {
     final sizes = AboutMeResponsive(
-      isMobile: isMobile,
-      isTablet: isTablet,
-      height: height,
-      width: width,
+      mainSizer: mainSizer
     );
     return Container(
       height: sizes.containerHeight,

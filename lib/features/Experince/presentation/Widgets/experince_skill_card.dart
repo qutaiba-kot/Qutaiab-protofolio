@@ -23,7 +23,7 @@ class ExperinceSkillCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.5),
+            color: Colors.black.withValues( alpha: 0.5),
             spreadRadius: 1,
             blurRadius: 15,
             offset: Offset(0, 5),

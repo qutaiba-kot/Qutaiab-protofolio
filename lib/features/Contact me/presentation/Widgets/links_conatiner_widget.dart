@@ -2,32 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:protofolio/Core/Animations/main_animation.dart';
+import 'package:protofolio/Core/Sizer/main_sizer.dart';
 import 'package:protofolio/Core/SupaBase/init_supabase.dart';
 import 'package:protofolio/Core/Theme/app_colors.dart';
 import 'package:protofolio/features/Contact%20me/Responsive%20Helper/contact_me_responsive.dart';
 import 'package:protofolio/features/Contact%20me/logic/cubit/conatct_cubit.dart';
 
 class LinksConatinerWidget extends StatelessWidget {
-  final bool isMobile;
-  final bool isTablet;
-  final double height;
-  final double width;
+  final MainSizer mainSizer;
 
   const LinksConatinerWidget({
     super.key,
-    required this.isMobile,
-    required this.isTablet,
-    required this.height,
-    required this.width,
+    required this.mainSizer
   });
 
   @override
   Widget build(BuildContext context) {
     final sizes = ContactMeResponsive(
-      isMobile: isMobile,
-      isTablet: isTablet,
-      height: height,
-      width: width,
+      mainSizer: mainSizer
     );
 
     return MainAnimation(
@@ -44,7 +36,7 @@ class LinksConatinerWidget extends StatelessWidget {
           child: Row(
             spacing: 50,
           children: [
-              SizedBox(width: width*0.01,),
+              SizedBox(width: mainSizer.width*0.01,),
               _MyWidget(
                 icon: FontAwesomeIcons.github,
                 tilte: "GitHub",
@@ -60,7 +52,7 @@ class LinksConatinerWidget extends StatelessWidget {
                 tilte: "linkedin",
                 action: profile!.linkedinLink,
               ),
-              SizedBox(width: width*0.01,),
+              SizedBox(width:mainSizer. width*0.01,),
             ],
           ),
         ),

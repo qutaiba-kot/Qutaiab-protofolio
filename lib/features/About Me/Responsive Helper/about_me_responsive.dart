@@ -1,8 +1,7 @@
+import 'package:protofolio/Core/Sizer/main_sizer.dart';
+
 class AboutMeResponsive {
-  final bool isMobile;
-  final bool isTablet;
-  final double height;
-  final double width;
+  final MainSizer mainSizer;
 
   late final double containerHeight;
   late final double containerWidth;
@@ -12,24 +11,21 @@ class AboutMeResponsive {
   late final double parahraphWidth;
 
   AboutMeResponsive({
-    required this.isMobile,
-    required this.isTablet,
-    required this.height,
-    required this.width,
+    required this.mainSizer
   }) {
-    containerHeight = (isMobile || isTablet) ? height * 0.180 : height * 0.250;
-    containerWidth = (isMobile || isTablet) ? width * 0.350 : width * 0.200;
-    picHeight = (isMobile || isTablet) ? height * 0.3 : height * 0.45;
-    picWidth = (isMobile || isTablet) ? width * 0.7 : width * 0.3;
-    parahraphHeight = isMobile
-        ? height * 0.20
-        : isTablet
-        ? height * 0.15
-        : height * 0.20;
-    parahraphWidth = isMobile
-        ? width * 0.70
-        : isTablet
-        ? width * 0.70
-        : width * 0.40;
+    containerHeight = (mainSizer.isMobile || mainSizer.isTablet) ? mainSizer.height * 0.180 : mainSizer.height * 0.250;
+    containerWidth = (mainSizer.isMobile || mainSizer.isTablet) ?mainSizer. width * 0.350 : mainSizer.width * 0.200;
+    picHeight = (mainSizer.isMobile || mainSizer.isTablet) ?mainSizer. height * 0.3 : mainSizer.height * 0.45;
+    picWidth = (mainSizer.isMobile || mainSizer.isTablet) ? mainSizer.width * 0.7 :mainSizer. width * 0.3;
+    parahraphHeight = mainSizer.isMobile
+        ? mainSizer.height * 0.20
+        : mainSizer.isTablet
+        ? mainSizer.height * 0.15
+        : mainSizer.height * 0.20;
+    parahraphWidth = mainSizer.isMobile
+        ? mainSizer.width * 0.70
+        : mainSizer.isTablet
+        ? mainSizer.width * 0.70
+        : mainSizer.width * 0.40;
   }
 }

@@ -1,3 +1,5 @@
+import 'package:protofolio/Core/Sizer/main_sizer.dart';
+
 class ProjectsSizes {
   late final double outerContainerHeight;
   late final double outerContainerWidth;
@@ -7,18 +9,15 @@ class ProjectsSizes {
   late final double buttonWidth;
 
   ProjectsSizes({
-    required double height,
-    required double width,
-    required bool isMobile,
-    required bool isTablet,
+    required MainSizer mainSizer,
   }) {
-    outerContainerHeight = isTablet ? height * 0.55 : height * 0.55;
-    outerContainerWidth = width * 0.15;
+    outerContainerHeight = mainSizer.isTablet ? mainSizer.height * 0.55 : mainSizer.height * 0.55;
+    outerContainerWidth = mainSizer.width * 0.15;
     innerContainerHeight = outerContainerHeight * 0.6;
-    innerContainerWidth = isTablet
-        ? (height * 0.6) * 0.32
-        : isMobile
-        ? (height * 0.8) * 0.25
+    innerContainerWidth = mainSizer.isTablet
+        ? (mainSizer.height * 0.6) * 0.32
+        : mainSizer.isMobile
+        ? (mainSizer.height * 0.8) * 0.25
         : outerContainerWidth * 0.5;
     buttonHeight = innerContainerHeight * 0.1;
     buttonWidth = innerContainerWidth * 0.7;

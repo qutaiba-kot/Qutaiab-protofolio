@@ -1,33 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:protofolio/Core/Theme/app_colors.dart';
-import 'package:protofolio/features/Page%20View/Responsive%20helper/page_view_responsive.dart';
 import 'package:protofolio/features/Page%20View/logic/cubit/page_view_navigation_state.dart';
 import 'package:protofolio/features/Page%20View/logic/cubit/page_view_navigation_cubit.dart';
 
 class RowSelectionPage extends StatelessWidget {
-  final double width;
-  final double height;
-  final bool isMobile;
-  final bool isTablet;
-
   const RowSelectionPage({
     super.key,
-    required this.width,
-    required this.height,
-    required this.isMobile,
-    required this.isTablet,
   });
 
   @override
   Widget build(BuildContext context) {
-    final sizes = PageViewResponsive(
-      width: width,
-      height: height,
-      isMobile: isMobile,
-      isTablet: isTablet,
-    );
-
     final navItems = [
       {"title": "Home", "index": 0},
       {"title": "About", "index": 1},
@@ -53,7 +36,7 @@ class RowSelectionPage extends StatelessWidget {
                 title: title,
                 index: index,
                 isSelected: isSelected,
-                fontSize: sizes.fontSize,
+                fontSize: 20,
               ),
             );
           }).toList(),

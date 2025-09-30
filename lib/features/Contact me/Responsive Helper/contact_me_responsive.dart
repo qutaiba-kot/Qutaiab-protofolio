@@ -1,8 +1,7 @@
+import 'package:protofolio/Core/Sizer/main_sizer.dart';
+
 class ContactMeResponsive {
-  final bool isMobile;
-  final bool isTablet;
-  final double height;
-  final double width;
+  final MainSizer mainSizer;
 
   final double containerHeight;
   final double containerWidth;
@@ -10,21 +9,18 @@ class ContactMeResponsive {
   final double copyrightContainerHeight;
 
   ContactMeResponsive({
-    required this.isMobile,
-    required this.isTablet,
-    required this.height,
-    required this.width,
-  }) : copyrightContainerHeight = height * 0.03,
-       copyrightContainerWidth = isMobile || isTablet ? width * 0.72:  width * 0.3,
-       containerHeight = isMobile
-           ? height * 0.070
-           : isTablet
-           ? height * 0.090
-           : height * 0.08,
+    required this.mainSizer
+  }) : copyrightContainerHeight = mainSizer.height * 0.03,
+       copyrightContainerWidth = mainSizer.isMobile || mainSizer.isTablet ?mainSizer. width * 0.72:  mainSizer.width * 0.3,
+       containerHeight =mainSizer. isMobile
+           ? mainSizer.height * 0.070
+           : mainSizer.isTablet
+           ? mainSizer.height * 0.090
+           : mainSizer.height * 0.08,
 
-       containerWidth = isMobile
-           ? width * 0.75
-           : isTablet
-           ? width * 0.45
-           : width * 0.29;
+       containerWidth =mainSizer. isMobile
+           ?mainSizer. width * 0.75
+           :mainSizer. isTablet
+           ?mainSizer. width * 0.45
+           : mainSizer.width * 0.29;
 }

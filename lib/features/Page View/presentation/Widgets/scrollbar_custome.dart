@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:protofolio/Core/Animations/main_animation.dart';
+import 'package:protofolio/Core/Sizer/main_sizer.dart';
 import 'package:protofolio/Core/Theme/app_colors.dart';
 import 'package:protofolio/features/Page%20View/Responsive%20helper/page_view_responsive.dart';
 
@@ -8,12 +9,10 @@ import '../../logic/cubit/page_view_navigation_cubit.dart';
 import '../../logic/cubit/page_view_navigation_state.dart';
 
 class ScrollbarCustome extends StatelessWidget {
-  final double height;
-  final double width;
+  final MainSizer mainSizer;
   const ScrollbarCustome({
     super.key,
-    required this.height,
-    required this.width,
+    required this.mainSizer
   });
 
   @override
@@ -26,27 +25,23 @@ class ScrollbarCustome extends StatelessWidget {
         return 0;
       },
       builder: (context, pageIndex) {
-        final double statusBar = PageViewResponsive(
-          width: width,
-          height: height,
-          isMobile: false,
-          isTablet: false,
+        final double statusBarHeight = PageViewResponsive(
+          mainSizer: mainSizer,
           pageIndex: pageIndex,
         ).statusBar;
         return MainAnimation(
           delay: Duration(milliseconds: 1200),
-          //beginOffset: const Offset(1, 0),
           child: Container(
-            height: height * 0.65,
-            width: width * 0.001,
+            height: mainSizer.height * 0.65,
+            width: mainSizer.width * 0.001,
             color: Colors.blueGrey,
             child: Align(
               alignment: Alignment.topCenter,
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 600),
                 curve: Curves.easeInOut,
-                height: statusBar,
-                width: width * 0.005,
+                height: statusBarHeight,
+                width: mainSizer.width * 0.005,
                 decoration: BoxDecoration(
                   color: AppColors.primary,
                   borderRadius: BorderRadius.circular(5),

@@ -1,30 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:protofolio/Core/Sizer/main_sizer.dart';
 import 'package:protofolio/Core/SupaBase/init_supabase.dart';
 import 'package:protofolio/Core/Theme/app_colors.dart';
 import 'package:protofolio/features/Experince/Responsive%20Helper/experince_responsive.dart';
 
 class ExperinceWorkCard extends StatelessWidget {
-  final bool isMobile;
-  final bool isTablet;
-  final double height;
-  final double width;
+  final MainSizer mainSizer;
   final int index;
   const ExperinceWorkCard({
     super.key,
-    required this.isMobile,
-    required this.isTablet,
-    required this.height,
-    required this.width,
+    required this.mainSizer,
     required this.index,
   });
 
   @override
   Widget build(BuildContext context) {
     final sizes = ExperinceResponsive(
-      isMobile: isMobile,
-      isTablet: isTablet,
-      height: height,
-      width: width,
+      mainSizer: mainSizer
     );
     return Container(
       decoration: BoxDecoration(
@@ -32,7 +24,7 @@ class ExperinceWorkCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.5), // ظل خفيف
+            color: Colors.black.withValues(alpha: 0.5), // ظل خفيف
             spreadRadius: 1, // قليل جدًا
             blurRadius: 15, // يجعل الظل ناعم
             offset: Offset(0, 5), // يجعل العنصر يبدو مرتفعًا قليلًا

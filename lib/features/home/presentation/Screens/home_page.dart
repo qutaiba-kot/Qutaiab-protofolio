@@ -1,70 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:protofolio/Core/Animations/main_animation.dart';
+import 'package:protofolio/Core/Sizer/main_sizer.dart';
 import 'package:protofolio/features/home/Responsive%20Helper/home_responsive.dart';
 import 'package:protofolio/features/home/logic/cubit/home_cubit.dart';
 import 'package:protofolio/features/home/presentation/Widgets/intro_persona_info_widget.dart';
 
 class HomePage extends StatelessWidget {
-  final double height;
-  final double width;
-  final bool isMobile;
-  final bool isTablet;
-  const HomePage({
-    super.key,
-    required this.height,
-    required this.width,
-    required this.isMobile,
-    required this.isTablet,
-  });
+  final MainSizer mainSizer;
+  const HomePage({super.key, required this.mainSizer});
 
   @override
   Widget build(BuildContext context) {
     final sizes = HomeResponsive(
-      isMobile: isMobile,
-      isTablet: isTablet,
-      height: height,
-      width: width,
+      mainSizer: mainSizer
     );
     return BlocProvider(
       create: (context) => HomeCubit(),
       child: SizedBox(
-        width: width,
-        height: height,
+        width: mainSizer.width,
+        height: mainSizer.width,
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                height: isMobile || isTablet ? height * 0.4 : height * 0.32,
+                height: mainSizer.isMobile || mainSizer.isTablet
+                    ? mainSizer.height * 0.4
+                    : mainSizer.height * 0.32,
               ),
-              isMobile || isTablet
-                  ? IntroPersonaInfoWidget(
-                      isTablet: isTablet,
-                      isMobile: isMobile,
-                      height: height,
-                      width: width,
-                    )
+              mainSizer.isMobile || mainSizer.isTablet
+                  ? IntroPersonaInfoWidget(sizes: sizes)
                   : Row(
                       children: [
-                        SizedBox(width: width * 0.1),
-                        IntroPersonaInfoWidget(
-                          isTablet: false,
-                          isMobile: false,
-                          height: height,
-                          width: width,
-                        ),
+                        SizedBox(width: mainSizer.width * 0.1),
+                        IntroPersonaInfoWidget(sizes: sizes),
                       ],
                     ),
               SizedBox(
-                height: isMobile || isTablet ? height * 0.13 : height * 0.2,
+                height: mainSizer.isMobile || mainSizer.isTablet
+                    ? mainSizer.height * 0.13
+                    : mainSizer.height * 0.2,
               ),
               MainAnimation(
                 delay: Duration(milliseconds: 200),
                 child: SizedBox(
-                  width: sizes.widthContainerTiele,
+                  width: sizes.widthContainerTitle,
                   child: FittedBox(
-                    child: Text(
+                    child: const Text(
                       "IN THE POWER OF FLUTTER",
                       style: TextStyle(
                         color: Colors.white,

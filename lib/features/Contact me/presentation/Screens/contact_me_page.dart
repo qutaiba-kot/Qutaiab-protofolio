@@ -1,73 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:protofolio/Core/Animations/main_animation.dart';
+import 'package:protofolio/Core/Sizer/main_sizer.dart';
 import 'package:protofolio/Core/Widgets/title_and_sub.dart';
 import 'package:protofolio/features/Contact%20me/Responsive%20Helper/contact_me_responsive.dart';
 import 'package:protofolio/features/Contact%20me/logic/cubit/conatct_cubit.dart';
 import 'package:protofolio/features/Contact%20me/presentation/Widgets/links_conatiner_widget.dart';
 
 class ContactMePage extends StatelessWidget {
-  final double height;
-  final double width;
-  final bool isMobile;
-  final bool isTablet;
+  final MainSizer mainSizer;
   const ContactMePage({
     super.key,
-    required this.height,
-    required this.width,
-    required this.isMobile,
-    required this.isTablet,
+    required this.mainSizer
   });
 
   @override
   Widget build(BuildContext context) {
     final sizes = ContactMeResponsive(
-      isMobile: isMobile,
-      isTablet: isTablet,
-      height: height,
-      width: width,
+      mainSizer: mainSizer
     );
     return BlocProvider(
       create: (context) => ConatctCubit(),
       child: SingleChildScrollView(
         child: SizedBox(
-          height: height,
+          height: mainSizer.height,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: height * (isMobile ? 0.3 : 0.2)),
+              SizedBox(height: mainSizer.height * (mainSizer.isMobile ? 0.3 : 0.2)),
               TitleAndSub(
-                isMobile: isMobile,
-                isTablet: isTablet,
-                height: height,
-                width: width,
+                mainSizer: mainSizer,
                 title: "Get In Touch",
                 subTitle: "Contact Me",
               ),
               SizedBox(
                 height:
-                    height *
-                    (isMobile
+                   mainSizer. height *
+                    (mainSizer.isMobile
                         ? 0.03
-                        : isTablet
+                        : mainSizer.isTablet
                         ? 0.04
                         : 0.05),
               ),
               MainAnimation(
                 delay: const Duration(milliseconds: 600),
                 child: LinksConatinerWidget(
-                  isMobile: isMobile,
-                  isTablet: isTablet,
-                  height: height,
-                  width: width,
+                  mainSizer: mainSizer,
                 ),
               ),
               SizedBox(
-                height: isTablet
-                    ? height * 0.2
-                    : isMobile
-                    ? height * 0.3
-                    : height * 0.3,
+                height: mainSizer.isTablet
+                    ? mainSizer.height * 0.2
+                    : mainSizer.isMobile
+                    ? mainSizer.height * 0.3
+                    : mainSizer.height * 0.3,
               ),
               MainAnimation(
                 delay: const Duration(milliseconds: 800),

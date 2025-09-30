@@ -1,29 +1,25 @@
+import 'package:protofolio/Core/Sizer/main_sizer.dart';
+
 class HomeResponsive {
-  final bool isMobile;
-  final bool isTablet;
-  final double height;
-  final double width;
+  final MainSizer mainSizer;
 
   late final double containerHeight;
   late final double containerWidth;
   late final double buttonHeight;
   late final double buttonWidth;
-  late final double widthContainerTiele;
+  late final double widthContainerTitle;
 
   HomeResponsive({
-    required this.isMobile,
-    required this.isTablet,
-    required this.height,
-    required this.width,
+    required this.mainSizer
   }) {
-    containerHeight = height * 0.40;
-    containerWidth = isMobile
-        ? width * 0.6
-        : isTablet
-        ? width * 0.6
-        : width * 0.22;
-    buttonHeight = containerHeight * 0.2;
-    buttonWidth = isMobile || isTablet ? containerWidth*0.5 : containerWidth*1.5;
-    widthContainerTiele = isMobile || isTablet ? width * 0.41 : width * 0.21 ;
+    containerHeight = mainSizer.height * 0.40;
+    containerWidth = mainSizer.isMobile
+        ? mainSizer.width * 0.6
+        : mainSizer.isTablet
+        ? mainSizer.width * 0.6
+        : mainSizer.width * 0.22;
+    buttonHeight = containerHeight * 0.1;
+    buttonWidth =containerWidth*0.35;
+    widthContainerTitle = mainSizer.isMobile || mainSizer.isTablet ? mainSizer.width * 0.41 : mainSizer.width * 0.21 ;
   }
 }

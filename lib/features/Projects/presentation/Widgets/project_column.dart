@@ -1,18 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:protofolio/Core/Sizer/main_sizer.dart';
 import 'package:protofolio/features/Projects/presentation/Widgets/project_conatiner_widjets.dart';
 
 class ProjectColumn extends StatelessWidget {
-  final bool isMobile;
-  final bool isTablet;
-  final double height;
-  final double width;
+  final MainSizer mainSizer;
   const ProjectColumn({
     super.key,
-    required this.isMobile,
-    required this.isTablet,
-    required this.height,
-    required this.width,
+    required this.mainSizer
   });
 
   @override
@@ -21,18 +16,15 @@ class ProjectColumn extends StatelessWidget {
       3,
       (index) => ProjectConatinerWidjets(
         projectNumber: index,
-        isMobile: isMobile,
-        isTablet: isTablet,
-        height: height,
-        width: width,
+        mainSizer: mainSizer,
       ),
     );
 
     return CarouselSlider(
       items: projects,
       options: CarouselOptions(
-        height: height * 0.6,
-        viewportFraction: isMobile ? 0.8 : 0.6,
+        height: mainSizer.height * 0.6,
+        viewportFraction: mainSizer.isMobile ? 0.8 : 0.6,
         initialPage: 0,
         enableInfiniteScroll: true,
         reverse: false,

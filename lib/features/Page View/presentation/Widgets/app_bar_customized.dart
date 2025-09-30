@@ -6,12 +6,8 @@ import 'package:protofolio/features/Page%20View/presentation/Widgets/row_selecti
 class AppBarCustomized extends StatelessWidget implements PreferredSizeWidget {
   final bool isMobile;
   final bool isTablet;
-  final double width;
-  final double height;
   const AppBarCustomized({
     super.key,
-    required this.width,
-    required this.height,
     required this.isMobile,
     required this.isTablet,
   });
@@ -20,12 +16,11 @@ class AppBarCustomized extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return MainAnimation(
       delay: Duration(milliseconds: 900),
-      //beginOffset: Offset(0, 1),
       child: AppBar(
         backgroundColor: Colors.transparent,
         forceMaterialTransparency: true,
         title: !(isMobile || isTablet)
-            ? RowSelectionPage(width: width, height: height, isMobile: isMobile, isTablet: isTablet)
+            ? RowSelectionPage()
             : null,
         centerTitle: false,
         actions: isMobile || isTablet

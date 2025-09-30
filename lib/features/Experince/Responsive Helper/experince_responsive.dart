@@ -1,29 +1,25 @@
+import 'package:protofolio/Core/Sizer/main_sizer.dart';
+
 class ExperinceResponsive {
-  final bool isMobile;
-  final bool isTablet;
-  final double height;
-  final double width;
+  final MainSizer mainSizer;
 
   late double containerWidth;
   late double containerHeight;
 
   ExperinceResponsive({
-    required this.isMobile,
-    required this.isTablet,
-    required this.height,
-    required this.width,
+    required this.mainSizer
   }) {
-    containerWidth = isMobile
-        ? width * 0.7
-        : isTablet
-        ? width * 0.55
-        : width * 0.25;
+    containerWidth = mainSizer.isMobile
+        ? mainSizer.width * 0.7
+        : mainSizer.isTablet
+        ? mainSizer.width * 0.55
+        :mainSizer. width * 0.25;
 
 
-    containerHeight = isMobile
-        ? height *0.55
-        : isTablet
-        ? height * 0.55
-        : height * 0.55;
+    containerHeight = mainSizer.isMobile
+        ? mainSizer.height *0.55
+        : mainSizer.isTablet
+        ? mainSizer.height * 0.55
+        : mainSizer.height * 0.55;
   }
 }

@@ -4,25 +4,12 @@ import 'package:protofolio/features/home/Responsive%20Helper/home_responsive.dar
 import 'package:protofolio/features/home/logic/cubit/home_cubit.dart';
 
 class DowmloadCvButton extends StatelessWidget {
-  final double height;
-  final double width;
-  final bool isMobile;
-  final bool isTablet;
+  final HomeResponsive sizes;
   const DowmloadCvButton({
-    super.key,
-    required this.height,
-    required this.width,
-    required this.isMobile,
-    required this.isTablet,
+    super.key, required this.sizes,
   });
   @override
   Widget build(BuildContext context) {
-    final sizes = HomeResponsive(
-      isMobile: isMobile,
-      isTablet: isTablet,
-      height: height,
-      width: width,
-    );
     return SizedBox(
       width: sizes.buttonWidth,
       height:sizes.buttonHeight,
@@ -41,7 +28,7 @@ class DowmloadCvButton extends StatelessWidget {
           child: Text(
             "Download CV",
             style: TextStyle(
-              fontSize:  120,
+              fontSize:  12.8,
               fontWeight: FontWeight.bold,
               color: Colors.black,
             ),

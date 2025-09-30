@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:protofolio/Core/Animations/main_animation.dart';
+import 'package:protofolio/Core/Sizer/main_sizer.dart';
 
 class TitleAndSub extends StatelessWidget {
- final bool isMobile ;
- final bool isTablet ; 
- final double height ; 
- final double width ; 
+ final MainSizer mainSizer; 
  final String title ; 
  final String subTitle ;
-  const TitleAndSub({super.key, required this.isMobile, required this.isTablet, required this.height, required this.width, required this.title, required this.subTitle});
+  const TitleAndSub({super.key,required this.mainSizer, required this.title, required this.subTitle});
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +14,10 @@ class TitleAndSub extends StatelessWidget {
       delay: const Duration(milliseconds: 400),
       child: Column(
         children: [
-          SizedBox(height:isTablet || isMobile ? height*0.06 : height*0.1,),
+          SizedBox(height:mainSizer.isTablet || mainSizer.isMobile ? mainSizer.height*0.06 : mainSizer.height*0.1,),
           SizedBox(
-            height:  height*0.1,
-            width:isTablet || isMobile?  width*0.25 : width*0.1,
+            height:  mainSizer.height*0.1,
+            width:mainSizer.isTablet || mainSizer.isMobile?  mainSizer.width*0.25 : mainSizer.width*0.1,
             child: FittedBox(
               fit: BoxFit.scaleDown,
               child: Column(

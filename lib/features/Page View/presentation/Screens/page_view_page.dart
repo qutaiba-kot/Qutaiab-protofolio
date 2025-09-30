@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:protofolio/Core/Sizer/main_sizer.dart';
 import 'package:protofolio/Core/SupaBase/init_supabase.dart';
 import 'package:protofolio/features/Page%20View/Responsive%20helper/page_view_responsive.dart';
 import 'package:protofolio/Core/cubit/screen_cubit.dart';
@@ -22,75 +23,60 @@ class PageViewNavigation extends StatelessWidget {
         BlocProvider(create: (_) => ScreenCubit()),
         BlocProvider(create: (_) => PageViewNavigationCubit()),
       ],
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          final width = constraints.maxWidth;
-          final height = constraints.maxHeight;
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            context.read<ScreenCubit>().updateWidth(width, height);
-          });
-          return BlocSelector<ScreenCubit, ScreenState, DeviceTypes>(
-            selector: (state) => state.deviceType,
-            builder: (context, deviceType) {
-              final isMobile = deviceType == DeviceTypes.mobile;
-              final isTablet = deviceType == DeviceTypes.tablet;
-              final sizes = PageViewResponsive(
-                width: width,
-                height: height,
-                isMobile: isMobile,
-                isTablet: isTablet,
-              );
-              return Scaffold(
-                backgroundColor: Colors.black,
-                extendBodyBehindAppBar: true,
-                appBar: AppBarCustomized(
-                  width: width,
-                  height: height,
-                  isMobile: isMobile,
-                  isTablet: isTablet,
-                ),
-                endDrawer: isMobile || isTablet
-                    ? BurgerMenuDrawer(width: width, height: height)
-                    : null,
-                body: Stack(
-                  children: [
-                    isTablet || isMobile
-                        ? Positioned.fill(
-                            child: Image.network(
-                              profile!.mobAndTabBackgroundPic,
-                            ),
-                          )
-                        : Positioned.fill(
-                            child: Image.network(profile!.pcBackgroundPic),
-                          ),
-                    PageViewWidget(
-                      height: height,
-                      width: width,
-                      isMobile: isMobile,
-                      isTablet: isTablet,
-                    ),
-                    Positioned(
-                      bottom: height * 0.15,
-                      right: width * 0.015,
-                      child: Offstage(
-                        offstage: isTablet || isMobile,
-                        child: ScrollbarCustome(height: height, width: width),
+      child: BlocSelector<ScreenCubit, ScreenState, DeviceTypes>(
+        selector: (state) => state.deviceType,
+        builder: (context, deviceType) {
+          final width = MediaQuery.of(context).size.width;
+          final height = MediaQuery.of(context).size.height;
+          context.read<ScreenCubit>().updateWidth(width, height);
+          final isMobile = deviceType == DeviceTypes.mobile;
+          final isTablet = deviceType == DeviceTypes.tablet;
+          final mainSizer = MainSizer(height: height, width: width, isMobile: isMobile, isTablet: isTablet);
+          final sizes = PageViewResponsive(
+            mainSizer: mainSizer
+          );
+          return Scaffold(
+            backgroundColor: Colors.black,
+            extendBodyBehindAppBar: true,
+            appBar: AppBarCustomized(
+              isMobile: isMobile,
+              isTablet: isTablet,
+            ),
+            endDrawer: isMobile || isTablet
+                ? BurgerMenuDrawer(width: width, height: height)
+                : null,
+            body: Stack(
+              children: [
+                isTablet || isMobile
+                    ? Positioned.fill(
+                        child: Image.network(profile!.mobAndTabBackgroundPic),
+                      )
+                    : Positioned.fill(
+                        child: Image.network(profile!.pcBackgroundPic),
                       ),
-                    ),
-                    Positioned(
-                      bottom: height * 0.8,
-                      right: sizes.positionedWidth,
-                      child: const PreviousPageButton(),
-                    ),
-                    Positioned(
-                      bottom: height * 0.1,
-                      right: sizes.positionedWidth,
-                      child: const NextPageButton(),
-                    ),
-                  ],
+                PageViewWidget(
+                  mainSizer: mainSizer,
                 ),
-              );
-            },
+                Positioned(
+                  bottom: height * 0.15,
+                  right: width * 0.015,
+                  child: Offstage(
+                    offstage: isTablet || isMobile,
+                    child: ScrollbarCustome(mainSizer: mainSizer,),
+                  ),
+                ),
+                Positioned(
+                  bottom: height * 0.8,
+                  right: sizes.positionedWidth,
+                  child: const PreviousPageButton(),
+                ),
+                Positioned(
+                  bottom: height * 0.1,
+                  right: sizes.positionedWidth,
+                  child: const NextPageButton(),
+                ),
+              ],
+            ),
           );
         },
       ),
