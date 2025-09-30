@@ -6,7 +6,12 @@ import 'package:protofolio/features/Page%20View/logic/cubit/page_view_navigation
 
 class BurgerMenuDrawer extends StatelessWidget {
   final double width;
-  const BurgerMenuDrawer({super.key, required this.width});
+  final double height;
+  const BurgerMenuDrawer({
+    super.key,
+    required this.width,
+    required this.height,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +22,6 @@ class BurgerMenuDrawer extends StatelessWidget {
       {"title": "Projects", "index": 3},
       {"title": "Contacts", "index": 4},
     ];
-
     return Drawer(
       width: width * 0.3,
       backgroundColor: AppColors.secondary,
@@ -26,28 +30,41 @@ class BurgerMenuDrawer extends StatelessWidget {
             selector: (state) =>
                 (state is PageViewNavigationChanged) ? state.pageIndex : 0,
             builder: (context, currentIndex) {
-              return FittedBox(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      "Go To",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: width < 600 ? 20 : 40,
+              return Column(
+                children: [
+                  SizedBox(height: height * 0.05),
+                  SizedBox(
+                    height: height * 0.05,
+                    width: width * 0.3,
+                    child: FittedBox(
+                      child: Text(
+                        "Go To",
+                        style: TextStyle(color: Colors.white, fontSize: 30),
                       ),
                     ),
-                    ...navItems.map((item) {
-                      return _NavItem(
-                        title: item["title"] as String,
-                        index: item["index"] as int,
-                        isSelected: currentIndex == item["index"],
-                        fontSize: (width * 0.03),
-                      );
-                    }),
-                  ],
-                ),
+                  ),
+                  Divider(color: Colors.white,thickness: 1,),
+                  SizedBox(height: height * 0.05),
+                  SizedBox(
+                    height: height * 0.4,
+                    width: width * 0.3,
+                    child: FittedBox(
+                      child: Column(
+                        spacing: 20,
+                        children: [
+                          ...navItems.map((item) {
+                            return _NavItem(
+                              title: item["title"] as String,
+                              index: item["index"] as int,
+                              isSelected: currentIndex == item["index"],
+                              fontSize: (10),
+                            );
+                          }),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               );
             },
           ),
@@ -75,7 +92,6 @@ class _NavItem extends StatefulWidget {
 class _NavItemState extends State<_NavItem> {
   @override
   Widget build(BuildContext context) {
-    final bgColor = Colors.white.withValues(alpha: 0.2);
     final textColor = widget.isSelected ? AppColors.primary : Colors.white;
 
     return GestureDetector(
@@ -83,19 +99,9 @@ class _NavItemState extends State<_NavItem> {
         Scaffold.of(context).closeEndDrawer();
         context.read<PageViewNavigationCubit>().changePage(widget.index);
       },
-
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-        margin: const EdgeInsets.symmetric(vertical: 4),
-        decoration: BoxDecoration(
-          color: bgColor,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Text(
-          widget.title,
-          style: TextStyle(fontSize: widget.fontSize, color: textColor),
-        ),
+      child: Text(
+        widget.title,
+        style: TextStyle(fontSize: widget.fontSize, color: textColor),
       ),
     );
   }

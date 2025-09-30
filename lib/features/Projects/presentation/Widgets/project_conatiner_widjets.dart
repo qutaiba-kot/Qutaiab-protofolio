@@ -38,7 +38,7 @@ class ProjectConatinerWidjets extends StatelessWidget {
       child: FittedBox(
         fit: BoxFit.scaleDown,
         child: Column(
-         spacing: 20,
+          spacing: 20,
           children: [
             SizedBox(
               height:isMobile || isTablet ? sizes.innerContainerHeight : height* 0.35,

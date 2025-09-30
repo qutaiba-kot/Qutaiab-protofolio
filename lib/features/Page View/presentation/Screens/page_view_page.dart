@@ -50,13 +50,15 @@ class PageViewNavigation extends StatelessWidget {
                   isTablet: isTablet,
                 ),
                 endDrawer: isMobile || isTablet
-                    ? BurgerMenuDrawer(width: width)
+                    ? BurgerMenuDrawer(width: width, height: height)
                     : null,
                 body: Stack(
                   children: [
                     isTablet || isMobile
                         ? Positioned.fill(
-                            child: Image.network(profile!.mobAndTabBackgroundPic),
+                            child: Image.network(
+                              profile!.mobAndTabBackgroundPic,
+                            ),
                           )
                         : Positioned.fill(
                             child: Image.network(profile!.pcBackgroundPic),
