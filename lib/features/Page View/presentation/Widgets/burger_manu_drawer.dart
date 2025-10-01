@@ -43,7 +43,7 @@ class BurgerMenuDrawer extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Divider(color: Colors.white,thickness: 1,),
+                  Divider(color: Colors.white,thickness: 2,),
                   SizedBox(height: height * 0.05),
                   SizedBox(
                     height: height * 0.4,
@@ -54,10 +54,11 @@ class BurgerMenuDrawer extends StatelessWidget {
                         children: [
                           ...navItems.map((item) {
                             return _NavItem(
+                              height: height,
+                              width: width,
                               title: item["title"] as String,
                               index: item["index"] as int,
                               isSelected: currentIndex == item["index"],
-                              fontSize: (10),
                             );
                           }),
                         ],
@@ -76,13 +77,15 @@ class _NavItem extends StatefulWidget {
   final String title;
   final int index;
   final bool isSelected;
-  final double fontSize;
+  final double height;
+  final double width;
 
   const _NavItem({
     required this.title,
     required this.index,
     required this.isSelected,
-    required this.fontSize,
+    required this.height,
+    required this.width,
   });
 
   @override
@@ -92,16 +95,29 @@ class _NavItem extends StatefulWidget {
 class _NavItemState extends State<_NavItem> {
   @override
   Widget build(BuildContext context) {
-    final textColor = widget.isSelected ? AppColors.primary : Colors.white;
-
     return GestureDetector(
       onTap: () {
         Scaffold.of(context).closeEndDrawer();
         context.read<PageViewNavigationCubit>().changePage(widget.index);
       },
-      child: Text(
-        widget.title,
-        style: TextStyle(fontSize: widget.fontSize, color: textColor),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Text(
+              widget.title,
+              style: TextStyle(
+                fontSize: 20,
+                color: widget.isSelected ? AppColors.primary : Colors.white,
+              ),
+            ),
+          ),
+          Container(
+            height: widget.height * 0.001,
+            width: widget.width * 0.3,
+            color: Colors.white,
+          ),
+        ],
       ),
     );
   }

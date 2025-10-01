@@ -12,9 +12,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final sizes = HomeResponsive(
-      mainSizer: mainSizer
-    );
+    final sizes = HomeResponsive(mainSizer: mainSizer);
     return BlocProvider(
       create: (context) => HomeCubit(),
       child: SizedBox(
@@ -44,7 +42,8 @@ class HomePage extends StatelessWidget {
               ),
               MainAnimation(
                 delay: Duration(milliseconds: 200),
-                child: SizedBox(
+                child: Container(
+                  color: Colors.pink,
                   width: sizes.widthContainerTitle,
                   child: FittedBox(
                     child: const Text(
