@@ -1,16 +1,33 @@
-# protofolio
+# Fully responsive Portfolio
 
-A new Flutter project.
+This project aims to create a **fully responsive Portfolio** on Flutter Web using innovative and practical approaches.  
+Through extensive testing, traditional solutions like `LayoutBuilder` and `ScreenUtil` were found to have limitations, especially for rapid resizing and extreme screen compression.  
+The project demonstrates how to achieve a flexible and smooth layout across phones, tablets, and browsers.
 
-## Getting Started
+## Challenges & Solutions
 
-This project is a starting point for a Flutter application.
+### 1 – LayoutBuilder
+**Problem:** LayoutBuilder didn’t provide enough control over element sizes and ratios for flexible layouts.  
+**Solution:** Replaced it with nested Containers and a custom controller to manage dimensions and relative proportions effectively.
 
-A few resources to get you started if this is your first Flutter project:
+### 2 – ScreenUtil Library
+**Problem:** ScreenUtil was ineffective for web-specific behaviors such as quick resizing and shrinking the layout to very small screen widths.  
+**Solution:**  
+- Used FittedBox + Containers to maintain layout flexibility.  
+- Adopted fixed text sizes to prevent unexpected shrinking or stretching.  
+- Added custom breakpoints for phones and tablets to ensure proper responsiveness.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+**Result:**  
+A flexible and smooth design that works well even during rapid resizing or extreme compression.  
+Full support for phones, tablets, and browsers in a balanced way.  
+The project evolved from a simple portfolio into a proof of concept, demonstrating Flutter Web’s potential when practical solutions are applied.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Features
+- Fully responsive design  
+- Custom breakpoints for devices  
+- Smooth resizing animations
+
+## Tools & Technologies
+- Flutter  
+- Supabase  
+- Cubit (for state management)
