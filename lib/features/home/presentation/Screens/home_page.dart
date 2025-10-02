@@ -42,8 +42,7 @@ class HomePage extends StatelessWidget {
               ),
               MainAnimation(
                 delay: Duration(milliseconds: 200),
-                child: Container(
-                  color: Colors.pink,
+                child: SizedBox(
                   width: sizes.widthContainerTitle,
                   child: FittedBox(
                     child: const Text(

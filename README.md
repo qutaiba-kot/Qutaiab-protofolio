@@ -31,3 +31,10 @@ The project evolved from a simple portfolio into a proof of concept, demonstrati
 - Flutter  
 - Supabase  
 - Cubit (for state management)
+
+## Installation
+- Make sure you have the Flutter framework installed.  
+- Create a class named `Profile` to contain the database data.  
+- Supabase was used and initialized within the project.  
+- The retrieved data is stored in the `Profile` class.
+
